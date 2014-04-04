@@ -1,0 +1,21 @@
+//listar aeropuertos
+.container
+	form.form-signin(role='form')
+		h2.form-signin-heading Crear Nuevo Aeropuerto
+		input.form-control(type='text', placeholder='Codigo', autofocus='autofocus')
+		input.form-control(type='text', placeholder='Nombre', required)
+		button.btn.btn-lg.btn-primary.btn-block(type='submit' value='') Enviar
+.container2
+		//button.btn.btn-primary(type) Crear Nueva Entidad
+		h2.sub-header Listado de Aeropuertos
+		.table-responsive
+			table.table.table-striped
+				thead
+					tr
+						th ID
+						th Nombre
+				tbody
+					- for (var i = 0; i < 3; i++)
+							tr
+								td #{i+1}
+								td LAX

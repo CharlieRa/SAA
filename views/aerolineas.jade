@@ -1,0 +1,17 @@
+//listar aerolineas
+include ./crearAerolinea
+.container2
+		//a(href='javascript:void(0)' class='boton').btn.btn-primary Crear Nueva Aerolinea
+		//#formulario
+		h2.sub-header Listado de Aerolineas
+		.table-responsive
+			table.table.table-striped
+				thead
+					tr
+						th ID
+						th Nombre
+				tbody
+					- for (var i = 0; i < 3; i++)
+							tr
+								td #{i+1}
+								td LAN

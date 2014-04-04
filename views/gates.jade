@@ -1,0 +1,20 @@
+//listar gates
+.container
+	form.form-signin(role='form')
+		h2.form-signin-heading Crear Nueva Gates
+		input.form-control(type='text', placeholder='ID', autofocus='autofocus' disabled)
+		button.btn.btn-lg.btn-primary.btn-block(type='submit' value='') Crear
+.container2
+		//button.btn.btn-primary(type) Crear Nueva Entidad
+		h2.sub-header Listado de gates
+		.table-responsive
+			table.table.table-striped
+				thead
+					tr
+						th ID
+						th Nombre
+				tbody
+					- for (var i = 0; i < 1; i++)
+							tr
+								td #{i+1}
+								td LAX
