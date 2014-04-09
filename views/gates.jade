@@ -1,5 +1,7 @@
 //listar gates
-.container
+button(id='btn_crear' type="button").btn.btn-primary Crear Nueva Aerolinea
+button(id='btn_cerrar' type="button" style='display:none;').btn.btn-danger Cerrar
+.container(style='display:none;')
 	form.form-signin(role='form')
 		h2.form-signin-heading Crear Nueva Gates
 		input.form-control(type='text', placeholder='ID', autofocus='autofocus' disabled)
@@ -18,3 +20,5 @@
 							tr
 								td #{i+1}
 								td LAX
+								td LAN
+script(type='text/javascript', src='javascripts/functions.js')								

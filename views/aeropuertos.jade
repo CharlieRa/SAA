@@ -1,5 +1,7 @@
 //listar aeropuertos
-.container
+button(id='btn_crear' type="button").btn.btn-primary Crear Nueva Aerolinea
+button(id='btn_cerrar' type="button" style='display:none;').btn.btn-danger Cerrar
+.containerid(style='display:none;')
 	form.form-signin(role='form')
 		h2.form-signin-heading Crear Nuevo Aeropuerto
 		input.form-control(type='text', placeholder='Codigo', autofocus='autofocus')
@@ -19,3 +21,14 @@
 							tr
 								td #{i+1}
 								td LAX
+								td LAN
+//- script(type='text/javascript', src='javascripts/functions.js')
+script
+	$( "#btn_crear" ).click(function() {
+	$( ".container" ).show( 400 );
+	$( "#btn_cerrar" ).show( 400 );
+	});
+	$( "#btn_cerrar" ).click(function() {
+	$( ".container" ).hide( 400 );
+	$( "#btn_cerrar" ).hide( 400 );
+	});

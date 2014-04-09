@@ -32,6 +32,10 @@ app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded());
 
+app.set('view options', {
+  layout: false
+});
+
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());

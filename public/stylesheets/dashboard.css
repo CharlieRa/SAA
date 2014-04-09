@@ -10,14 +10,22 @@ body {
             width:400px;
             height: auto;
             text-align: center;
+           /* border-color: #000;
+            border-width: 5px;
+            /*border-radius: 20px;*/
+            margin: 0 auto;
+            margin-top: 50px;
 }
-.container.button{
+/*.container.button{
             width:50px;
+}*/
+.botones.btnaerocerrar{
+  margin-left: 100px;
 }
-.container2{
+/*.container2{
             width:0 auto;
             height:auto;
-}
+}*/
 #inline{
         align:center;
 }

@@ -1,17 +1,46 @@
 //listar aerolineas
-include ./crearAerolinea
+//- include ./crearAerolinea
+.botones
+button(id='btn_crear' type="button").btn.btn-primary.btnaero Crear Nueva Aerolinea
+button(id='btn_cerrar' type="button" style='display:none;').btn.btn-danger.btnaerocerrar X
+.container.aero(style='display:none;')
+	form.form-horizontal(role='form')
+		.form-group.row
+			label.col-sm-2.control-label ID
+			.col-sm-10
+				input.form-control(type='text', placeholder='ID' disabled)
+				span.help-block ID autogenerado
+		.form-group
+			label.col-sm-2.control-label Nombre
+			.col-sm-10
+				input.form-control(type='text', placeholder='Nombre Aerolinea')
+				span.help-block Nombre de la Aerolinea a Crear
+		.form-group
+			.col-sm-offset-2.col-sm-10
+				button.btn.btn-primary.btn-lg.btn-block(type='submit') Enviar
+	//- form.form-signin(role='form')
+	//- 	h2.form-signin-heading Nueva Aerolinea
+	//- 	input.form-control(type='text', placeholder='ID', autofocus='autofocus' disabled)
+	//- 	input.form-control(type='text', placeholder='Nombre', required)
+	//- 	button.btn.btn-lg.btn-primary.btn-block(type='submit' value='') Enviar
 .container2
-		//a(href='javascript:void(0)' class='boton').btn.btn-primary Crear Nueva Aerolinea
-		//#formulario
 		h2.sub-header Listado de Aerolineas
-		.table-responsive
-			table.table.table-striped
-				thead
-					tr
-						th ID
-						th Nombre
-				tbody
-					- for (var i = 0; i < 3; i++)
-							tr
-								td #{i+1}
-								td LAN
+		table.table.table-striped.table-bordered
+			thead
+				tr
+					th ID
+					th Nombre
+			tbody
+				- for (var i = 0; i < 3; i++)
+						tr
+							td #{i+1}
+							td LAN
+script
+	$( ".btnaero" ).click(function(){
+	$( ".aero" ).show( 400 );
+	$( ".btnaerocerrar" ).show( 400 );
+	});
+	$( ".btnaerocerrar" ).click(function(){
+	$( ".aero" ).hide( 400 );
+	$( ".btnaerocerrar" ).hide( 400 );
+	});
