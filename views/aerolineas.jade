@@ -1,9 +1,10 @@
-//listar aerolineas
-//- include ./crearAerolinea
-.botones
-button(id='btn_crear' type="button").btn.btn-primary.btnaero Crear Nueva Aerolinea
-button(id='btn_cerrar' type="button" style='display:none;').btn.btn-danger.btnaerocerrar X
+h1.page-header Aerolineas
+.page-header
+	.botones
+	button(id='btn_crear' type="button").btn.btn-success.btnaero Crear Nueva Aerolinea
+	button(id='btn_cerrar' type="button" style='display:none;').btn.btn-danger.btnaerocerrar X
 .container.aero(style='display:none;')
+	h3.titulo Crear Aerolinea
 	form.form-horizontal(role='form')
 		.form-group.row
 			label.col-sm-2.control-label ID
@@ -18,11 +19,6 @@ button(id='btn_cerrar' type="button" style='display:none;').btn.btn-danger.btnae
 		.form-group
 			.col-sm-offset-2.col-sm-10
 				button.btn.btn-primary.btn-lg.btn-block(type='submit') Enviar
-	//- form.form-signin(role='form')
-	//- 	h2.form-signin-heading Nueva Aerolinea
-	//- 	input.form-control(type='text', placeholder='ID', autofocus='autofocus' disabled)
-	//- 	input.form-control(type='text', placeholder='Nombre', required)
-	//- 	button.btn.btn-lg.btn-primary.btn-block(type='submit' value='') Enviar
 .container2
 		h2.sub-header Listado de Aerolineas
 		table.table.table-striped.table-bordered
