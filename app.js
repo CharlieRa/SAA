@@ -13,6 +13,7 @@ var gates = require('./routes/gates');
 var ciudades = require('./routes/ciudades');
 var paises = require('./routes/paises');
 var crearAerolinea = require('./routes/crearAerolinea');
+var contacto = require('./routes/contacto');
 var http = require('http');
 var path = require('path');
 
@@ -50,6 +51,7 @@ app.get('/gates', gates.gates);
 app.get('/ciudades', ciudades.ciudades);
 app.get('/paises', paises.paises);
 app.get('/crearAerolinea', crearAerolinea.crearAerolinea);
+app.get('/contacto', contacto.contacto);
 
 // var connection = mysql.createConnection({
 //   host     : 'localhost',
