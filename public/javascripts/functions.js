@@ -12,6 +12,13 @@ $(document).ready(function(){
     
   });
 
+  $(".contacto").click(function(){
+    $( ".container" ).hide( 400 );
+    $( "#btn_cerrar" ).hide( 400 );
+    $("#entidades").load("contacto");
+
+  });
+
   $(".programavuelos").click(function(){
     $("#entidades").load("programavuelos");
     $( "#btn_cerrar" ).hide( 400 );
