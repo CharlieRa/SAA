@@ -1,26 +1,18 @@
-doctype html
-html(lang="es")
-	head
-		title Login - SAA
-		meta(name='viewport', content='width=device-width, initial-scale=1.0')
-		//Bootstrap CSS 
+doctype
+html(lang='en')
+head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		meta(name='description', content='')
+		meta(name='author', content='')
 		link(href='stylesheets/bootstrap.css', rel='stylesheet', media='screen')
-		link(href='stylesheets/dashboard.css', rel='stylesheet')
-		link(href='stylesheets/style.css', rel='stylesheet')
-		body
-
-			.container.programa_vuelo(style='display:none;')
-			h3.titulo Inicio de seccion SAA
-			form.form-horizontal(method='post', action='/iniciar')
-
-			
-				.form-group.row
-					label.col-sm-2.control-label User
-					.col-sm-10
-						input.form-control(type='text', placeholder='USER', name='password')
-				.form-group.row
-					label.col-sm-2.control-label Password
-					.col-sm-10
-						input.form-control(type='text', placeholder='PASSWORD', name='password')
-
-	
+		link(href='stylesheets/login.css', rel='stylesheet')
+		title Login
+	body
+		.container
+			form.form-signin(role='form', method="post",  id="forma", action="/login")
+				h2.form-signin-heading Porfavor Inicia Sesión
+				input.form-control(type='text', placeholder='User', required='required', autofocus='autofocus')
+				input.form-control(type='password', placeholder='Password', required='required')
+				button.btn.btn-lg.btn-primary.btn-block(type='submit') Entrar

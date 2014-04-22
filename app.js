@@ -21,10 +21,11 @@ var programa_vuelos = require ('./controllers/programavuelosController');
 var Programa_vuelos = new programa_vuelos();
 var pasajero = require ('./controllers/pasajeroController');
 var Pasajero = new pasajero();
+var login = require ('./controllers/loginController');
+var Login = new login();
 
 
-
-//var aeropuertos = require('./routes/aeropuertos');
+// var login = require('./routes/login');
 //var programavuelos = require('./routes/programavuelos');
 // var pasajeros = require('./routes/pasajeros');
 // var gates = require('./routes/gates');
@@ -61,7 +62,6 @@ if ('development' == app.get('env')) {
 
 app.get('/', routes.index);
 
-
 app.get('/aerolineas',Aerolinea.get);
 app.post('/aerolineas',Aerolinea.insert);
 
@@ -81,6 +81,9 @@ app.get('/programa_vuelos',Programa_vuelos.get);
 app.post('/programa_vuelos',Programa_vuelos.insert);
 
 app.get('/pasajeros',Pasajero.get);
+
+app.get('/login',Login.get);
+app.post('/login',Login.check);
 
 // app.get('/programavuelos', programavuelos.programavuelos);
 // app.get('/pasajeros', pasajeros.pasajeros);
