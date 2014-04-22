@@ -1,0 +1,74 @@
+extends admin
+
+block entidad
+	h1.page-header Programa Vuelos
+	.page-header
+		.botones
+		button(id='btn_crear' type="button").btn.btn-success.btnaero Crear Programa vuelo
+		button(id='btn_cerrar' type="button" style='display:none;').btn.btn-danger.btnaerocerrar X
+	.container.programa_vuelo(style='display:none;')
+		h3.titulo Crear Programa Vuelo
+		form.form-horizontal(method='post', action='/programa_vuelos')
+			.form-group.row
+				label.col-sm-2.control-label ID
+				.col-sm-10
+					input.form-control(type='text', placeholder='ID' disabled)
+					span.help-block ID autogenerado
+			.form-group.row
+				label.col-sm-2.control-label Fecha
+				.col-sm-10
+					input.form-control(type='text', placeholder='Fecha', name='fecha')
+					span.help-block Fecha
+			.form-group.row
+				label.col-sm-2.control-label Hora
+				.col-sm-10
+					input.form-control(type='text', placeholder='Hora', name='hora')
+					span.help-block Hora
+			.form-group.row
+				label.col-sm-2.control-label Id_Destino
+				.col-sm-10
+					input.form-control(type='text', placeholder='id_destino', name='id_destino')
+					span.help-block id del aeropuerto destino
+			.form-group.row
+				label.col-sm-2.control-label Id_Salida
+				.col-sm-10
+					input.form-control(type='text', placeholder='id_destino', name='id_salida')
+					span.help-block id del aeropuerto salida
+			.form-group.row
+				label.col-sm-2.control-label Id_Tipo_avion
+				.col-sm-10
+					input.form-control(type='text', placeholder='id_tipo_avion', name='id_tipo_avion')
+					span.help-block id del tipo avion
+			.form-group
+				.col-sm-offset-2.col-sm-10
+					button.btn.btn-primary.btn-lg.btn-block(type='submit') Enviar
+	.container2
+			h2.sub-header Listado de Aeropuertos
+			table.table.table-striped.table-bordered
+				thead
+					tr
+						th ID
+						th Fecha
+						th Hora
+						th Id_Destino
+						th Id_Salida
+						th Id_Tipo_Avion
+					
+				tbody
+					- for (var i = 0; i < data.length; i++)
+							tr
+								td #{data[i].id}
+								td #{data[i].fecha}
+								td #{data[i].hora}
+								td #{data[i].id_destino}
+								td #{data[i].id_salida}
+								td #{data[i].id_tipo_avion}
+	script
+		$( ".btnaero" ).click(function(){
+		$( ".aero" ).show( 400 );
+		$( ".btnaerocerrar" ).show( 400 );
+		});
+		$( ".btnaerocerrar" ).click(function(){
+		$( ".aero" ).hide( 400 );
+		$( ".btnaerocerrar" ).hide( 400 );
+		});
