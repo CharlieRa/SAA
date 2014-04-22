@@ -2,20 +2,35 @@
 /**
  * Module dependencies.
  */
-var mysql = require ('mysql');
+
 var express = require('express');
 var routes = require('./routes');
-var aerolineas = require('./routes/aerolineas');
-var aeropuertos = require('./routes/aeropuertos');
-var programavuelos = require('./routes/programavuelos');
-var pasajeros = require('./routes/pasajeros');
-var gates = require('./routes/gates');
-var ciudades = require('./routes/ciudades');
-var paises = require('./routes/paises');
-var crearAerolinea = require('./routes/crearAerolinea');
-var contacto = require('./routes/contacto');
 var http = require('http');
 var path = require('path');
+var aerolinea = require('./controllers/aerolineaController');
+var Aerolinea = new aerolinea();
+var avion = require('./controllers/avionController');
+var Avion = new avion();
+var aeropuerto = require ('./controllers/aeropuertoController')
+var Aeropuerto = new aeropuerto();
+var ciudad = require ('./controllers/ciudadController');
+var Ciudad = new ciudad();
+var gate = require ('./controllers/gateController');
+var Gate = new gate();
+var programa_vuelos = require ('./controllers/programavuelosController');
+var Programa_vuelos = new programa_vuelos();
+var pasajero = require ('./controllers/pasajeroController');
+var Pasajero = new pasajero();
+
+
+
+//var aeropuertos = require('./routes/aeropuertos');
+//var programavuelos = require('./routes/programavuelos');
+// var pasajeros = require('./routes/pasajeros');
+// var gates = require('./routes/gates');
+// var ciudades = require('./routes/ciudades');
+// var paises = require('./routes/paises');
+// var crearAerolinea = require('./routes/crearAerolinea');
 
 var app = express();
 
@@ -39,53 +54,43 @@ app.set('view options', {
 
 // development only
 if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
+  app.use(express.errorHandler());Aerolinea.insert
 }
 
+
+
 app.get('/', routes.index);
-app.get('/aerolineas', aerolineas.aerolineas);
-app.get('/aeropuertos', aeropuertos.aeropuertos);
-app.get('/programavuelos', programavuelos.programavuelos);
-app.get('/pasajeros', pasajeros.pasajeros);
-app.get('/gates', gates.gates);
-app.get('/ciudades', ciudades.ciudades);
-app.get('/paises', paises.paises);
-app.get('/crearAerolinea', crearAerolinea.crearAerolinea);
-app.get('/contacto', contacto.contacto);
 
-// var connection = mysql.createConnection({
-//   host     : 'localhost',
-//   user     : 'root',
-//   password : '',
-//   database : 'aeropuerto'
-// });
 
-// connection.connect();
+app.get('/aerolineas',Aerolinea.get);
+app.post('/aerolineas',Aerolinea.insert);
 
-// connection.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
-//   if (err) throw err;
+app.get('/aviones',Avion.get);
+app.post('/aviones',Avion.insert);
 
-//   console.log('Conectado a BDD');
-// });
+app.get('/aeropuertos',Aeropuerto.get);
+app.post('/aeropuertos',Aeropuerto.insert);
 
-// connection.query( 'SELECT * FROM  pasajero', function(err, rows) {
-//     if(err)
-//       console.log('error');
-//     else
-//       console.log(rows[0]);
-// });
+app.get('/ciudades',Ciudad.get);
+app.post('/ciudades',Ciudad.insert);
 
-// connection.query( 'SELECT * FROM  aerolinea', function(err, rows) {
-//     if(err)
-//         console.log('error');
-//     else
-//         app.get(/aerolinea/,function (req, res){  
-//         res.send(rows);
-//  })
+app.get('/gates',Gate.get);
+app.post('/gates',Gate.insert);
 
-// });
+app.get('/programa_vuelos',Programa_vuelos.get);
+app.post('/programa_vuelos',Programa_vuelos.insert);
 
-// connection.end();
+app.get('/pasajeros',Pasajero.get);
+
+// app.get('/programavuelos', programavuelos.programavuelos);
+// app.get('/pasajeros', pasajeros.pasajeros);
+// app.get('/gates', gates.gates);
+// app.get('/ciudades', ciudades.ciudades);
+// app.get('/paises', paises.paises);
+// app.get('/crearAerolinea', crearAerolinea.crearAerolinea);
+
+
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
