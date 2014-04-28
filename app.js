@@ -56,12 +56,6 @@ var auth = function(req, res, next){
 
 
 //var aeropuertos = require('./routes/aeropuertos');
-//var programavuelos = require('./routes/programavuelos');
-// var pasajeros = require('./routes/pasajeros');
-// var gates = require('./routes/gates');
-// var ciudades = require('./routes/ciudades');
-// var paises = require('./routes/paises');
-// var crearAerolinea = require('./routes/crearAerolinea');
 
 var app = express();
 
@@ -118,6 +112,7 @@ app.get('/logout', function(req, res){
 
 app.get('/aerolineas',auth, Aerolinea.get);
 app.post('/aerolineas',Aerolinea.insert);
+app.get('/aerolineas/crear', Aerolinea.crear);
 
 app.get('/aviones', Avion.get);
 app.get('/aviones/crear', Avion.crear);
