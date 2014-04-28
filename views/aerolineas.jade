@@ -9,13 +9,13 @@ block entidad
 	.container.aero(style='display:none;')
 		h3.titulo Crear Aerolinea
 		form.form-horizontal(id='form-aerolinea', method='post', action='/aerolineas')
-			.form-group.row
-				label.col-sm-2.control-label ID
-				.col-sm-10
-					input.form-control(type='text', placeholder='ID' disabled)
-					span.help-block ID autogenerado
+			//- .form-group.row
+			//- 	label.col-sm-2.control-label ID
+			//- 	.col-sm-10
+			//- 		input.form-control(type='text', placeholder='ID' disabled)
+			//- 		span.help-block ID autogenerado
 			.form-group
-				label.col-sm-2.control-label Nombre
+				label.col-sm-2.control-label
 				.col-sm-10
 					input.form-control(type='text', placeholder='Nombre Aerolinea', name='nombre')
 					span.help-block Nombre de la Aerolinea a Crear
