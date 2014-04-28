@@ -24,9 +24,9 @@ ciudad.prototype. insert=function(req,res) {
 		database : 'aeropuerto'
 		});
 	connection.connect();
-	connection.query('INSERT INTO ciudad SET ?', {codigo: req.body.codigo, 
+	connection.query('INSERT INTO ciudad SET ?', {codigo: req.body.codigo , 
 												 nombre: req.body.nombre,
-												 id_pais: req.body.id_pais
+												 id_aerolinea: req.body.id_pais,
 												},function(err, result, t) {
   		if(err)
      		console.log('error');

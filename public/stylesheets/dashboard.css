@@ -165,3 +165,8 @@ body {
 .navbar .nav > .active > a:focus {
     color: #424242;
 }*/
+
+
+.selectFull {
+  width: 100%;
+}
