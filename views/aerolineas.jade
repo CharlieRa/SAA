@@ -1,4 +1,4 @@
-extends admin
+extends index
 
 block entidad
 	h1.page-header Aerolineas
@@ -8,7 +8,7 @@ block entidad
 		button(id='btn_cerrar' type="button" style='display:none;').btn.btn-danger.btnaerocerrar X
 	.container.aero(style='display:none;')
 		h3.titulo Crear Aerolinea
-		form.form-horizontal(id='form-aerolinea', method='post', action='/aerolineas')
+		form.form-horizontal(id='form-aerolinea', method='post', action='/aerolinea')
 			.form-group.row
 				label.col-sm-2.control-label ID
 				.col-sm-10
@@ -17,7 +17,7 @@ block entidad
 			.form-group
 				label.col-sm-2.control-label Nombre
 				.col-sm-10
-					input.form-control(type='text', placeholder='Nombre Aerolinea', name='nombre')
+					input.form-control(type='text', placeholder='Nombre Aerolinea', class='input-aerolinea', name='nombre')
 					span.help-block Nombre de la Aerolinea a Crear
 			.form-group
 				.col-sm-offset-2.col-sm-10

@@ -9,6 +9,10 @@
     "express": "3.5.1",
     "jade": "*",
     "stylus": "*",
-    "mysql": "^2.1.1"
+    "mysql": "^2.1.1",
+    "passport": "~0.2.0",
+    "passport-local": "~1.0.0",
+    "connect-flash": "~0.1.1",
+    "async": "~0.7.0"
   }
 }

@@ -1,0 +1,63 @@
+extends admin
+
+block entidad
+	script(type="text/javascript").
+		//alert(data)
+	h1.page-header Aviones
+	.page-header
+		.botones
+			ul.nav.nav-tabs
+				li
+					a(href="/aviones") Ver
+				li
+					a(href="/aviones/crear") Crear
+				li.active
+					a(href="#") Modificar
+				li
+					a(href="#") Borrar	
+	.container2
+		h3.sub-header Modificar Avion
+		form.form-horizontal(method='post', action='/aviones/modificar')
+			.form-group.row
+				label.col-sm-2.control-label ID
+				.col-sm-10
+					input.form-control(type='text', placeholder='ID', name='idd', value="#{data[0].id}" disable)
+					span.help-block ID autogenerado
+			.form-group.row
+				label.col-sm-2.control-label Gasolina
+				.col-sm-10
+					input.form-control(type='text', placeholder='Tipo Gasolina', name='gasolina', value="#{data[0].gasolina}")
+					span.help-block Octanage
+			.form-group.row
+				label.col-sm-2.control-label Aerolinea
+				.col-sm-10
+					select.from-control.selectFull(name='id_aerolinea')
+						- for(var i=0; i< aerolineas.length; i++){
+							if(data[0].id_aerolinea == aerolineas[i].id)
+								option(value=aerolineas[i].id, selected="selected") #{aerolineas[i].nombre}
+							else
+								option(value=aerolineas[i].id) #{aerolineas[i].nombre}
+						- }
+
+					span.help-block Id de la aerolinea del avion
+			.form-group.row
+				label.col-sm-2.control-label Piloto
+				.col-sm-10
+					input.form-control(type='text', placeholder='Nombre Piloto', name='piloto', value="#{data[0].piloto}")
+					span.help-block Nombre del piloto
+			.form-group.row
+				label.col-sm-2.control-label Año
+				.col-sm-10
+					input.form-control(type='text', placeholder='Año', 
+					name='año', value="#{data[0].año}")
+					span.help-block Año de fabricacion
+			.form-group.row
+				label.col-sm-2.control-label Tipo Avion
+				.col-sm-10
+					input.form-control(type='text', placeholder='Id_tipo_avion', 
+					name='id_tipo_avion', value="#{data[0].id_tipo_avion}")
+					span.help-block
+					span.help-block id del tipo de avion  
+			.form-group
+				.col-sm-offset-2.col-sm-10
+					button.btn.btn-primary.btn-lg.btn-block(type='submit') Enviar

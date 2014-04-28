@@ -26,8 +26,8 @@ aeropuerto.prototype. insert=function(req,res) {
 	connection.connect();
 	connection.query('INSERT INTO aeropuerto SET ?',{codigo: req.body.codigo , 
 													nombre: req.body.nombre,
-												 	id_ciudad: req.body.id_ciudad}, 
-												 	function(err, result, t) {
+												 	id_ciudad: req.body.id_ciudad
+												 	},function(err, result, t){
   		if(err)
      		console.log('error');
 	    else{

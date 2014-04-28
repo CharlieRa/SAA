@@ -1,4 +1,5 @@
 var mysql = require ('mysql');
+var async = require ('async');
 
 var avion  = function () {};
 
@@ -16,6 +17,125 @@ avion.prototype. get= function(req, res) {
 	connection.end();
 };
 
+avion.prototype.crear = function(req, res) {
+		var connection = mysql.createConnection({
+		host     : 'localhost',
+		user     : 'root',
+		password : '',
+		database : 'aeropuerto'
+	});
+	connection.connect();
+	connection.query('SELECT id, nombre FROM aerolinea', function(err, result) {
+		console.log(result)
+ 		res.render('avionesCrear', { data: result})
+	})
+	connection.end();
+};
+
+avion.prototype.modificar = function(req, res) {
+		var connection = mysql.createConnection({
+		host     : 'localhost',
+		user     : 'root',
+		password : '',
+		database : 'aeropuerto'
+	});
+	connection.connect();
+
+
+	async.parallel({
+	    avion: function(callback){
+	    	connection.query('SELECT * FROM avion WHERE id ='+req.params.id, function(err, result) {
+	    		callback(null, result);
+			})
+	    },
+	    aerolineas: function(callback){
+	    	connection.query('SELECT id, nombre FROM aerolinea', function(err, result) {
+				callback(null, result);
+			})
+	    }
+	},
+	function(err, results) {
+	    res.render('avionesModificar', { data: results.avion, aerolineas: results.aerolineas})
+	});
+
+	connection.end();
+};
+
+
+avion.prototype.mod=function(req,res) {
+	var connection = mysql.createConnection({
+		host     : 'localhost',
+		user     : 'root',
+		password : '',
+		database : 'aeropuerto'
+	});
+	connection.connect();
+	connection.query('UPDATE avion SET ? WHERE id ='+req.body.idd , {gasolina: req.body.gasolina, 
+											piloto: req.body.piloto,
+											año: req.body.año,
+											id_aerolinea: req.body.id_aerolinea,
+											id_tipo_avion: req.body.id_tipo_avion
+											},function(err, result, t) {
+  		if(err)
+     		console.log('error');
+	    else{
+	    	res.redirect('/aviones');
+	    }
+	});  
+
+	connection.end();
+};
+
+avion.prototype.borrar = function(req, res) {
+		var connection = mysql.createConnection({
+		host     : 'localhost',
+		user     : 'root',
+		password : '',
+		database : 'aeropuerto'
+	});
+	connection.connect();
+
+
+	async.parallel({
+	    avion: function(callback){
+	    	connection.query('SELECT * FROM avion WHERE id ='+req.params.id, function(err, result) {
+	    		callback(null, result);
+			})
+	    },
+	    aerolineas: function(callback){
+	    	connection.query('SELECT id, nombre FROM aerolinea', function(err, result) {
+				callback(null, result);
+			})
+	    }
+	},
+	function(err, results) {
+	    res.render('avionesBorrar', { data: results.avion, aerolineas: results.aerolineas})
+	});
+
+	connection.end();
+};
+
+avion.prototype.borr=function(req,res) {
+		var connection = mysql.createConnection({
+		host     : 'localhost',
+		user     : 'root',
+		password : '',
+		database : 'aeropuerto'
+	});
+	connection.connect();
+
+	connection.query('DELETE FROM avion WHERE id ='+req.body.idd, function(err, result) {
+  		if(err)
+     		console.log('error');
+	    else{
+	    	res.redirect('/aviones');
+	    }
+	});  
+
+	connection.end();
+};
+
+
 avion.prototype. insert=function(req,res) {
 	var connection = mysql.createConnection({
 		host     : 'localhost',
@@ -29,7 +149,7 @@ avion.prototype. insert=function(req,res) {
 												 año: req.body.año,
 												 id_aerolinea: req.body.id_aerolinea,
 												 id_tipo_avion: req.body.id_tipo_avion
-												},function(err, result) {
+												},function(err, result, t) {
   		if(err)
      		console.log('error');
 	    else{

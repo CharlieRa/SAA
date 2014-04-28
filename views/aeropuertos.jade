@@ -1,4 +1,4 @@
-extends admin
+extends index
 
 block entidad
 	h1.page-header Aeropuertos
@@ -8,7 +8,7 @@ block entidad
 		button(id='btn_cerrar' type="button" style='display:none;').btn.btn-danger.btnaerocerrar X
 	.container.aeropuerto(style='display:none;')
 		h3.titulo Crear Aeropuerto
-		form.form-horizontal(method='post', action='/aeropuertos')
+		form.form-horizontal(method='post', action='/aeropuerto')
 			.form-group.row
 				label.col-sm-2.control-label ID
 				.col-sm-10
