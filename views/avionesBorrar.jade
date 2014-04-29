@@ -1,4 +1,4 @@
-extends admin
+EXTENDS admin
 
 block entidad
 	script(type="text/javascript").
@@ -21,12 +21,12 @@ block entidad
 			.form-group.row
 				label.col-sm-2.control-label ID
 				.col-sm-10
-					input.form-control(type='text', placeholder='ID', name='idd', value="#{data[0].id}" disable)
+					input.form-control(type='text', placeholder='ID', name='idd', value="#{data[0].ID}" disable)
 					span.help-block ID autogenerado
 			.form-group.row
 				label.col-sm-2.control-label Gasolina
 				.col-sm-10
-					input.form-control(type='text', placeholder='Tipo Gasolina', name='gasolina', value="#{data[0].gasolina}")
+					input.form-control(type='text', placeholder='Tipo Gasolina', name='gasolina', value="#{data[0].GASOLINA}")
 					span.help-block Octanage
 			.form-group.row
 				label.col-sm-2.control-label Aerolinea
@@ -34,28 +34,28 @@ block entidad
 					select.from-control.selectFull(name='id_aerolinea')
 						- for(var i=0; i< aerolineas.length; i++){
 							if(data[0].id_aerolinea == aerolineas[i].id)
-								option(value=aerolineas[i].id, selected="selected") #{aerolineas[i].nombre}
+								option(value=aerolineas[i].id, selected="selected") #{aerolineas[i].NOMBRE}
 							else
-								option(value=aerolineas[i].id) #{aerolineas[i].nombre}
+								option(value=aerolineas[i].id) #{aerolineas[i].NOMBRE}
 						- }
 
 					span.help-block Id de la aerolinea del avion
 			.form-group.row
 				label.col-sm-2.control-label Piloto
 				.col-sm-10
-					input.form-control(type='text', placeholder='Nombre Piloto', name='piloto', value="#{data[0].piloto}")
+					input.form-control(type='text', placeholder='Nombre Piloto', name='piloto', value="#{data[0].PILOTO}")
 					span.help-block Nombre del piloto
 			.form-group.row
 				label.col-sm-2.control-label Año
 				.col-sm-10
 					input.form-control(type='text', placeholder='Año', 
-					name='año', value="#{data[0].año}")
+					name='año', value="#{data[0].AÑO}")
 					span.help-block Año de fabricacion
 			.form-group.row
 				label.col-sm-2.control-label Tipo Avion
 				.col-sm-10
 					input.form-control(type='text', placeholder='Id_tipo_avion', 
-					name='id_tipo_avion', value="#{data[0].id_tipo_avion}")
+					name='id_tipo_avion', value="#{data[0].ID_TIPO_AVION}")
 					span.help-block
 					span.help-block id del tipo de avion  
 			.form-group

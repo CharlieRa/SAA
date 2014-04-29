@@ -1,4 +1,4 @@
-extends admin
+EXTENDS admin
 
 block entidad
 	script(type="text/javascript")
@@ -32,7 +32,7 @@ block entidad
 				.col-sm-10
 					select.from-control.selectFull(name='id_aerolinea')
 						- for(var i=0; i< data.length; i++){
-						option(value=data[i].id) #{data[i].nombre}
+						option(value=data[i].ID) #{data[i].NOMBRE}
 						- }
 					span.help-block Id de la aerolinea del avion
 			.form-group.row

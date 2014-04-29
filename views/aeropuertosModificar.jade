@@ -1,4 +1,4 @@
-extends admin
+EXTENDS admin
 
 block entidad
 	script(type="text/javascript").
@@ -20,19 +20,19 @@ block entidad
 			.form-group.row
 				label.col-sm-2.control-label Code
 				.col-sm-10
-					input.form-control(type='text', placeholder='Code', name='code', value="#{data[0].code}")
+					input.form-control(type='text', placeholder='Code', name='code', value="#{data[0].CODE}")
 			.form-group.row
 				label.col-sm-2.control-label Name
 				.col-sm-10
-					input.form-control(type='text', placeholder='Name', name='name', value="#{data[0].name}")
+					input.form-control(type='text', placeholder='Name', name='name', value="#{data[0].NAME}")
 			.form-group.row
 				label.col-sm-2.control-label Coordinates
 				.col-sm-10
-					input.form-control(type='text', placeholder='Coordinates', name='coordinates', value="#{data[0].coordinates}")
+					input.form-control(type='text', placeholder='Coordinates', name='coordinates', value="#{data[0].COORDINATES}")
 			.form-group.row
 				label.col-sm-2.control-label City ID
 				.col-sm-10
-					input.form-control(type='text', placeholder='City ID', name='city_id', value="#{data[0].city_id}")
+					input.form-control(type='text', placeholder='City ID', name='city_id', value="#{data[0].CITY_ID}")
 			.form-group
 				.col-sm-offset-2.col-sm-10
 					button.btn.btn-primary.btn-lg.btn-block(type='submit') Enviar

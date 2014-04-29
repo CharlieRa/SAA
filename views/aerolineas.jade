@@ -26,12 +26,12 @@ block entidad
 				tbody
 					- for (var i = 0; i < data.length; i++)
 							tr
-								td #{data[i].id}
-								td #{data[i].name}
-								td #{data[i].acronym}
+								td #{data[i].ID}
+								td #{data[i].NAME}
+								td #{data[i].ACRONYM}
 								td(style='width:5px;')
-									a(href="/aerolineas/modificar/#{data[i].id}")
+									a(href="/aerolineas/modificar/#{data[i].ID}")
 										span.glyphicon.glyphicon-pencil
 								td(style='width:5px;')
-									a(href="/aerolineas/borrar/#{data[i].id}")
+									a(href="/aerolineas/borrar/#{data[i].ID}")
 										span.glyphicon.glyphicon-trash

@@ -19,8 +19,8 @@ var ciudad = require ('./controllers/ciudadController');
 var Ciudad = new ciudad();
 var gate = require ('./controllers/gateController');
 var Gate = new gate();
-var programa_vuelos = require ('./controllers/programavuelosController');
-var Programa_vuelos = new programa_vuelos();
+var scheduled_flight = require ('./controllers/vuelosController');
+var Programavuelos = new scheduled_flight();
 var pasajero = require ('./controllers/pasajeroController');
 var Pasajero = new pasajero();
 
@@ -136,20 +136,10 @@ app.post('/ciudades',Ciudad.insert);
 app.get('/gates',auth,Gate.get);
 app.post('/gates',Gate.insert);
 
-app.get('/programa_vuelos',auth,Programa_vuelos.get);
-app.post('/programa_vuelos',Programa_vuelos.insert);
+app.get('/programaVuelos',Programavuelos.get);
+app.post('/programaVuelos',Programavuelos.insert);
 
 app.get('/pasajeros',auth,Pasajero.get);
-
-// app.get('/programavuelos', programavuelos.programavuelos);
-// app.get('/pasajeros', pasajeros.pasajeros);
-// app.get('/gates', gates.gates);
-// app.get('/ciudades', ciudades.ciudades);
-// app.get('/paises', paises.paises);
-// app.get('/crearAerolinea', crearAerolinea.crearAerolinea);
-
-
-
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
