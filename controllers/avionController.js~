@@ -11,8 +11,8 @@ avion.prototype. get= function(req, res) {
 		database : 'aeropuerto'
 	});
 	connection.connect();
-	connection.query('SELECT * FROM airplane', function(err, result) {
- 		res.render('aviones', { data: result})
+	connection.query('SELECT ID, (SELECT NAME FROM airline WHERE AIRLINE_ID = airline.ID) AS AL, T_MODEL, YEAR, PILOT, COPILOT, GAS_LEVEL FROM airplane', function(err, result) {res.render('aviones', { data: result})
+		console.log(result)
 	})
 	connection.end();
 };
@@ -70,12 +70,13 @@ avion.prototype.mod=function(req,res) {
 		database : 'aeropuerto'
 	});
 	connection.connect();
-	connection.query('UPDATE avion SET ? WHERE id ='+req.body.idd , {gasolina: req.body.gasolina, 
-											piloto: req.body.piloto,
-											año: req.body.año,
-											id_aerolinea: req.body.id_aerolinea,
-											id_tipo_avion: req.body.id_tipo_avion
-											},function(err, result, t) {
+	connection.query('UPDATE airplane SET ? WHERE ID ='+req.body.idd , {	GAS_LEVEL: req.body.gasolina, 
+										PILOT: req.body.piloto,
+										COPILOT: req.body.copiloto,
+										YEAR: req.body.año,
+										AIRLINE_ID: req.body.id_aerolinea,
+										T_MODEL: req.body.id_tipo_avion
+										},function(err, result, t) {
   		if(err)
      		console.log('error');
 	    else{

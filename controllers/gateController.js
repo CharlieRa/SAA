@@ -24,8 +24,9 @@ gate.prototype. insert=function(req,res) {
 		database : 'aeropuerto'
 		});
 	connection.connect();
-	connection.query('INSERT INTO gate SET ?', {estado: req.body.estado 
-												},function(err, result) {
+	connection.query('INSERT INTO gate SET ?', {	NAME: req.body.NAME,
+							STATUS: req.body.STATUS, 
+							},function(err, result) {
   		if(err)
      		console.log('error');
 	    else{
