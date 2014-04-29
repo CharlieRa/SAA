@@ -1,25 +1,38 @@
-//listar paises
-button(id='btn_crear' type="button").btn.btn-primary Crear Nueva Aerolinea
-button(id='btn_cerrar' type="button" style='display:none;').btn.btn-danger Cerrar
-.container(style='display:none;')
-	form.form-signin(role='form')
-		h2.form-signin-heading Nueva Aerolinea
-		input.form-control(type='text', placeholder='ID', autofocus='autofocus' disabled)
-		input.form-control(type='text', placeholder='Nombre', required)
-		button.btn.btn-lg.btn-primary.btn-block(type='submit' value='') Enviar
+extends admin
+
+block entidad
+	h1.page-header Paises
+	.page-header
+		.botones
+			ul.nav.nav-tabs
+				li.active
+					a(href="/Paises") Ver
+				li
+					a(href="/Paises/crear") Crear
+				li
+					a.modificar(href="#") Modificar
+				li
+					a.borrar(href="#") Borrar
 .container2
-		//button.btn.btn-primary(type) Crear Nueva Entidad
-		h2.sub-header Listado de paises
+		h2.sub-header Paises
 		.table-responsive
 			table.table.table-striped
 				thead
 					tr
-						th ID
+						th Codigo Pais
 						th Nombre
+						th Lengua Principal
+						th Editar
+						th Eliminar
 				tbody
-					- for (var i = 0; i < 3; i++)
+					- for (var i = 0; i < data.length; i++)
 							tr
-								td #{i+1}
-								td LAX
-								td LAN
-script(type='text/javascript', src='javascripts/functions.js')								
+								td #{data[i].code}
+								td #{data[i].name}
+								td #{data[i].main_lang}
+								td(style='width:5px;')
+									a(href="/paises/modificar/#{data[i].code}")
+										span.glyphicon.glyphicon-pencil
+								td(style='width:5px;')
+									a(href="/paises/borrar/#{data[i].code}")
+										span.glyphicon.glyphicon-trash

@@ -110,7 +110,7 @@ app.get('/logout', function(req, res){
 
 
 
-app.get('/aerolineas',auth, Aerolinea.get);
+app.get('/aerolineas', Aerolinea.get);
 app.post('/aerolineas',Aerolinea.insert);
 app.get('/aerolineas/crear', Aerolinea.crear);
 // app.get('/aerolineas/modificar/:id', Aerolinea.modificar);

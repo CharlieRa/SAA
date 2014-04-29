@@ -4,42 +4,32 @@ block entidad
 	h1.page-header Gates
 	.page-header
 		.botones
-		button(id='btn_crear' type="button").btn.btn-success.btnaero Crear Nueva Gate
-		button(id='btn_cerrar' type="button" style='display:none;').btn.btn-danger.btnaerocerrar X
-	.container.gate(style='display:none;')
-		h3.titulo Crear Gate
-		form.form-horizontal(method='post', action='/gates')
-			.form-group.row
-				label.col-sm-2.control-label ID
-				.col-sm-10
-					input.form-control(type='text', placeholder='ID' disabled)
-					span.help-block ID autogenerado
-			.form-group
-				label.col-sm-2.control-label Estado
-				.col-sm-10
-					input.form-control(type='text', placeholder='Estado Gate', name='estado')
-					span.help-block Estado 1 abierto 0 cerrado
-			.form-group
-				.col-sm-offset-2.col-sm-10
-					button.btn.btn-primary.btn-lg.btn-block(type='submit') Enviar
+			ul.nav.nav-tabs
+				li.active
+					a(href="/gates") Ver
+				li
+					a(href="/gates/crear") Crear
+				li
+					a.modificar(href="#") Modificar
+				li
+					a.borrar(href="#") Borrar
 	.container2
-			h2.sub-header Listado de Gates
+			h2.sub-header Gates
 			table.table.table-striped.table-bordered
 				thead
 					tr
-						th ID
+						th Nombre
 						th Estado
+						th Editar
+						th ELiminar
 				tbody
 					- for (var i = 0; i < data.length; i++)
 							tr
-								td #{data[i].id}
-								td #{data[i].estado}
-script
-		$( ".btnaero" ).click(function(){
-		$( ".aero" ).show( 400 );
-		$( ".btnaerocerrar" ).show( 400 );
-		});
-		$( ".btnaerocerrar" ).click(function(){
-		$( ".aero" ).hide( 400 );
-		$( ".btnaerocerrar" ).hide( 400 );
-		});
+								td #{data[i].name}
+								td #{data[i].status}
+								td(style='width:5px;')
+									a(href="/gates/modificar/#{data[i].id}")
+										span.glyphicon.glyphicon-pencil
+								td(style='width:5px;')
+									a(href="/gates/borrar/#{data[i].id}")
+										span.glyphicon.glyphicon-trash

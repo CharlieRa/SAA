@@ -20,6 +20,7 @@ block entidad
 					tr
 						th ID
 						th Nombre
+						th Acronimo
 						th Editar
 						th Eliminar
 				tbody
@@ -28,9 +29,9 @@ block entidad
 								td #{data[i].id}
 								td #{data[i].name}
 								td #{data[i].acronym}
-								td 
+								td(style='width:5px;')
 									a(href="/aerolineas/modificar/#{data[i].id}")
 										span.glyphicon.glyphicon-pencil
-								td 
+								td(style='width:5px;')
 									a(href="/aerolineas/borrar/#{data[i].id}")
 										span.glyphicon.glyphicon-trash

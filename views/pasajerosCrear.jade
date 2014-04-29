@@ -1,0 +1,43 @@
+extends admin
+
+block entidad
+	script(type="text/javascript").
+	
+	h1.page-header Pasajeros
+	.page-header
+		.botones
+			ul.nav.nav-tabs
+				li
+					a(href="/pasajeros") Ver
+				li.active
+					a(href="/pasajeros/crear") Crear
+				li
+					a(href="#") Modificar
+				li
+					a(href="#") Borrar
+	.container
+		h3.sub-header Crear Pasajero
+		form.form-horizontal(method='post', action='/pasajeros')
+			.form-group.row
+				label.col-sm-2.control-label
+				.col-sm-10
+					input.form-control(type='text', placeholder='Nombre Completo' name='name')
+			.form-group.row
+				label.col-sm-2.control-label
+				.col-sm-10
+					input.form-control(type='text', placeholder='Personal Identification Number' name='pin')
+			.form-group.row
+				label.col-sm-2.control-label
+				.col-sm-10
+					input.form-control(type='text', placeholder='Sexo M o F' name='sex')
+			.form-group.row
+				label.col-sm-2.control-label
+				.col-sm-10
+					input.form-control(type='text', placeholder='Fecha de Nacimiento' name='birthday')
+			.form-group.row
+				label.col-sm-2.control-label
+				.col-sm-10
+					input.form-control(type='text', placeholder='Codigo Ciudad' name='c_code')
+			.form-group
+				.col-sm-offset-2.col-sm-10
+					button.btn.btn-primary.btn-lg.btn-block(type='submit') Enviar

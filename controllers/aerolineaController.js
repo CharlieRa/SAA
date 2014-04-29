@@ -11,7 +11,7 @@ aerolinea.prototype.get= function(req, res) {
 		database : 'aeropuerto'
 	});
 	connection.connect();
-	connection.query('SELECT * FROM aerolinea', function(err, result) {
+	connection.query('SELECT * FROM airline', function(err, result) {
  		res.render('aerolineas', { data: result})
 	})
 	connection.end();
@@ -25,7 +25,7 @@ aerolinea.prototype.crear = function(req, res) {
 		database : 'aeropuerto'
 	});
 	connection.connect();
-	connection.query('SELECT id, nombre FROM aerolinea', function(err, result) {
+	connection.query('SELECT id, nombre FROM airline', function(err, result) {
 		console.log(result)
  		res.render('aerolineasCrear', { data: result})
 	})
@@ -41,7 +41,7 @@ aerolinea.prototype.borr=function(req,res) {
 	});
 	connection.connect();
 
-	connection.query('DELETE FROM aerolineas WHERE id ='+req.body.idd, function(err, result) {
+	connection.query('DELETE FROM airline WHERE id ='+req.body.idd, function(err, result) {
   		if(err)
      		console.log('error');
 	    else{
@@ -60,7 +60,7 @@ aerolinea.prototype.insert=function(req,res) {
 		database : 'aeropuerto'
 		});
 	connection.connect();
-	connection.query('INSERT INTO aerolinea SET ?',	{nombre: req.body.nombre
+	connection.query('INSERT INTO airline SET ?',	{nombre: req.body.nombre
 													},function(err, result) {
   		if(err)
      		console.log('error');

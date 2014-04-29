@@ -1,0 +1,48 @@
+extends admin
+
+block entidad
+	h1.page-header Programa de Vuelos
+	.page-header
+		.botones
+			ul.nav.nav-tabs
+				li.active
+					a(href="/programaVuelos") Ver
+				li
+					a(href="/programaVuelos/crear") Crear
+				li
+					a.modificar(href="#") Modificar
+				li
+					a.borrar(href="#") Borrar
+
+	
+	.container2
+			h2.sub-header Programa de Vuelos
+			table.table.table-striped.table-bordered
+				thead
+					tr
+						th ID
+						th Fecha
+						th Salida Estimada
+						th Duracion Estimada
+						th Ciudad de Destino
+						th Ciudad de Origen
+						th Avion
+						th Editar
+						th Eliminar
+					
+				tbody
+					- for (var i = 0; i < data.length; i++)
+							tr
+								td #{data[i].id}
+								td #{data[i].week_days}
+								td #{data[i].estimated_departure}
+								td #{data[i].estimated_duration}
+								td #{data[i].destiny_code}
+								td #{data[i].origin_code}
+								td #{data[i].airplane_t_id}
+								td 
+									a(href="/programaVuelos/modificar/#{data[i].id}")
+										span.glyphicon.glyphicon-pencil
+								td 
+									a(href="/programaVuelos/borrar/#{data[i].id}")
+										span.glyphicon.glyphicon-trash

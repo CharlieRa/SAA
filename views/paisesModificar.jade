@@ -1,0 +1,35 @@
+extends admin
+
+block entidad
+	script(type="text/javascript").
+	h1.page-header Paises
+	.page-header
+		.botones
+			ul.nav.nav-tabs
+				li
+					a(href="/paises") Ver
+				li.active
+					a(href="/paises/crear") Crear
+				li
+					a(href="#") Modificar
+				li
+					a(href="#") Borrar
+
+.container
+	h3.sub-header Crear Pais
+		form.form-horizontal(method='post', action='/paises/modificar')
+			.form-group.row
+				label.col-sm-2.control-label
+				.col-sm-10
+					input.form-control(type='text', placeholder='Codigo Pais' name='code')
+			.form-group.row
+				label.col-sm-2.control-label
+				.col-sm-10
+					input.form-control(type='text', placeholder='Nombre' name='name')
+			.form-group.row
+				label.col-sm-2.control-label
+				.col-sm-10
+					input.form-control(type='text', placeholder='Lengua Principal' name='main_lang')
+			.form-group
+				.col-sm-offset-2.col-sm-10
+					button.btn.btn-primary.btn-lg.btn-block(type='submit') Enviar

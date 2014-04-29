@@ -4,57 +4,37 @@ block entidad
 	h1.page-header Aeropuertos
 	.page-header
 		.botones
-		button(id='btn_crear' type="button").btn.btn-success.btnaero Crear Nuevo Aeropuerto
-		button(id='btn_cerrar' type="button" style='display:none;').btn.btn-danger.btnaerocerrar X
-	.container.aeropuerto(style='display:none;')
-		h3.titulo Crear Aeropuerto
-		form.form-horizontal(method='post', action='/aeropuerto')
-			.form-group.row
-				label.col-sm-2.control-label ID
-				.col-sm-10
-					input.form-control(type='text', placeholder='ID' disabled)
-					span.help-block ID autogenerado
-			.form-group.row
-				label.col-sm-2.control-label Codigo
-				.col-sm-10
-					input.form-control(type='text', placeholder='Codigo', name='codigo')
-					span.help-block Cogigo
-			.form-group.row
-				label.col-sm-2.control-label Nombre
-				.col-sm-10
-					input.form-control(type='text', placeholder='Nombre', name='nombre')
-					span.help-block nombre Aeropuerto
-			.form-group.row
-				label.col-sm-2.control-label Id_ciudad 
-				.col-sm-10
-					input.form-control(type='text', placeholder='id_ciudad', name='id_ciudad')
-					span.help-block id de la ciudad del aeropuerto
-			.form-group
-				.col-sm-offset-2.col-sm-10
-					button.btn.btn-primary.btn-lg.btn-block(type='submit') Enviar
+			ul.nav.nav-tabs
+				li.active
+					a(href="/aeropuertos") Ver
+				li
+					a(href="/aeropuertos/crear") Crear
+				li
+					a.modificar(href="#") Modificar
+				li
+					a.borrar(href="#") Borrar
 	.container2
 			h2.sub-header Listado de Aeropuertos
 			table.table.table-striped.table-bordered
 				thead
 					tr
-						th ID
 						th Codigo
 						th Nombre
+						th Coordinates
 						th Id_ciudad
+						th Editar
+						th ELiminar
 					
 				tbody
 					- for (var i = 0; i < data.length; i++)
 							tr
-								td #{data[i].id}
-								td #{data[i].codigo}
-								td #{data[i].nombre}
-								td #{data[i].id_ciudad}
-	script
-		$( ".btnaero" ).click(function(){
-		$( ".aero" ).show( 400 );
-		$( ".btnaerocerrar" ).show( 400 );
-		});
-		$( ".btnaerocerrar" ).click(function(){
-		$( ".aero" ).hide( 400 );
-		$( ".btnaerocerrar" ).hide( 400 );
-		});
+								td #{data[i].code}
+								td #{data[i].name}
+								td #{data[i].coordinates}
+								td #{data[i].city_id}
+								td 
+									a(href="/aeropuertos/modificar/#{data[i].code}")
+										span.glyphicon.glyphicon-pencil
+								td 
+									a(href="/aeropuertos/borrar/#{data[i].code}")
+										span.glyphicon.glyphicon-trash
