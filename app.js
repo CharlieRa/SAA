@@ -137,7 +137,12 @@ app.get('/gates',auth,Gate.get);
 app.post('/gates',Gate.insert);
 
 app.get('/programaVuelos',Programavuelos.get);
-app.post('/programaVuelos',Programavuelos.insert);
+app.get('/programaVuelos/crear', Programavuelos.crear);
+//app.post('/programaVuelos',Programavuelos.insert);
+//app.get('/programaVuelos/modificar/:id', Programavuelos.modificar);
+//app.post('/programaVuelos/modificar', Programavuelos.mod);
+//app.get('/programaVuelos/borrar/:id', Programavuelos.borrar);
+//app.post('/programaVuelos/borrar', Programavuelos.borr);
 
 app.get('/pasajeros',auth,Pasajero.get);
 
