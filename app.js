@@ -129,10 +129,12 @@ app.post('/aviones/modificar', Avion.mod);
 app.get('/aviones/borrar/:id', Avion.borrar);
 app.post('/aviones/borrar', Avion.borr);
 
-app.get('/aeropuertos',auth,Aeropuerto.get);
+app.get('/aeropuertos',Aeropuerto.get);
+app.get('/aeropuertos/crear',Aeropuerto.crear);
 app.post('/aeropuertos',Aeropuerto.insert);
 
-app.get('/ciudades',auth,Ciudad.get);
+app.get('/ciudades',Ciudad.get);
+app.get('/ciudades/crear',Ciudad.crear);
 app.post('/ciudades',Ciudad.insert);
 
 app.get('/gates',Gate.get);

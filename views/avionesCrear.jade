@@ -14,19 +14,13 @@ block entidad
 					a(href="#") Modificar
 				li
 					a(href="#") Borrar
-	.container2
+	.container
 		h3.sub-header Crear Avion
 		form.form-horizontal(method='post', action='/aviones')
-			.form-group.row
-				label.col-sm-2.control-label
-				.col-sm-10
-					input.form-control(type='text', placeholder='ID' disabled)
-					span.help-block ID autogenerado
 			.form-group.row
 				label.col-sm-2.control-label Gasolina
 				.col-sm-10
 					input.form-control(type='text', placeholder='Estanque', name='GAS_LEVEL')
-					span.help-block Nivel de gasolina
 			.form-group.row
 				label.col-sm-2.control-label Aerolinea
 				.col-sm-10
@@ -34,18 +28,14 @@ block entidad
 						- for(var i=0; i< data.length; i++){
 						option(value=data[i].ID) #{data[i].NAME}
 						- }
-					span.help-block Aerolinea del avion
 			.form-group.row
 				label.col-sm-2.control-label Piloto
 				.col-sm-10
 					input.form-control(type='text', placeholder='Piloto', name='PILOT')
-					span.help-block Nombre del piloto
 			.form-group.row
 				label.col-sm-2.control-label Año
 				.col-sm-10
-					input.form-control(type='text', placeholder='Año', 
-					name='año')
-					span.help-block Año de fabricacion
+					input.form-control(type='text', placeholder='Año', name='año')
 			.form-group.row
 				label.col-sm-2.control-label Tipo_Avion
 				.col-sm-10
@@ -53,7 +43,6 @@ block entidad
 						- for(var i=0; i< data.length; i++){
 						option(value=data[i].ID) #{data[i].MODEL}
 						- }
-					span.help-block Tipo de avion 
 			.form-group
 				.col-sm-offset-2.col-sm-10
 					button.btn.btn-primary.btn-lg.btn-block(type='submit') Enviar
