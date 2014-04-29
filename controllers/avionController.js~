@@ -70,8 +70,8 @@ avion.prototype.mod=function(req,res) {
 		database : 'aeropuerto'
 	});
 	connection.connect();
-	connection.query('UPDATE airplane SET ? WHERE ID ='+req.body.idd , {GAS_LEVEL: req.body.gasolina, 
-											PILOT: req.body.piloto,
+	connection.query('UPDATE avion SET ? WHERE id ='+req.body.idd , {gasolina: req.body.gasolina, 
+											piloto: req.body.piloto,
 											año: req.body.año,
 											id_aerolinea: req.body.id_aerolinea,
 											id_tipo_avion: req.body.id_tipo_avion
