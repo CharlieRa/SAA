@@ -13,13 +13,11 @@ block entidad
 					a.modificar(href="#") Modificar
 				li
 					a.borrar(href="#") Borrar
-	.container
-		h2.sub-header Listado de pasajeros
-		.table-responsive
-			table.table.table-striped
+	.container2
+			h2.sub-header Listado de pasajeros
+			table.table.table-striped.table-bordered
 				thead
 					tr
-
 						th ID
 						th PIN
 						th Nombre
@@ -27,22 +25,19 @@ block entidad
 						th Fecha de Nacimiento
 						th Codigo Ciudad
 						th Editar
-						th Eliminar
-
+						th Eliminar		
 				tbody
 					- for (var i = 0; i < data.length; i++)
-							tr
-								td #{data[i].id}
-								td #{data[i].pin}
-								td #{data[i].name}
-								td #{data[i].sex}
-								td #{data[i].birthday}
-								td #{data[i].c_code}
-								td(style='width:5px;')
-									a(href="/pasajeros/modificar/#{data[i].id}")
-										span.glyphicon.glyphicon-pencil
-								td(style='width:5px;')
-									a(href="/pasajeros/borrar/#{data[i].id}")
-										span.glyphicon.glyphicon-trash
-
-					
+						tr
+							td #{data[i].ID}
+							td #{data[i].PIN}
+							td #{data[i].NAME}
+							td #{data[i].SEX}
+							td #{data[i].BIRTHDAY}
+							td #{data[i].C_CODE}
+							td(style='width:5px;')
+								a(href="/pasajeros/modificar/#{data[i].ID}")
+									span.glyphicon.glyphicon-pencil
+							td(style='width:5px;')
+								a(href="/pasajeros/borrar/#{data[i].ID}")
+									span.glyphicon.glyphicon-trash		

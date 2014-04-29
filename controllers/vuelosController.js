@@ -25,7 +25,7 @@ scheduled_flight.prototype.crear = function(req, res) {
 		database : 'aeropuerto'
 	});
 	connection.connect();
-	connection.query('SELECT ID, NAME FROM scheduled_flight', function(err, result) {
+	connection.query('SELECT ID FROM scheduled_flight', function(err, result) {
 		console.log(result)
  		res.render('programaVuelosCrear', { data: result})
 	})
@@ -40,23 +40,23 @@ scheduled_flight.prototype.modificar = function(req, res) {
 		database : 'aeropuerto'
 	});
 	connection.connect();
+	res.render('programaVuelosModificar')
 
-
-	async.parallel({
-	    scheduled_flight: function(callback){
-	    	connection.query('SELECT * FROM scheduled_flight WHERE ID ='+req.params.id, function(err, result) {
-	    		callback(null, result);
-			})
-	    },
-	    aerolineas: function(callback){
-	    	connection.query('SELECT ID, NAME FROM scheduled_flight', function(err, result) {
-				callback(null, result);
-			})
-	    }
-	},
-	function(err, results) {
-	    res.render('programaVuelosModificar', { data: results.scheduled_flight, aerolineas: results.aerolineas})
-	});
+	// async.parallel({
+	//     scheduled_flight: function(callback){
+	//     	connection.query('SELECT * FROM scheduled_flight WHERE ID ='+req.params.id, function(err, result) {
+	//     		callback(null, result);
+	// 		})
+	//     },
+	//     aerolineas: function(callback){
+	//     	connection.query('SELECT ID, NAME FROM scheduled_flight', function(err, result) {
+	// 			callback(null, result);
+	// 		})
+	//     }
+	// },
+	// function(err, results) {
+	//     res.render('programaVuelosModificar', { data: results.scheduled_flight, aerolineas: results.aerolineas})
+	// });
 
 	connection.end();
 };

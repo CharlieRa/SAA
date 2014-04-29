@@ -133,18 +133,21 @@ app.post('/aeropuertos',Aeropuerto.insert);
 app.get('/ciudades',auth,Ciudad.get);
 app.post('/ciudades',Ciudad.insert);
 
-app.get('/gates',auth,Gate.get);
+app.get('/gates',Gate.get);
 app.post('/gates',Gate.insert);
+app.get('/gates/crear',Gate.crear);
+
 
 app.get('/programaVuelos',Programavuelos.get);
 app.get('/programaVuelos/crear', Programavuelos.crear);
-//app.post('/programaVuelos',Programavuelos.insert);
-//app.get('/programaVuelos/modificar/:id', Programavuelos.modificar);
-//app.post('/programaVuelos/modificar', Programavuelos.mod);
-//app.get('/programaVuelos/borrar/:id', Programavuelos.borrar);
-//app.post('/programaVuelos/borrar', Programavuelos.borr);
+app.post('/programaVuelos',Programavuelos.insert);
+app.get('/programaVuelos/modificar/:id', Programavuelos.modificar);
+app.post('/programaVuelos/modificar', Programavuelos.mod);
+app.get('/programaVuelos/borrar/:id', Programavuelos.borrar);
+app.post('/programaVuelos/borrar', Programavuelos.borr);
 
-app.get('/pasajeros',auth,Pasajero.get);
+app.get('/pasajeros',Pasajero.get);
+app.get('/pasajeros/crear',Pasajero.crear);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

@@ -14,22 +14,22 @@ block entidad
 				li
 					a.borrar(href="#") Borrar
 	.container2
-			h2.sub-header Gates
-			table.table.table-striped.table-bordered
-				thead
-					tr
-						th Nombre
-						th Estado
-						th Editar
-						th Eliminar
-				tbody
-					- for (var i = 0; i < data.length; i++)
-							tr
-								td #{data[i].name}
-								td #{data[i].status}
-								td(style='width:5px;')
-									a(href="/gates/modificar/#{data[i].id}")
-										span.glyphicon.glyphicon-pencil
-								td(style='width:5px;')
-									a(href="/gates/borrar/#{data[i].id}")
-										span.glyphicon.glyphicon-trash
+		h2.sub-header Gates
+		table.table.table-striped.table-bordered
+			thead
+				tr
+					th Nombre
+					th Estado
+					th Editar
+					th Eliminar
+			tbody
+				- for (var i = 0; i < data.length; i++)
+						tr
+							td #{data[i].NAME}
+							td #{data[i].STATUS}
+							td(style='width:5px;')
+								a(href="/gates/modificar/#{data[i].ID}")
+									span.glyphicon.glyphicon-pencil
+							td(style='width:5px;')
+								a(href="/gates/borrar/#{data[i].ID}")
+									span.glyphicon.glyphicon-trash

@@ -2,30 +2,30 @@ extends admin
 
 block entidad
 	script(type="text/javascript").
-	h1.page-header Aerolineas
+	h1.page-header Gates
 	.page-header
 		.botones
 			ul.nav.nav-tabs
 				li
-					a(href="/aerolineas") Ver
+					a(href="/gates") Ver
 				li.active
-					a(href="/aerolineas/crear") Crear
+					a(href="/gates/crear") Crear
 				li
 					a(href="#") Modificar
 				li
 					a(href="#") Borrar
 
-.container
-		h3.titulo Crear Gate
-		form.form-horizontal(method='post', action='/gates')
-			.form-group.row
-				label.col-sm-2.control-label
-				.col-sm-10
-					input.form-control(type='text', placeholder='Nombre' name='name')
-			.form-group
-				label.col-sm-2.control-label
-				.col-sm-10
-					input.form-control(type='text', placeholder='Estado Gate', name='status')
-			.form-group
-				.col-sm-offset-2.col-sm-10
-					button.btn.btn-primary.btn-lg.btn-block(type='submit') Enviar
+	.container
+			h3.titulo Crear Gate
+			form.form-horizontal(method='post', action='/gates')
+				.form-group.row
+					label.col-sm-2.control-label
+					.col-sm-10
+						input.form-control(type='text', placeholder='Nombre' name='name')
+				.form-group
+					label.col-sm-2.control-label
+					.col-sm-10
+						input.form-control(type='text', placeholder='Estado Gate', name='status')
+				.form-group
+					.col-sm-offset-2.col-sm-10
+						button.btn.btn-primary.btn-lg.btn-block(type='submit') Enviar

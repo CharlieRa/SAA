@@ -14,7 +14,7 @@ block entidad
 					a(href="#") Modificar
 				li
 					a(href="#") Borrar
-.container
+	.container
 		h3.titulo Modificar Programa Vuelo
 		form.form-horizontal(method='post', action='/programaVuelos/modificar')
 			.form-group.row
@@ -24,11 +24,11 @@ block entidad
 			.form-group.row
 				label.col-sm-2.control-label
 				.col-sm-10
-					input.form-control(type='text', placeholder='Hora de Salida', name='estimated_departure')
+					input.form-control(type='time', placeholder='Hora de Salida', name='estimated_departure')
 			.form-group.row
 				label.col-sm-2.control-label 
 				.col-sm-10
-					input.form-control(type='text', placeholder='Duracion del Viaje', name='estimated_duration')
+					input.form-control(type='time', placeholder='Duracion del Viaje', name='estimated_duration')
 			.form-group.row
 				label.col-sm-2.control-label 
 				.col-sm-10

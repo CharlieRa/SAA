@@ -2,7 +2,7 @@ var mysql = require ('mysql');
 
 var gate  = function () {};
 
-gate.prototype. get= function(req, res) {
+gate.prototype.get= function(req, res) {
 	var connection = mysql.createConnection({
 		host     : 'localhost',
 		user     : 'root',
@@ -16,7 +16,7 @@ gate.prototype. get= function(req, res) {
 	connection.end();
 };
 
-gate.prototype. insert=function(req,res) {
+gate.prototype.insert=function(req,res) {
 	var connection = mysql.createConnection({
 		host     : 'localhost',
 		user     : 'root',
@@ -33,6 +33,21 @@ gate.prototype. insert=function(req,res) {
 	    }
 	});  
 
+	connection.end();
+};
+
+gate.prototype.crear = function(req, res) {
+		var connection = mysql.createConnection({
+		host     : 'localhost',
+		user     : 'root',
+		password : '',
+		database : 'aeropuerto'
+	});
+	connection.connect();
+	// connection.query('SELECT id, nombre FROM airline', function(err, result) {
+	// 	console.log(result)
+ 	res.render('gatesCrear');
+	//})
 	connection.end();
 };
 module.exports = gate;

@@ -3,42 +3,41 @@ extends admin
 block entidad
 	script(type="text/javascript").
 	
-	h1.page-header Aerolineas
+	h1.page-header Programa de Vuelos
 	.page-header
 		.botones
 			ul.nav.nav-tabs
 				li
-					a(href="/aerolineas") Ver
+					a(href="/programaVuelos") Ver
 				li.active
-					a(href="/aerolineas/crear") Crear
+					a(href="/programaVuelos/crear") Crear
 				li
 					a(href="#") Modificar
 				li
 					a(href="#") Borrar
-
-.container
-		h3.titulo Crear Programa Vuelo
-		form.form-horizontal(method='post', action='/programaVuelos')
-			.form-group.row
-				label.col-sm-2.control-label
-				.col-sm-10
-					input.form-control(type='text', placeholder='Fecha', name='week_days')
-			.form-group.row
-				label.col-sm-2.control-label
-				.col-sm-10
-					input.form-control(type='text', placeholder='Hora de Salida', name='estimated_departure')
-			.form-group.row
-				label.col-sm-2.control-label 
-				.col-sm-10
-					input.form-control(type='text', placeholder='Duracion del Viaje', name='estimated_duration')
-			.form-group.row
-				label.col-sm-2.control-label 
-				.col-sm-10
-					input.form-control(type='text', placeholder='Codigo Ciudad Destino', name='destiny_code')
-			.form-group.row
-				label.col-sm-2.control-label 
-				.col-sm-10
-					input.form-control(type='text', placeholder='Codigo Ciudad Destino', name='origin_code')
-			.form-group
-				.col-sm-offset-2.col-sm-10
-					button.btn.btn-primary.btn-lg.btn-block(type='submit') Enviar
+	.container
+			h3.titulo Crear Programa Vuelo
+			form.form-horizontal(method='post', action='/programaVuelos')
+				.form-group.row
+					label.col-sm-2.control-label
+					.col-sm-10
+						input.form-control(type='text', placeholder='Fecha', name='week_days')
+				.form-group.row
+					label.col-sm-2.control-label
+					.col-sm-10
+						input.form-control(type='time', placeholder='Hora de Salida', name='estimated_departure')
+				.form-group.row
+					label.col-sm-2.control-label 
+					.col-sm-10
+						input.form-control(type='time', placeholder='Duracion del Viaje', name='estimated_duration')
+				.form-group.row
+					label.col-sm-2.control-label 
+					.col-sm-10
+						input.form-control(type='text', placeholder='Codigo Ciudad Destino', name='destiny_code')
+				.form-group.row
+					label.col-sm-2.control-label 
+					.col-sm-10
+						input.form-control(type='text', placeholder='Codigo Ciudad Destino', name='origin_code')
+				.form-group
+					.col-sm-offset-2.col-sm-10
+						button.btn.btn-primary.btn-lg.btn-block(type='submit') Enviar
