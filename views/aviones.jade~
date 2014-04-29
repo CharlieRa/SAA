@@ -1,4 +1,4 @@
-extends admin
+EXTENDS admin
 
 block entidad
 	h1.page-header Aviones
@@ -19,24 +19,24 @@ block entidad
 				thead
 					tr
 						th ID
-						th Aerolinea
-						th Modelo
-						th Año
+						th Gasolina
 						th Piloto
 						th Co-Piloto
-						th Gasolina
+						th Año
+						th Id_Aerolinea
+						th Id_Tipo_Avion
 						th Editar
 						th Eliminar
 				tbody
 					- for (var i = 0; i < data.length; i++)
 							tr
 								td #{data[i].ID}
-								td #{data[i].AL}
-								td #{data[i].T_MODEL}
-								td #{data[i].YEAR}
+								td #{data[i].GAS_LEVEL}
 								td #{data[i].PILOT}
 								td #{data[i].COPILOT}
-								td #{data[i].GAS_LEVEL}	
+								td #{data[i].YEAR}
+								td #{data[i].AIRLINE_ID}
+								td #{data[i].T_MODEL}	
 								td 
 									a(href="/aviones/modificar/#{data[i].ID}")
 										span.glyphicon.glyphicon-pencil

@@ -1,8 +1,7 @@
 extends admin
 
 block entidad
-	script(type="text/javascript").
-		//alert(data)
+	script(type="text/javascript")
 	h1.page-header Aviones
 	.page-header
 		.botones
@@ -26,25 +25,20 @@ block entidad
 			.form-group.row
 				label.col-sm-2.control-label Gasolina
 				.col-sm-10
-					input.form-control(type='text', placeholder='Nivel Gasolina', name='gasolina')
-					span.help-block Nivel de combustible
+					input.form-control(type='text', placeholder='Estanque', name='GAS_LEVEL')
+					span.help-block Nivel de gasolina
 			.form-group.row
 				label.col-sm-2.control-label Aerolinea
 				.col-sm-10
-					select.from-control.selectFull(name='id_aerolinea')
+					select.from-control.selectFull(name='AIRLINE_ID')
 						- for(var i=0; i< data.length; i++){
-						option(value=data[i].id) #{data[i].nombre}
+						option(value=data[i].ID) #{data[i].NAME}
 						- }
-					span.help-block Id de la aerolinea del avion
+					span.help-block Aerolinea del avion
 			.form-group.row
 				label.col-sm-2.control-label Piloto
 				.col-sm-10
-					input.form-control(type='text', placeholder='Nombre Piloto', name='piloto')
-					span.help-block Nombre del piloto
-			.form-group.row
-				label.col-sm-2.control-label Piloto
-				.col-sm-10
-					input.form-control(type='text', placeholder='Nombre Co-Piloto', name='co-piloto')
+					input.form-control(type='text', placeholder='Piloto', name='PILOT')
 					span.help-block Nombre del piloto
 			.form-group.row
 				label.col-sm-2.control-label Año
@@ -53,10 +47,13 @@ block entidad
 					name='año')
 					span.help-block Año de fabricacion
 			.form-group.row
-				label.col-sm-2.control-label Tipo Avion
+				label.col-sm-2.control-label Tipo_Avion
 				.col-sm-10
-					input.form-control(type='text', placeholder='Id tipo avion', name='id_tipo_avion')
-					span.help-block Id del tipo de avion 
+					select.from-control.selectFull(name='T_MODEL')
+						- for(var i=0; i< data.length; i++){
+						option(value=data[i].ID) #{data[i].NAME}
+						- }
+					span.help-block Tipo de avion 
 			.form-group
 				.col-sm-offset-2.col-sm-10
 					button.btn.btn-primary.btn-lg.btn-block(type='submit') Enviar
