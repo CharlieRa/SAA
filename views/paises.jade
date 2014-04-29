@@ -13,26 +13,25 @@ block entidad
 					a.modificar(href="#") Modificar
 				li
 					a.borrar(href="#") Borrar
-.container2
+	.container2
 		h2.sub-header Paises
-		.table-responsive
-			table.table.table-striped
-				thead
+		table.table.table-striped.table-bordered
+			thead
+				tr
+					th Codigo Pais
+					th Nombre
+					th Lengua Principal
+					th Editar
+					th Eliminar
+			tbody
+				- for (var i = 0; i < data.length; i++)
 					tr
-						th Codigo Pais
-						th Nombre
-						th Lengua Principal
-						th Editar
-						th Eliminar
-				tbody
-					- for (var i = 0; i < data.length; i++)
-							tr
-								td #{data[i].code}
-								td #{data[i].name}
-								td #{data[i].main_lang}
-								td(style='width:5px;')
-									a(href="/paises/modificar/#{data[i].code}")
-										span.glyphicon.glyphicon-pencil
-								td(style='width:5px;')
-									a(href="/paises/borrar/#{data[i].code}")
-										span.glyphicon.glyphicon-trash
+						td #{data[i].CODE}
+						td #{data[i].NAME}
+						td #{data[i].MAIN_LANG}
+						td(style='width:5px;')
+							a(href="/paises/modificar/#{data[i].CODE}")
+								span.glyphicon.glyphicon-pencil
+						td(style='width:5px;')
+							a(href="/paises/borrar/#{data[i].CODE}")
+								span.glyphicon.glyphicon-trash

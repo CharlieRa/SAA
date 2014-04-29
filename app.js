@@ -23,6 +23,8 @@ var scheduled_flight = require ('./controllers/vuelosController');
 var Programavuelos = new scheduled_flight();
 var pasajero = require ('./controllers/pasajeroController');
 var Pasajero = new pasajero();
+var pais = require ('./controllers/paisController');
+var Pais = new pais();
 
 
 //==================================================================
@@ -148,6 +150,10 @@ app.post('/programaVuelos/borrar', Programavuelos.borr);
 
 app.get('/pasajeros',Pasajero.get);
 app.get('/pasajeros/crear',Pasajero.crear);
+
+app.get('/paises',Pais.get);
+app.get('/paises/crear',Pais.crear);
+app.post('/paises',Pais.insert);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

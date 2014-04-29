@@ -24,8 +24,8 @@ gate.prototype.insert=function(req,res) {
 		database : 'aeropuerto'
 		});
 	connection.connect();
-	connection.query('INSERT INTO gate SET ?', {	NAME: req.body.NAME,
-							STATUS: req.body.STATUS, 
+	connection.query('INSERT INTO gate SET ?', {	NAME: req.body.name,
+							STATUS: req.body.status, 
 							},function(err, result) {
   		if(err)
      		console.log('error');
@@ -36,7 +36,6 @@ gate.prototype.insert=function(req,res) {
 
 	connection.end();
 };
-<<<<<<< HEAD
 
 gate.prototype.crear = function(req, res) {
 		var connection = mysql.createConnection({
@@ -53,6 +52,3 @@ gate.prototype.crear = function(req, res) {
 	connection.end();
 };
 module.exports = gate;
-=======
-module.exports = gate;
->>>>>>> 7dcd43a65623b563ce784146b022f04d64579a21

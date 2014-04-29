@@ -60,7 +60,8 @@ aerolinea.prototype.insert=function(req,res) {
 		database : 'aeropuerto'
 		});
 	connection.connect();
-	connection.query('INSERT INTO airline SET ?',	{nombre: req.body.nombre
+	connection.query('INSERT INTO airline SET ?',	{NAME: req.body.name,
+													 ACRONYM: req.body.acronym
 													},function(err, result) {
   		if(err)
      		console.log('error');
