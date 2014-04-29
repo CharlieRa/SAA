@@ -32,6 +32,26 @@ aerolinea.prototype.crear = function(req, res) {
 	connection.end();
 };
 
+aerolinea.prototype.borr=function(req,res) {
+		var connection = mysql.createConnection({
+		host     : 'localhost',
+		user     : 'root',
+		password : '',
+		database : 'aeropuerto'
+	});
+	connection.connect();
+
+	connection.query('DELETE FROM aerolineas WHERE id ='+req.body.idd, function(err, result) {
+  		if(err)
+     		console.log('error');
+	    else{
+	    	res.redirect('/aviones');
+	    }
+	});  
+
+	connection.end();
+};
+
 aerolinea.prototype.insert=function(req,res) {
 	var connection = mysql.createConnection({
 		host     : 'localhost',

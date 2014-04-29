@@ -1,0 +1,30 @@
+extends admin
+
+block entidad
+	script(type="text/javascript").
+	h1.page-header Aerolineas
+	.page-header
+		.botones
+			ul.nav.nav-tabs
+				li
+					a(href="/aviones") Ver
+				li
+					a(href="/aviones/crear") Crear
+				li.active
+					a(href="#") Modificar
+				li
+					a(href="#") Borrar	
+	.container2
+		h3.sub-header Modificar Avion
+		form.form-horizontal(method='post', action='/aviones/modificar')
+			.form-group.row
+				label.col-sm-2.control-label Name
+				.col-sm-10
+					input.form-control(type='text', placeholder='Name', name='name', value="#{data[0].name}")
+			.form-group.row
+				label.col-sm-2.control-label Acronym
+				.col-sm-10
+					input.form-control(type='text', placeholder='Acronimo', name='acronym', value="#{data[0].acronym}")
+			.form-group
+				.col-sm-offset-2.col-sm-10
+					button.btn.btn-primary.btn-lg.btn-block(type='submit') Enviar

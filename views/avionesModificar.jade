@@ -2,8 +2,7 @@ extends admin
 
 block entidad
 	script(type="text/javascript").
-		//alert(data)
-	h1.page-header Aviones
+	h1.page-header Airplanes
 	.page-header
 		.botones
 			ul.nav.nav-tabs
@@ -15,13 +14,13 @@ block entidad
 					a(href="#") Modificar
 				li
 					a(href="#") Borrar	
-	.container2
+	.container
 		h3.sub-header Modificar Avion
 		form.form-horizontal(method='post', action='/aviones/modificar')
 			.form-group.row
 				label.col-sm-2.control-label ID
 				.col-sm-10
-					input.form-control(type='text', placeholder='ID', name='idd', value="#{data[0].id}" disable)
+					input.form-control(type='text', placeholder='ID', name='idd', value="#{data[0].id}" disabled)
 					span.help-block ID autogenerado
 			.form-group.row
 				label.col-sm-2.control-label Gasolina

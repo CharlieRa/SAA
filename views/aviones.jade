@@ -21,20 +21,22 @@ block entidad
 						th ID
 						th Gasolina
 						th Piloto
+						th Co-Piloto
 						th Año
 						th Id_Aerolinea
 						th Id_Tipo_Avion
-						th 
-						th 
+						th Editar
+						th Eliminar
 				tbody
 					- for (var i = 0; i < data.length; i++)
 							tr
 								td #{data[i].id}
-								td #{data[i].gasolina}
-								td #{data[i].piloto}
-								td #{data[i].año}
-								td #{data[i].id_aerolinea}
-								td #{data[i].id_tipo_avion}	
+								td #{data[i].gas_level}
+								td #{data[i].pilot}
+								td #{data[i].co-pilot}
+								td #{data[i].year}
+								td #{data[i].airline_id}
+								td #{data[i].t_model}	
 								td 
 									a(href="/aviones/modificar/#{data[i].id}")
 										span.glyphicon.glyphicon-pencil

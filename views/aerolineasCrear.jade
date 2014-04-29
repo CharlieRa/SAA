@@ -2,7 +2,7 @@ extends admin
 
 block entidad
 	script(type="text/javascript").
-		//alert(data)
+	
 	h1.page-header Aerolineas
 	.page-header
 		.botones
@@ -15,15 +15,17 @@ block entidad
 					a(href="#") Modificar
 				li
 					a(href="#") Borrar
-	.container2
+	.container
 		h3.sub-header Crear Aerolinea
 		form.form-horizontal(method='post', action='/aerolineas')
 			.form-group.row
 				label.col-sm-2.control-label
 				.col-sm-10
-					input.form-control(type='text', placeholder='nombre')
-					span.help-block Nombre Aerolinea
+					input.form-control(type='text', placeholder='Nombre Aerolinea' name='name')
+			.form-group.row
+				label.col-sm-2.control-label
+				.col-sm-10
+					input.form-control(type='text', placeholder='Acronimo Aerolinea' name='acronym')
 			.form-group
 				.col-sm-offset-2.col-sm-10
 					button.btn.btn-primary.btn-lg.btn-block(type='submit') Enviar
-

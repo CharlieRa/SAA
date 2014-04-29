@@ -26,7 +26,8 @@ block entidad
 					- for (var i = 0; i < data.length; i++)
 							tr
 								td #{data[i].id}
-								td #{data[i].nombre}
+								td #{data[i].name}
+								td #{data[i].acronym}
 								td 
 									a(href="/aerolineas/modificar/#{data[i].id}")
 										span.glyphicon.glyphicon-pencil

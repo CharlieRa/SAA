@@ -113,6 +113,11 @@ app.get('/logout', function(req, res){
 app.get('/aerolineas',auth, Aerolinea.get);
 app.post('/aerolineas',Aerolinea.insert);
 app.get('/aerolineas/crear', Aerolinea.crear);
+// app.get('/aerolineas/modificar/:id', Aerolinea.modificar);
+// app.post('/aerolineas/modificar', Aerolinea.mod);
+// app.get('/aerolineas/borrar/:id', Aerolinea.borrar);
+// app.post('/aerolineas/borrar', Aerolinea.borr);
+
 
 app.get('/aviones', Avion.get);
 app.get('/aviones/crear', Avion.crear);

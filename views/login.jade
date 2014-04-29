@@ -8,25 +8,12 @@ html(lang="es")
 		link(href='stylesheets/dashboard.css', rel='stylesheet')
 		link(href='stylesheets/style.css', rel='stylesheet')
 		body
-		.container.avion(style='display:none;')
-		.navbar.navbar-default.navbar-fixed-top(role="navigation")
-			h3.titulo Iniciar Seccion
-			form.form-horizontal(method='post', action='/login')
-				.form-group.row
-					label.col-sm-2.control-label User
-					.col-sm-5
-						input.form-control(type='text', placeholder='USER', name='username')
-				.form-group.row
-					label.col-sm-2.control-label Password
-					.col-sm-5
-						input.form-control(type='password', placeholder='PASSWORD', name='password')
-				.form-group
-				.col-sm-offset-2.col-sm-5
-						button.btn.btn-primary.btn-lg.btn-block(type='submit') Enviar
-						
-	
+			.container
+				form.form-signin(role='form' action='/login' method='post')
+					h2.form-signin-heading Please sign in
+					input.form-control(type='username', placeholder='Username', required='', autofocus='', name='username')
+					input.form-control(type='password', placeholder='Password', required='' name='password')
+					button.btn.btn-lg.btn-primary.btn-block(type='submit') Sign in	
 	script(type='text/javascript', src='javascripts/jquery.js')
 	script(type='text/javascript', src='javascripts/bootstrap.min.js')
 	script(type='text/javascript', src='javascripts/functions.js')
-	
-	
