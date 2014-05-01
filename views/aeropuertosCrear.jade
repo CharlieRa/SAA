@@ -2,39 +2,32 @@ extends admin
 
 block entidad
 	script(type="text/javascript").
-	
-	h1.page-header Airports
-	.page-header
-		.botones
-			ul.nav.nav-tabs
-				li
-					a(href="/aeropuertos") Ver
-				li.active
-					a(href="/aeropuertos/crear") Crear
-				li
-					a(href="#") Modificar
-				li
-					a(href="#") Borrar
-
-	.container
-		h3.titulo Crear Aeropuerto
+	h1.page-header Airport
+	.botones
+		ul.nav.nav-tabs
+			li
+				a(href="/aeropuertos") Home
+			li.active
+				a(href="/aeropuertos/crear") New
+	.container-fluid
+		h3.sub-header New Airport
 		form.form-horizontal(method='post', action='/aeropuertos')
 			.form-group.row
-				label.col-sm-2.control-label
-				.col-sm-10
-					input.form-control(type='text', placeholder='Code' name='code')
+				label.col-sm-2.control-label Code
+				.col-sm-8
+					input.form-control(type='text', placeholder='LAX',name='code',required, maxlength='3')
 			.form-group.row
-				label.col-sm-2.control-label
-				.col-sm-10
-					input.form-control(type='text', placeholder='Name', name='name')
+				label.col-sm-2.control-label Name
+				.col-sm-8
+					input.form-control(type='text', placeholder='Los Angeles', name='name',required, maxlength='30')
 			.form-group.row
-				label.col-sm-2.control-label
-				.col-sm-10
-					input.form-control(type='text', placeholder='Coordinates', name='coordinates')
+				label.col-sm-2.control-label Coordinates
+				.col-sm-8
+					input.form-control(type='number', placeholder='Coordinates', name='coordinates', max='11')
 			.form-group.row
-				label.col-sm-2.control-label 
-				.col-sm-10
-					input.form-control(type='text', placeholder='City ID', name='city_id')
+				label.col-sm-2.control-label City
+				.col-sm-8
+					input.form-control(type='text', placeholder='Los Angeles', name='city_id',required, maxlength='3')
 			.form-group
 				.col-sm-offset-2.col-sm-10
-					button.btn.btn-primary.btn-lg.btn-block(type='submit') Enviar
+					button.btn.btn-primary.btn-lg(type='submit') Submit

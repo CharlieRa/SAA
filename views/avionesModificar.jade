@@ -2,61 +2,50 @@ extends admin
 
 block entidad
 	script(type="text/javascript").
-	h1.page-header Airplanes
-	.page-header
-		.botones
-			ul.nav.nav-tabs
-				li
-					a(href="/aviones") Ver
-				li
-					a(href="/aviones/crear") Crear
-				li.active
-					a(href="#") Modificar
-				li
-					a(href="#") Borrar	
-	.container
-		h3.sub-header Modificar Avion
-		form.form-horizontal(method='post', action='/aviones/modificar')
+	h1.page-header Airplane
+	.botones
+		ul.nav.nav-tabs
+			li
+				a(href="/aviones") Home
+			li.active
+				a(href="/aviones/crear") New
+	.container-fluid
+		h3.sub-header New Airplane
+		form.form-horizontal(method='post', action='/aviones')
 			.form-group.row
-				label.col-sm-2.control-label ID
-				.col-sm-10
-					input.form-control(type='text', placeholder='ID', name='idd', value="#{data[0].ID}" disabled)
-					span.help-block ID autogenerado
+				label.col-sm-2.control-label Year
+				.col-sm-8
+					input.form-control(type='number', placeholder='2008', name='year',required, max='2014',value="#{data[0].YEAR}")
 			.form-group.row
-				label.col-sm-2.control-label Gasolina
-				.col-sm-10
-					input.form-control(type='text', placeholder='Tipo Gasolina', name='gasolina', value="#{data[0].GASOLINA}")
-					span.help-block Octanage
+				label.col-sm-2.control-label Gas Level
+				.col-sm-8
+					input.form-control(type='number', placeholder='100', name='gas_level',required, max='100000',value="#{data[0].GAS_LEVEL}")
 			.form-group.row
-				label.col-sm-2.control-label Aerolinea
-				.col-sm-10
-					select.from-control.selectFull(name='id_aerolinea')
-						- for(var i=0; i< aerolineas.length; i++){
-							if(data[0].id_aerolinea == aerolineas[i].id)
-								option(value=aerolineas[i].ID, selected="selected") #{aerolineas[i].NOMBRE}
-							else
-								option(value=aerolineas[i].ID) #{aerolineas[i].NOMBRE}
+				label.col-sm-2.control-label Pilot
+				.col-sm-8
+					input.form-control(type='text', placeholder='Wilbur Wright', name='pilot',required, maxlength='15',value="#{data[0].PILOT}")
+			.form-group.row
+				label.col-sm-2.control-label Co-Pilot
+				.col-sm-8
+					input.form-control(type='text', placeholder='Oliver Wright', name='pilot',required, maxlength='15',value="#{data[0].COPILOT}")
+			.form-group.row
+				label.col-sm-2.control-label Airline
+				.col-sm-8
+					select.form-control(name='airline_id')
+						- for(var i=0; i< data.length; i++){
+						option(value=data[i].ID) #{data[i].NAME}
 						- }
-
-					span.help-block Id de la aerolinea del avion
 			.form-group.row
-				label.col-sm-2.control-label Piloto
-				.col-sm-10
-					input.form-control(type='text', placeholder='Nombre Piloto', name='piloto', value="#{data[0].PILOTO}")
-					span.help-block Nombre del piloto
-			.form-group.row
-				label.col-sm-2.control-label Año
-				.col-sm-10
-					input.form-control(type='text', placeholder='Año', 
-					name='año', value="#{data[0].AÑO}")
-					span.help-block Año de fabricacion
-			.form-group.row
-				label.col-sm-2.control-label Tipo Avion
-				.col-sm-10
-					input.form-control(type='text', placeholder='Id_tipo_avion', 
-					name='id_tipo_avion', value="#{data[0].ID_TIPO_AVION}")
-					span.help-block
-					span.help-block id del tipo de avion  
+				label.col-sm-2.control-label Model Plane
+				.col-sm-8
+					input.form-control(type='text', placeholder='Boeing', name='t_model',required,value="#{data[0].T_MODEL}")
 			.form-group
 				.col-sm-offset-2.col-sm-10
-					button.btn.btn-primary.btn-lg.btn-block(type='submit') Enviar
+					button.btn.btn-primary.btn-lg(type='submit') Submit
+
+						//- - for(var i=0; i< aerolineas.length; i++){
+						//- 	if(data[0].id_aerolinea == aerolineas[i].id)
+						//- 		option(value=aerolineas[i].ID, selected="selected") #{aerolineas[i].NOMBRE}
+						//- 	else
+						//- 		option(value=aerolineas[i].ID) #{aerolineas[i].NOMBRE}
+						//- - }

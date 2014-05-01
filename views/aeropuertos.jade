@@ -1,40 +1,47 @@
 extends admin
 
 block entidad
-	h1.page-header Aeropuertos
-	.page-header
-		.botones
-			ul.nav.nav-tabs
-				li.active
-					a(href="/aeropuertos") Ver
-				li
-					a(href="/aeropuertos/crear") Crear
-				li
-					a.modificar(href="#") Modificar
-				li
-					a.borrar(href="#") Borrar
-	.container2
-			h2.sub-header Listado de Aeropuertos
-			table.table.table-striped.table-bordered
-				thead
-					tr
-						th Codigo
-						th Nombre
-						th Coordinates
-						th Id_ciudad
-						th Editar
-						th ELiminar
-					
-				tbody
-					- for (var i = 0; i < data.length; i++)
-							tr
-								td #{data[i].CODE}
-								td #{data[i].NAME}
-								td #{data[i].COORDINATES}
-								td #{data[i].CITY_ID}
-								td 
-									a(href="/aeropuertos/modificar/#{data[i].CODE}")
-										span.glyphicon.glyphicon-pencil
-								td 
-									a(href="/aeropuertos/borrar/#{data[i].CODE}")
-										span.glyphicon.glyphicon-trash
+		include layout
+		.row
+			.col-sm-8
+				input#search.form-control(type='search', value='', placeholder='Search by Code, Name, Coordinates or City')
+		.container2
+				h2.sub-header Airports List
+				table.table.table-striped.table-bordered#table
+					thead
+						tr
+							th Code
+							th Name
+							th Coordinates
+							th City
+							th Edit
+							th Delete
+						
+					tbody
+						- for (var i = 0; i < data.length; i++)
+								tr
+									td #{data[i].CODE}
+									td #{data[i].NAME}
+									td #{data[i].COORDINATES}
+									td #{data[i].CITY_ID}
+									td(style='width:5px;')
+										a(href="/aeropuertos/modificar/#{data[i].CODE}")
+											span.glyphicon.glyphicon-pencil
+									td(style='width:5px;')
+										a(onclick="confirmGetMessage('#{data[i].CODE}')")
+											span.glyphicon.glyphicon-trash
+				ul.pagination
+					li
+						a(href='#') «
+					li.active
+						a(href='#') 1
+					li
+						a(href='#') 2
+					li
+						a(href='#') 3
+					li
+						a(href='#') 4
+					li
+						a(href='#') 5
+					li
+						a(href='#') »

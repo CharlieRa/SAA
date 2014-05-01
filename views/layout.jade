@@ -2,6 +2,12 @@ script.
 		var path = window.location.pathname.split('/').pop()
 		if(path == 'aerolineas')
 			var headName = 'Airlines'
+		if(path == 'aeropuertos')
+			var headName = 'Airport'
+		if(path == 'aviones')
+			var headName = 'Airplane'
+		if(path == 'programaVuelos')
+			var headName = 'Scheduled Fligths'
 		var path = path + '/crear'
 		window.onload = function() {
 		document.getElementById('new').href = path
@@ -10,7 +16,7 @@ script.
 h1.page-header#titulo
 .botones
 	ul.nav.nav-tabs
-		li.active
+		li(id='tabhome').active
 			a(href="/") Home
-		li
+		li(id='tabnew')
 			a(href='',id='new') New
