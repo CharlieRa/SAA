@@ -2,29 +2,21 @@ extends admin
 
 block entidad
 	script(type="text/javascript").
-	h1.page-header Aerolineas
-	.page-header
-		.botones
-			ul.nav.nav-tabs
-				li
-					a(href="/aerolineas") Ver
-				li
-					a(href="/aerolineas/crear") Crear
-				li.active
-					a(href="#") Modificar
-				li
-					a(href="#") Borrar	
-	.container2
-		h3.sub-header Modificar Aerolinea
-		form.form-horizontal(method='post', action='/aerolineas/modificar')
-			.form-group.row
+	h1.page-header Airlines
+	.botones
+		a.btn.btn-primary(type='button',href="/aerolineas")
+			span.glyphicon.glyphicon-chevron-left Back
+	.container-fluid
+		h3.sub-header Edit Airline
+		form.form-horizontal(method='post', action='/aerolineas', id='formulario')
+			.form-group
 				label.col-sm-2.control-label Name
-				.col-sm-10
-					input.form-control(type='text', placeholder='Name', name='name', value="#{data[0].NAME}")
-			.form-group.row
+				.col-sm-8
+					input.form-control(type='text', value='#{data[0].NAME}', name='name', required, maxlength='15')
+			.form-group
 				label.col-sm-2.control-label Acronym
-				.col-sm-10
-					input.form-control(type='text', placeholder='Acronimo', name='acronym', value="#{data[0].ACRONYM}")
+				.col-sm-8
+					input.form-control(type='text',value='#{data[0].ACRONYM}', name='acronym', required,maxlength='3')
 			.form-group
 				.col-sm-offset-2.col-sm-10
-					button.btn.btn-primary.btn-lg.btn-block(type='submit') Enviar
+					button.btn.btn-primary.btn-lg(type='submit') Submit

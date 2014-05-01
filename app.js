@@ -115,7 +115,7 @@ app.get('/logout', function(req, res){
 app.get('/aerolineas', Aerolinea.get);
 app.post('/aerolineas',Aerolinea.insert);
 app.get('/aerolineas/crear', Aerolinea.crear);
-// app.get('/aerolineas/modificar/:id', Aerolinea.modificar);
+app.get('/aerolineas/modificar/:id', Aerolinea.modificar);
 // app.post('/aerolineas/modificar', Aerolinea.mod);
 // app.get('/aerolineas/borrar/:id', Aerolinea.borrar);
 // app.post('/aerolineas/borrar', Aerolinea.borr);
@@ -136,6 +136,7 @@ app.post('/aeropuertos',Aeropuerto.insert);
 app.get('/ciudades',Ciudad.get);
 app.get('/ciudades/crear',Ciudad.crear);
 app.post('/ciudades',Ciudad.insert);
+
 
 app.get('/gates',Gate.get);
 app.post('/gates',Gate.insert);

@@ -16,19 +16,29 @@ aerolinea.prototype.get= function(req, res) {
 	})
 	connection.end();
 };
-
 aerolinea.prototype.crear = function(req, res) {
+	res.render('aerolineasCrear');
+
+};
+
+aerolinea.prototype.modificar = function(req, res) {
 		var connection = mysql.createConnection({
 		host     : 'localhost',
 		user     : 'root',
 		password : '',
 		database : 'aeropuerto'
 	});
+	//res.render('aerolineasModificar');
 	connection.connect();
-	connection.query('SELECT id, nombre FROM airline', function(err, result) {
-		console.log(result)
- 		res.render('aerolineasCrear', { data: result})
-	})
+
+	connection.query('SELECT NAME,ACRONYM FROM airline WHERE id ='+req.params.id, function(err, result) {
+  		if(err)
+     		console.log('error');
+	    else{
+	    	res.render('aerolineasModificar',{ data: result});
+	    }
+	});  
+
 	connection.end();
 };
 
@@ -41,7 +51,7 @@ aerolinea.prototype.borr=function(req,res) {
 	});
 	connection.connect();
 
-	connection.query('DELETE FROM airline WHERE id ='+req.body.idd, function(err, result) {
+	connection.query('DELETE FROM airline WHERE id ='+req.body.id, function(err, result) {
   		if(err)
      		console.log('error');
 	    else{
@@ -63,9 +73,9 @@ aerolinea.prototype.insert=function(req,res) {
 	connection.query('INSERT INTO airline SET ?',	{NAME: req.body.name,
 													 ACRONYM: req.body.acronym
 													},function(err, result) {
-  		if(err)
+  		if(err){
      		console.log('error');
-	    else{
+	    }else{
 	    	res.redirect('/aerolineas');
 	    }
 	});  

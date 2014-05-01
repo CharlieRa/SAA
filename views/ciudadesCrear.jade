@@ -29,7 +29,10 @@ block entidad
 			.form-group.row
 				label.col-sm-2.control-label
 				.col-sm-10
-					input.form-control(type='text', placeholder='Codigo Pais', name='c_code')
+					select.from-control.selectFull(name='c_code')
+						- for(var i=0; i< data.length; i++){
+						option(value=data[i].C_CODE) #{data[i].NAME}
+						- }
 			.form-group
 				.col-sm-offset-2.col-sm-10
 					button.btn.btn-primary.btn-lg.btn-block(type='submit') Enviar

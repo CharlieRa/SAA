@@ -1,4 +1,4 @@
-EXTENDS admin
+extends admin
 
 block entidad
 	script(type="text/javascript").
@@ -9,11 +9,7 @@ block entidad
 				li
 					a(href="/aeropuertos") Ver
 				li
-					a(href="/aeropuertos/crear") Crear
-				li.active
-					a(href="#") Modificar
-				li
-					a(href="#") Borrar	
+					a(href="/aeropuertos/crear") Crear	
 	.container2
 		h3.sub-header Modificar Aeropuerto
 		form.form-horizontal(method='post', action='/aeropuertos/modificar')

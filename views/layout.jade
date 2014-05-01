@@ -1,7 +1,16 @@
-doctype html
-html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+script.
+		var path = window.location.pathname.split('/').pop()
+		if(path == 'aerolineas')
+			var headName = 'Airlines'
+		var path = path + '/crear'
+		window.onload = function() {
+		document.getElementById('new').href = path
+		document.getElementById('titulo').innerHTML = headName
+		}
+h1.page-header#titulo
+.botones
+	ul.nav.nav-tabs
+		li.active
+			a(href="/") Home
+		li
+			a(href='',id='new') New

@@ -24,10 +24,10 @@ ciudad.prototype.crear = function(req, res) {
 		database : 'aeropuerto'
 	});
 	connection.connect();
-	// connection.query('SELECT id, nombre FROM airline', function(err, result) {
-	// 	console.log(result)
- 		res.render('ciudadesCrear');
-	//})
+	connection.query('SELECT CODE, NAME FROM country', function(err, result) {
+		console.log(result)
+ 		res.render('ciudadesCrear', { data: result})
+	})
 	connection.end();
 };
 

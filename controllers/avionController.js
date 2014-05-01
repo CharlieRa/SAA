@@ -145,11 +145,12 @@ avion.prototype. insert=function(req,res) {
 		database : 'aeropuerto'
 		});
 	connection.connect();
-	connection.query('INSERT INTO avion SET ?', {gasolina: req.body.gasolina , 
-												 piloto: req.body.piloto,
-												 año: req.body.año,
-												 id_aerolinea: req.body.id_aerolinea,
-												 id_tipo_avion: req.body.id_tipo_avion
+	connection.query('INSERT INTO avion SET ?', {GAS_LEVEL: req.body.gasolina, 
+												PILOT: req.body.piloto,
+												COPILOT: req.body.copiloto,
+												YEAR: req.body.año,
+												AIRLINE_ID: req.body.id_aerolinea,
+												T_MODEL: req.body.id_tipo_avion
 												},function(err, result, t) {
   		if(err)
      		console.log('error');
