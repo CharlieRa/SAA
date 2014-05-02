@@ -21,8 +21,8 @@ var ciudad = require ('./controllers/ciudadController');
 var Ciudad = new ciudad();
 // var gate = require ('./controllers/gateController');
 // var Gate = new gate();
-// var programavuelos = require ('./controllers/programavuelosController');
-// var Programavuelos = new programavuelos();
+var programavuelos = require ('./controllers/programavuelosController');
+var Programavuelos = new programavuelos();
 // var flight = require ('./controllers/vuelosController');
 // var Flight = new flight();
 // var pasajero = require ('./controllers/pasajeroController');
@@ -122,8 +122,6 @@ app.get('/aerolineas/borrar/:id', Aerolinea.borrar);
 app.get('/aerolineas/modificar/:id', Aerolinea.modificar);
 app.post('/aerolineas/modificar', Aerolinea.mod);
 app.post('/aerolineas',Aerolinea.insert);
-// app.post('/aerolineas/borrar', Aerolinea.borr);
-
 
 app.get('/aviones', Avion.get);
 app.get('/aviones/crear', Avion.crear);
@@ -139,12 +137,9 @@ app.get('/aeropuertos/borrar/:CODE',Aeropuerto.borrar)
 app.post('/aeropuertos/modificar',Aeropuerto.mod);
 app.post('/aeropuertos',Aeropuerto.insert);
 
-
-
 // app.get('/ciudades',Ciudad.get);
 // app.get('/ciudades/crear',Ciudad.crear);
 // app.post('/ciudades',Ciudad.insert);
-
 
 app.get('/tipoAvion', AirplaneType.get);
 app.get('/tipoAvion/crear', AirplaneType.crear);
@@ -159,9 +154,9 @@ app.post('/tipoAvion/modificar', AirplaneType.mod);
 // app.get('/gates/crear',Gate.crear);
 
 
-// app.get('/programaVuelos',Programavuelos.get);
+app.get('/programaVuelos',Programavuelos.get);
 // app.get('/programaVuelos/modificar/:id', Programavuelos.modificar);
-// app.get('/programaVuelos/crear', Programavuelos.crear);
+app.get('/programaVuelos/crear', Programavuelos.crear);
 // app.get('/programaVuelos/borrar/:id', Programavuelos.borrar);
 // app.post('/programaVuelos',Programavuelos.insert);
 // app.post('/programaVuelos/modificar', Programavuelos.mod);
@@ -178,11 +173,11 @@ app.post('/tipoAvion/modificar', AirplaneType.mod);
 // app.get('/pasajeros',Pasajero.get);
 // app.get('/pasajeros/crear',Pasajero.crear);
 
-// app.get('/paises',Pais.get);
-// app.get('/paises/crear',Pais.crear);
+app.get('/paises',Pais.get);
+app.get('/paises/crear',Pais.crear);
 // app.post('/paises',Pais.insert);
-// app.get('/paises/modificar/:id', Pais.modificar);
-// app.get('/paises/borrar/:id', Pais.borrar);
+app.get('/paises/modificar/:id', Pais.modificar);
+app.get('/paises/borrar/:id', Pais.borrar);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
