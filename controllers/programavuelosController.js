@@ -1,8 +1,9 @@
 var mysql = require ('mysql');
+var async = require ('async');
 
-var programa_vuelo  = function () {};
+var scheduled_flight  = function () {};
 
-programa_vuelo.prototype. get= function(req, res) {
+scheduled_flight.prototype.get= function(req, res) {
 	var connection = mysql.createConnection({
 		host     : 'localhost',
 		user     : 'root',
@@ -10,13 +11,132 @@ programa_vuelo.prototype. get= function(req, res) {
 		database : 'aeropuerto'
 	});
 	connection.connect();
-	connection.query('SELECT * FROM programa_vuelos', function(err, result) {
- 		res.render('programa_vuelos', { data: result})
+	connection.query('SELECT * FROM scheduled_flight', function(err, result) {
+ 		res.render('programaVuelos', { data: result})
 	})
 	connection.end();
 };
 
-programa_vuelo.prototype. insert=function(req,res) {
+scheduled_flight.prototype.crear = function(req, res) {
+		var connection = mysql.createConnection({
+		host     : 'localhost',
+		user     : 'root',
+		password : '',
+		database : 'aeropuerto'
+	});
+	connection.connect();
+	connection.query('SELECT ID FROM scheduled_flight', function(err, result) {
+		console.log(result)
+ 		res.render('programaVuelosCrear', { data: result})
+	})
+	connection.end();
+};
+
+scheduled_flight.prototype.modificar = function(req, res) {
+		var connection = mysql.createConnection({
+		host     : 'localhost',
+		user     : 'root',
+		password : '',
+		database : 'aeropuerto'
+	});
+	connection.connect();
+	res.render('programaVuelosModificar')
+
+	// async.parallel({
+	//     scheduled_flight: function(callback){
+	//     	connection.query('SELECT * FROM scheduled_flight WHERE ID ='+req.params.id, function(err, result) {
+	//     		callback(null, result);
+	// 		})
+	//     },
+	//     aerolineas: function(callback){
+	//     	connection.query('SELECT ID, NAME FROM scheduled_flight', function(err, result) {
+	// 			callback(null, result);
+	// 		})
+	//     }
+	// },
+	// function(err, results) {
+	//     res.render('programaVuelosModificar', { data: results.scheduled_flight, aerolineas: results.aerolineas})
+	// });
+
+	connection.end();
+};
+
+
+scheduled_flight.prototype.mod=function(req,res) {
+	var connection = mysql.createConnection({
+		host     : 'localhost',
+		user     : 'root',
+		password : '',
+		database : 'aeropuerto'
+	});
+	connection.connect();
+	connection.query('UPDATE scheduled_flight SET ? WHERE ID ='+req.body.idd , {GAS_LEVEL: req.body.gasolina, 
+											PILOT: req.body.piloto,
+											año: req.body.año,
+											id_aerolinea: req.body.id_aerolinea,
+											id_tipo_scheduled_flight: req.body.id_tipo_scheduled_flight
+											},function(err, result, t) {
+  		if(err)
+     		console.log('error');
+	    else{
+	    	res.redirect('/programaVuelos');
+	    }
+	});  
+
+	connection.end();
+};
+
+scheduled_flight.prototype.borrar = function(req, res) {
+		var connection = mysql.createConnection({
+		host     : 'localhost',
+		user     : 'root',
+		password : '',
+		database : 'aeropuerto'
+	});
+	connection.connect();
+
+
+	async.parallel({
+	    scheduled_flight: function(callback){
+	    	connection.query('SELECT * FROM scheduled_flight WHERE id ='+req.params.id, function(err, result) {
+	    		callback(null, result);
+			})
+	    },
+	    aerolineas: function(callback){
+	    	connection.query('SELECT id, nombre FROM aerolinea', function(err, result) {
+				callback(null, result);
+			})
+	    }
+	},
+	function(err, results) {
+	    res.render('scheduled_flightesBorrar', { data: results.scheduled_flight, aerolineas: results.aerolineas})
+	});
+
+	connection.end();
+};
+
+scheduled_flight.prototype.borr=function(req,res) {
+		var connection = mysql.createConnection({
+		host     : 'localhost',
+		user     : 'root',
+		password : '',
+		database : 'aeropuerto'
+	});
+	connection.connect();
+
+	connection.query('DELETE FROM scheduled_flight WHERE id ='+req.body.idd, function(err, result) {
+  		if(err)
+     		console.log('error');
+	    else{
+	    	res.redirect('/programaVuelos');
+	    }
+	});  
+
+	connection.end();
+};
+
+
+scheduled_flight.prototype. insert=function(req,res) {
 	var connection = mysql.createConnection({
 		host     : 'localhost',
 		user     : 'root',
@@ -24,19 +144,19 @@ programa_vuelo.prototype. insert=function(req,res) {
 		database : 'aeropuerto'
 		});
 	connection.connect();
-	connection.query('INSERT INTO programa_vuelos SET ?',{fecha: req.body.fecha, 
-														hora: req.body.hora,
-												 		id_destino: req.body.id_destino,
-												 		id_salida: req.body.id_salida,
-												 		id_tipo_avion: req.body.id_tipo_avion
-												 		},function(err, result, t){
+	connection.query('INSERT INTO scheduled_flight SET ?', {gasolina: req.body.gasolina , 
+												 piloto: req.body.piloto,
+												 año: req.body.año,
+												 id_aerolinea: req.body.id_aerolinea,
+												 id_tipo_scheduled_flight: req.body.id_tipo_scheduled_flight
+												},function(err, result, t) {
   		if(err)
      		console.log('error');
 	    else{
-	    	res.redirect('/programa_vuelos');
+	    	res.redirect('/programaVuelos');
 	    }
 	});  
 
 	connection.end();
 };
-module.exports = programa_vuelo;
+module.exports = scheduled_flight;
