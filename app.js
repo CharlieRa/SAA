@@ -172,6 +172,7 @@ app.get('/vuelos/borrar/:id', Flight.borr);
 
 app.get('/pasajeros',Pasajero.get);
 app.get('/pasajeros/crear',Pasajero.crear);
+app.post('/pasajeros',Pasajero.insert);
 
 app.get('/paises',Pais.get);
 app.get('/paises/crear',Pais.crear);

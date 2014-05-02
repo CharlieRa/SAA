@@ -1,8 +1,8 @@
 var mysql = require ('mysql');
 
-var ciudad  = function () {};
+var pasajero  = function () {};
 
-ciudad.prototype.get= function(req, res) {
+pasajero.prototype.get= function(req, res) {
 	var connection = mysql.createConnection({
 		host     : 'localhost',
 		user     : 'root',
@@ -10,13 +10,14 @@ ciudad.prototype.get= function(req, res) {
 		database : 'aeropuerto'
 	});
 	connection.connect();
-	connection.query('SELECT * FROM city', function(err, result) {
- 		res.render('ciudades', { data: result})
+	connection.query('SELECT * FROM passenger', function(err, result) {
+ 		res.render('pasajeros', { data: result})
+ 		console.log(result)
 	})
 	connection.end();
 };
 
-ciudad.prototype.crear = function(req, res) {
+pasajero.prototype.crear = function(req, res) {
 		var connection = mysql.createConnection({
 		host     : 'localhost',
 		user     : 'root',
@@ -26,12 +27,12 @@ ciudad.prototype.crear = function(req, res) {
 	connection.connect();
 	connection.query('SELECT CODE, NAME FROM country', function(err, result) {
 		console.log(result)
- 		res.render('ciudadesCrear', { data: result})
+ 		res.render('pasajerosCrear', { data: result})
 	})
 	connection.end();
 };
 
-ciudad.prototype.insert=function(req,res) {
+pasajero.prototype.insert=function(req,res) {
 	var connection = mysql.createConnection({
 		host     : 'localhost',
 		user     : 'root',
@@ -39,12 +40,12 @@ ciudad.prototype.insert=function(req,res) {
 		database : 'aeropuerto'
 		});
 	connection.connect();
-	connection.query('INSERT INTO city SET ?', {	PIN: req.body.code , 
-							NAME: req.body.name,
-							SEX: req.body.sex,
-							BIRTHDAY: req.body.birthday,
-							C_CODE: req.body.c_code
-							},function(err, result, t) {
+	connection.query('INSERT INTO passenger SET ?', {	PIN: req.body.code , 
+								NAME: req.body.name,
+								SEX: req.body.sex,
+								BIRTHDAY: req.body.birthday,
+								C_CODE: req.body.c_code
+								},function(err, result, t) {
   		if(err)
      		console.log(err);
 	    else{
@@ -54,4 +55,4 @@ ciudad.prototype.insert=function(req,res) {
 
 	connection.end();
 };
-module.exports = ciudad;
+module.exports = pasajero;

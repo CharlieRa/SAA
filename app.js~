@@ -122,8 +122,6 @@ app.get('/aerolineas/borrar/:id', Aerolinea.borrar);
 app.get('/aerolineas/modificar/:id', Aerolinea.modificar);
 app.post('/aerolineas/modificar', Aerolinea.mod);
 app.post('/aerolineas',Aerolinea.insert);
-// app.post('/aerolineas/borrar', Aerolinea.borr);
-
 
 app.get('/aviones', Avion.get);
 app.get('/aviones/crear', Avion.crear);
@@ -142,7 +140,6 @@ app.post('/aeropuertos',Aeropuerto.insert);
 app.get('/ciudades',Ciudad.get);
 app.get('/ciudades/crear',Ciudad.crear);
 app.post('/ciudades',Ciudad.insert);
-
 
 app.get('/tipoAvion', AirplaneType.get);
 app.get('/tipoAvion/crear', AirplaneType.crear);
@@ -163,7 +160,7 @@ app.get('/programaVuelos/crear', Programavuelos.crear);
 app.get('/programaVuelos/borrar/:id', Programavuelos.borrar);
 app.post('/programaVuelos',Programavuelos.insert);
 app.post('/programaVuelos/modificar', Programavuelos.mod);
-//app.post('/programaVuelos/borrar', Programavuelos.borr);
+// app.post('/programaVuelos/borrar', Programavuelos.borr);
 
 app.get('/vuelos', Flight.get);
 app.get('/vuelos/crear', Flight.crear);
@@ -178,6 +175,7 @@ app.get('/pasajeros/crear',Pasajero.crear);
 
 app.get('/paises',Pais.get);
 app.get('/paises/crear',Pais.crear);
+
 app.post('/paises',Pais.insert);
 app.get('/paises/modificar/:id', Pais.modificar);
 app.get('/paises/borrar/:id', Pais.borrar);
