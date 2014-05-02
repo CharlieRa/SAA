@@ -22,21 +22,21 @@ block entidad
             .form-group.row
                 label.col-sm-2.control-label Plane
                 .col-sm-8
-                    select.from-control.selectFull(name='plane_id')
+                    select.form-control.selectFull(name='plane_id')
                         - for(var i=0; i< data.length; i++){
                         option(value=data[i].PLANE_ID) #{data[i].PLANE_ID}
                         - }
             .form-group.row
                 label.col-sm-2.control-label Scheduled Flight
                 .col-sm-8
-                    select.from-control.selectFull(name='s_flight_id')
+                    select.form-control.selectFull(name='s_flight_id')
                         - for(var i=0; i< data.length; i++){
                         option(value=data2[i].S_FLIGHT_ID) #{data2[i].S_FLIGHT_ID}
                         - }
             .form-group.row
                 label.col-sm-2.control-label Gate
                 .col-sm-8
-                    select.from-control.selectFull(name='gate_name')
+                    select.form-control.selectFull(name='gate_name')
                         - for(var i=0; i< data.length; i++){
                         option(value=data3[i].GATE_NAME) #{data3[i].GATE_NAME}
                         - }

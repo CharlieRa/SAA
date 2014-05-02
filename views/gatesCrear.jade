@@ -3,29 +3,23 @@ extends admin
 block entidad
 	script(type="text/javascript").
 	h1.page-header Gates
-	.page-header
-		.botones
-			ul.nav.nav-tabs
-				li
-					a(href="/gates") Ver
-				li.active
-					a(href="/gates/crear") Crear
-				li
-					a(href="#") Modificar
-				li
-					a(href="#") Borrar
-
-	.container
-			h3.titulo Crear Gate
+	.botones
+		ul.nav.nav-tabs
+			li
+				a(href="/gates") Home
+			li.active
+				a(href="/gates/crear") New
+	.container-fluid
+			h3.sub-header New Gate
 			form.form-horizontal(method='post', action='/gates')
 				.form-group.row
-					label.col-sm-2.control-label
-					.col-sm-10
-						input.form-control(type='text', placeholder='Nombre' name='name')
+					label.col-sm-2.control-label Name
+					.col-sm-8
+						input.form-control(type='text', placeholder='AA12',name='name',required,maxlength='4')
 				.form-group
-					label.col-sm-2.control-label
-					.col-sm-10
-						input.form-control(type='text', placeholder='Estado Gate', name='status')
+					label.col-sm-2.control-label Status
+					.col-sm-8
+						input.form-control(type='bool', placeholder='1 o 0', name='status',required,maxlength='1')
 				.form-group
 					.col-sm-offset-2.col-sm-10
-						button.btn.btn-primary.btn-lg.btn-block(type='submit') Enviar
+						button.btn.btn-primary.btn-lg(type='submit') Submit
