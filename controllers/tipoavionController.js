@@ -12,7 +12,7 @@ airplaneType.prototype.get= function(req, res) {
     });
     connection.connect();
     connection.query('SELECT * FROM airplane_type', function(err, result) {
-        res.render('vuelos', { data: result})
+        res.render('tipoAvion', { data: result})
     });
     connection.end();
 };
@@ -26,16 +26,14 @@ airplaneType.prototype.insert = function(req, res) {
     });
     connection.connect();
     connection.query('INSERT INTO airplane_type SET ?',{
-        DEPARTURE_TIME: req.body.departure_time,
-        ARRIVAL_TIME: req.body.arrival_time,
-        PLANE_ID: req.body.plane_id,
-        S_FLIGHT_ID: req.body.s_flight_id,
-        GATE_NAME: req.body.gate_name
+        MODEL: req.body.model,
+        MADE_BY: req.body.made_by,
+        CAPACITY: req.body.capacity
     }, function(err, result) {
         if(err)
             console.log('error');
         else{
-            res.redirect('/vuelos');
+            res.redirect('/tipoAvion');
         }
     });
     connection.end();
@@ -51,28 +49,15 @@ airplaneType.prototype.modificar = function(req, res) {
     connection.connect();
     async.parallel({
             flight: function(callback){
-                connection.query('SELECT * FROM airplane_type WHERE id ='+req.params.id, function(err, result) {
-                    callback(null, result);
-                })
-            },
-            plane: function(callback){
-                connection.query('SELECT ID FROM airplane', function(err, result) {
-                    callback(null, result);
-                })
-            },
-            sflight: function(callback){
-                connection.query('SELECT ID FROM scheduled_flight', function(err, result) {
-                    callback(null, result);
-                })
-            },
-            gate: function(callback){
-                connection.query('SELECT NAME FROM gate', function(err, result) {
+                var modelo1 = req.params.id
+                var modelo = modelo1.replace('%20', ' ');
+                connection.query('SELECT * FROM airplane_type WHERE MODEL ='+modelo, function(err, result) {
                     callback(null, result);
                 })
             }
         },
         function(err, results) {
-            res.render('vuelosModificar', { data: results.flight, data1: results.plane, data2: results.sflight, data3: results.gate})
+            res.render('tipoAvionModificar', { data: results.flight})
         });
 
     connection.end();
@@ -87,18 +72,14 @@ airplaneType.prototype.mod=function(req,res) {
         database : 'aeropuerto'
     });
     connection.connect();
-    connection.query('UPDATE airplane_type SET ? WHERE ID ='+req.body.id , {
-        DEPARTURE_TIME: req.body.departure_time,
-        ARRIVAL_TIME: req.body.arrival_time,
-        PLANE_ID: req.body.plane_id,
-        S_FLIGHT_ID: req.body.s_flight_id,
-        GATE_NAME: req.body.gate_name
-
+    connection.query('UPDATE airplane_type SET ? WHERE MODEL ='+req.body.model , {
+        MADE_BY: req.body.made_by,
+        CAPACITY: req.body.capacity
     },function(err, result, t) {
         if(err)
             console.log('error');
         else{
-            res.redirect('/vuelos');
+            res.redirect('/tipoAvion');
         }
     });
 
@@ -113,12 +94,12 @@ airplaneType.prototype.borr=function(req,res) {
         database : 'aeropuerto'
     });
     connection.connect();
-
-    connection.query('DELETE FROM airplane_type WHERE ID ='+req.params.id, function(err, result) {
+    var modelo = req.params.id.replace('%20', ' ');
+    connection.query('DELETE FROM airplane_type WHERE MODEL ='+modelo, function(err, result) {
         if(err)
             console.log('error');
         else{
-            res.redirect('/vuelos');
+            res.redirect('/tipoAvion');
         }
     });
 
@@ -126,34 +107,6 @@ airplaneType.prototype.borr=function(req,res) {
 };
 
 airplaneType.prototype.crear=function(req, res) {
-    var connection = mysql.createConnection({
-        host     : 'localhost',
-        user     : 'root',
-        password : '',
-        database : 'aeropuerto'
-    });
-    connection.connect();
-    async.parallel({
-            plane: function(callback){
-                connection.query('SELECT ID FROM airplane', function(err, result) {
-                    callback(null, result);
-                })
-            },
-            sflight: function(callback){
-                connection.query('SELECT ID FROM scheduled_flight', function(err, result) {
-                    callback(null, result);
-                })
-            },
-            gate: function(callback){
-                connection.query('SELECT NAME FROM gate', function(err, result) {
-                    callback(null, result);
-                })
-            }
-        },
-        function(err, results) {
-            res.render('vuelosCrear', { data: results.plane, data2: results.sflight, data3: results.gate})
-        });
-
-    connection.end();
+    res.render('tipoAvionCrear');
 };
 module.exports = airplaneType;

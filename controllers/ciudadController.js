@@ -41,10 +41,10 @@ ciudad.prototype.insert=function(req,res) {
 	connection.connect();
 	connection.query('INSERT INTO city SET ?', {CODE: req.body.code , 
 												 NAME: req.body.name,
-												 C_CODE: req.body.c_code,
+												 C_CODE: req.body.c_code
 												},function(err, result, t) {
   		if(err)
-     		console.log('error');
+     		console.log(err);
 	    else{
 	    	res.redirect('/ciudades');
 	    }
