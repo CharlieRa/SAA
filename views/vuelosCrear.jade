@@ -31,14 +31,14 @@ block entidad
                 label.col-sm-2.control-label Scheduled Flight
                 .col-sm-8
                     select.form-control.selectFull(name='s_flight_id',required)
-                        - for(var i=0; i< data.length; i++){
+                        - for(var i=0; i< data2.length; i++){
                         option(value=data2[i].ID) #{data2[i].ID}
                         - }
             .form-group
                 label.col-sm-2.control-label Gate
                 .col-sm-8
                     select.form-control.selectFull(name='gate_name' required)
-                        - for(var i=0; i< data.length; i++){
+                        - for(var i=0; i< data3.length; i++){
                         option(value=data3[i].NAME) #{data3[i].NAME}
                         - }
             .form-group
