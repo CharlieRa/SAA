@@ -28,7 +28,10 @@ block entidad
 			.form-group.row
 				label.col-sm-2.control-label Nacionality
 				.col-sm-8
-					input.form-control(type='text',  name='c_code',required, maxlength='3',value='#{data[0].C_CODE}')
+					select.form-control.selectFull(name='c_code',required)
+						- for(var i=0; i< data.length; i++){
+						option(value=data[i].CODE) #{data[i].NAME}
+						- 
 			.form-group
 				.col-sm-offset-2.col-sm-10
 					button.btn.btn-primary.btn-lg(type='submit') Submit

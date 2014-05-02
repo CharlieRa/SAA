@@ -15,7 +15,7 @@ block entidad
 			.form-group.row
 				label.col-sm-2.control-label Name
 				.col-sm-8
-					input.form-control(type='text', placeholder='Jorge Valdivia' name='name',required, maxlength='1')
+					input.form-control(type='text', placeholder='Jorge Valdivia' name='name',required, maxlength='30')
 			.form-group.row
 				label.col-sm-2.control-label Personal Identification Number
 				.col-sm-8
@@ -31,7 +31,10 @@ block entidad
 			.form-group.row
 				label.col-sm-2.control-label Nacionality
 				.col-sm-8
-					input.form-control(type='text', placeholder='CL', name='c_code',required, maxlength='3')
+					select.form-control.selectFull(name='c_code',required)
+						- for(var i=0; i< data.length; i++){
+						option(value=data[i].CODE) #{data[i].NAME}
+						- }
 			.form-group
 				.col-sm-offset-2.col-sm-10
 					button.btn.btn-primary.btn-lg(type='submit') Submit

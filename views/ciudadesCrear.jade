@@ -23,7 +23,7 @@ block entidad
 			.form-group.row
 				label.col-sm-2.control-label Country
 				.col-sm-8
-					select.form-control.selectFull(name='c_code')
+					select.form-control.selectFull(name='c_code',required)
 						- for(var i=0; i< data.length; i++){
 						option(value=data[i].CODE) #{data[i].NAME}
 						- }
