@@ -3,7 +3,7 @@ var async = require ('async');
 
 var avion  = function () {};
 
-avion.prototype. get= function(req, res) {
+avion.prototype.get= function(req, res) {
 	var connection = mysql.createConnection({
 		host     : 'localhost',
 		user     : 'root',
@@ -139,7 +139,7 @@ avion.prototype.borr=function(req,res) {
 	});
 	connection.connect();
 
-	connection.query('DELETE FROM avion WHERE id ='+req.body.idd, function(err, result) {
+	connection.query('DELETE FROM airplane WHERE id ='+req.body.idd, function(err, result) {
   		if(err)
      		console.log('error');
 	    else{
@@ -151,7 +151,7 @@ avion.prototype.borr=function(req,res) {
 };
 
 
-avion.prototype. insert=function(req,res) {
+avion.prototype.insert=function(req,res) {
 	var connection = mysql.createConnection({
 		host     : 'localhost',
 		user     : 'root',
@@ -159,7 +159,7 @@ avion.prototype. insert=function(req,res) {
 		database : 'aeropuerto'
 		});
 	connection.connect();
-	connection.query('INSERT INTO avion SET ?', {	GAS_LEVEL: req.body.gasolina, 
+	connection.query('INSERT INTO airplane SET ?', {	GAS_LEVEL: req.body.gas_level,
 							PILOT: req.body.pilot,
 							COPILOT: req.body.copilot,
 							YEAR: req.body.year,
