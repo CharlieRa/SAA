@@ -159,7 +159,7 @@ avion.prototype. insert=function(req,res) {
 		database : 'aeropuerto'
 		});
 	connection.connect();
-	connection.query('INSERT INTO avion SET ?', {	GAS_LEVEL: req.body.gasolina, 
+	connection.query('INSERT INTO avion SET ?', {	GAS_LEVEL: req.body.gas_level, 
 							PILOT: req.body.pilot,
 							COPILOT: req.body.copilot,
 							YEAR: req.body.year,
