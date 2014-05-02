@@ -13,6 +13,8 @@ var aerolinea = require('./controllers/aerolineaController');
 var Aerolinea = new aerolinea();
 var avion = require('./controllers/avionController');
 var Avion = new avion();
+var airplaneType = require('./controllers/tipoavionController');
+var AirplaneType = new airplaneType();
 var aeropuerto = require ('./controllers/aeropuertoController')
 var Aeropuerto = new aeropuerto();
 var ciudad = require ('./controllers/ciudadController');
@@ -159,6 +161,13 @@ app.post('/vuelos',Flight.insert);
 app.get('/vuelos/modificar/:id', Flight.modificar);
 app.post('/vuelos/modificar', Flight.mod);
 app.get('/vuelos/borrar/:id', Flight.borr);
+
+app.get('/tipoAvion', AirplaneType.get);
+app.get('/tipoAvion/crear', AirplaneType.crear);
+app.post('/tipoAvion', AirplaneType.insert);
+app.get('/tipoAvion/modificar/:id', AirplaneType.modificar);
+app.post('/tipoAvion/modificar', AirplaneType.mod);
+app.get('/tipoAvion/borrar/:id', AirplaneType.borr);
 
 app.get('/pasajeros',Pasajero.get);
 app.get('/pasajeros/crear',Pasajero.crear);
