@@ -11,7 +11,7 @@ script.
 		if(path == 'programaVuelos')
 			var headName = 'Scheduled Flights'
 		if(path == 'vuelos')
-			var headName = 'Flights'
+			var headName = 'Fligths'
 		if(path == 'pasajeros')
 			var headName = 'Passenger'
 		if(path == 'gates')
