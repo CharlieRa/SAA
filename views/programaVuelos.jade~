@@ -15,7 +15,7 @@ block entidad
 						th Estimated Duration
 						th Destiny City
 						th Origin City
-						th Airplane Model
+						th Airplne Type Model
 						th Edit
 						th Delete	
 				tbody
