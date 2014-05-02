@@ -15,7 +15,7 @@ block entidad
 						th Estimated Duration
 						th Destiny City
 						th Origin City
-						th Airplane Model
+						th Airplne Type Model
 						th Edit
 						th Delete	
 				tbody
@@ -24,8 +24,8 @@ block entidad
 								td #{data[i].WEEK_DAYS}
 								td #{data[i].ESTIMATED_DEPARTURE}
 								td #{data[i].ESTIMATED_DURATION}
-								td #{data[i].DESTINY_CODE}
-								td #{data[i].ORIGIN_CODE}
+								td #{data[i].BO}
+								td #{data[i].BU}
 								td #{data[i].AIRPLANE_T_MODEL}
 								td(style='width:5px;')
 									a(href="/programaVuelos/modificar/#{data[i].ID}")

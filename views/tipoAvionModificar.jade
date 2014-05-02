@@ -8,18 +8,18 @@ block entidad
     .container-fluid
         h3.sub-header Airplane Type Edit
         form.form-horizontal(method='post', action='/tipoAvion/modificar')
-            .form-group.row
+            .form-group
                 label.col-sm-2.control-label Model
                 .col-sm-8
-                    input.form-control(type='text', placeholder='#{data[0].MODEL}', name='model', required)
-            .form-group.row
+                    input.form-control(type='text', value="#{data[0].MODEL}", name='model', required)
+            .form-group
                 label.col-sm-2.control-label Made By
                 .col-sm-8
-                    input.form-control(type='text', placeholder='#{data[0].MADE_BY}', name='made_by', required)
-            .form-group.row
+                    input.form-control(type='text', value="#{data[0].MADE_BY}", name='made_by', required)
+            .form-group
                 label.col-sm-2.control-label Capacity
                 .col-sm-8
-                    input.form-control(type='text', placeholder='#{data[0].CAPACITY}', name='capacity', required)
+                    input.form-control(type='text', value="#{data[0].CAPACITY}", name='capacity', required)
             .form-group
                 .col-sm-offset-2.col-sm-10
                     button.btn.btn-primary.btn-lg(type='submit') Submit

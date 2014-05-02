@@ -47,22 +47,16 @@ airplaneType.prototype.modificar = function(req, res) {
         database : 'aeropuerto'
     });
     connection.connect();
-    async.parallel({
-            flight: function(callback){
-                var modelo1 = req.params.id
-                var modelo = modelo1.replace('%20', ' ');
-                connection.query('SELECT * FROM airplane_type WHERE MODEL ='+modelo, function(err, result) {
-                    callback(null, result);
-                })
-            }
-        },
-        function(err, results) {
-            res.render('tipoAvionModificar', { data: results.flight})
-        });
+    connection.query('SELECT * FROM airplane_type WHERE MODEL ='+ mysql.escape(""+req.params.model), function(err, result) {
+  if(err)
+            console.log(err);
+        else{
+            res.render('tipoAvionModificar',{ data: result});
+        }
+    });  
 
     connection.end();
 };
-
 
 airplaneType.prototype.mod=function(req,res) {
     var connection = mysql.createConnection({
@@ -72,7 +66,7 @@ airplaneType.prototype.mod=function(req,res) {
         database : 'aeropuerto'
     });
     connection.connect();
-    connection.query('UPDATE airplane_type SET ? WHERE MODEL ='+req.body.model , {
+    connection.query('UPDATE airplane_type SET ? WHERE MODEL ='+ mysql.escape(""+req.body.model), {
         MADE_BY: req.body.made_by,
         CAPACITY: req.body.capacity
     },function(err, result, t) {

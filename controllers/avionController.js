@@ -89,40 +89,25 @@ avion.prototype.mod=function(req,res) {
 		database : 'aeropuerto'
 	});
 	connection.connect();
-	connection.query('UPDATE airplane SET ? WHERE ID ='+req.body.id , {	GAS_LEVEL: req.body.gas_level, 
+	connection.query('UPDATE airplane SET ? WHERE ID = '+req.body.id, {	GAS_LEVEL: req.body.gas_level, 
 										PILOT: req.body.pilot,
 										COPILOT: req.body.copilot,
 										YEAR: req.body.year,
 										AIRLINE_ID: req.body.airline_id,
 										T_MODEL: req.body.t_model
 										},function(err, result, t) {
-  		if(err)
-     		console.log(err);
+  		if(err){
+  			console.log(req.body.id);
+     		console.log(err);}
 	    else{
-	    	res.redirect('/aviones');
+	    	res.redirect('aviones');
 	    }
 	});  
 
 	connection.end();
 };
 
-avion.prototype.borrar = function(req, res) {
-		var connection = mysql.createConnection({
-		host     : 'localhost',
-		user     : 'root',
-		password : '',
-		database : 'aeropuerto'
-	});
-	connection.connect();
-	    
-	connection.query('SELECT * FROM avion WHERE ID ='+req.params.id, function(err, result) {
-		res.render('avionesBorrar', { data: result})
-		})
-	
-	connection.end();
-};
-
-avion.prototype.borr=function(req,res) {
+avion.prototype.borrar=function(req,res) {
 		var connection = mysql.createConnection({
 		host     : 'localhost',
 		user     : 'root',
@@ -131,11 +116,11 @@ avion.prototype.borr=function(req,res) {
 	});
 	connection.connect();
 
-	connection.query('DELETE FROM airplane WHERE ID ='+req.body.idd, function(err, result) {
+	connection.query('DELETE FROM airplane WHERE ID ='+req.params.id, function(err, result) {
   		if(err)
      		console.log('error');
 	    else{
-	    	res.redirect('/aviones');
+	    	res.redirect('aviones');
 	    }
 	});  
 

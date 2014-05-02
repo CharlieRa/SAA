@@ -30,7 +30,7 @@ $(document).ready(function(){
 function confirmGetMessage(id) {
   var theAnswer = confirm("Are you sure you wanna delete this?");
   if (theAnswer){
-    var path = window.location.href + "/borrar/" + id;
+    var path = window.location.href +"/borrar/"+ id;
     window.location.replace(path);    
   }
 }

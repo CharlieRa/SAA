@@ -13,6 +13,10 @@ block entidad
 		h3.sub-header New Airplane
 		form.form-horizontal(method='post', action='/aviones/modificar')
 			.form-group.row
+				label.col-sm-2.control-label ID
+				.col-sm-8
+					input.form-control(type='text', placeholder='100 -> Lleno', name='id',required, max='100',value="#{data[0].ID}")
+			.form-group.row
 				label.col-sm-2.control-label Year
 				.col-sm-8
 					input.form-control(type='number', placeholder='Año de Fabricacion', name='year',required, max='2500',value="#{data[0].YEAR}")

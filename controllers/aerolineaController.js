@@ -31,11 +31,32 @@ aerolinea.prototype.modificar = function(req, res) {
 	//res.render('aerolineasModificar');
 	connection.connect();
 
-	connection.query('SELECT NAME,ACRONYM FROM airline WHERE id ='+req.params.id, function(err, result) {
+	connection.query('SELECT * FROM airline WHERE id ='+req.params.id, function(err, result) {
   		if(err)
      		console.log('error');
 	    else{
 	    	res.render('aerolineasModificar',{ data: result});
+	    }
+	});  
+
+	connection.end();
+};
+
+aerolinea.prototype.mod=function(req,res) {
+	var connection = mysql.createConnection({
+		host     : 'localhost',
+		user     : 'root',
+		password : '',
+		database : 'aeropuerto'
+	});
+	connection.connect();
+	connection.query('UPDATE airline SET ? WHERE id ='+req.body.id , {NAME: req.body.name,
+													 				 ACRONYM: req.body.acronym
+													},function(err, result) {
+  		if(err)
+     		console.log(err);
+	    else{
+	    	res.redirect('aerolineas');
 	    }
 	});  
 
