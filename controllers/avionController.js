@@ -3,7 +3,7 @@ var async = require ('async');
 
 var avion  = function () {};
 
-avion.prototype.get= function(req, res) {
+avion.prototype. get= function(req, res) {
 	var connection = mysql.createConnection({
 		host     : 'localhost',
 		user     : 'root',
@@ -62,14 +62,19 @@ avion.prototype.modificar = function(req, res) {
 	    		callback(null, result);
 			})
 	    },
-	    aerolineas: function(callback){
+	    aero: function(callback){
 	    	connection.query('SELECT ID, NAME FROM airline', function(err, result) {
+				callback(null, result);
+			})
+	    },
+	    modelos: function(callback){
+	    	connection.query('SELECT MODEL FROM airplane_type', function(err, result) {
 				callback(null, result);
 			})
 	    }
 	},
 	function(err, results) {
-	    res.render('avionesModificar', { data: results.avion, aerolineas: results.aerolineas})
+	    res.render('avionesModificar', { data: results.avion, aero: results.aero, mods: results.modelos})
 	});
 
 	connection.end();
@@ -84,15 +89,15 @@ avion.prototype.mod=function(req,res) {
 		database : 'aeropuerto'
 	});
 	connection.connect();
-	connection.query('UPDATE airplane SET ? WHERE ID ='+req.body.idd , {	GAS_LEVEL: req.body.gasolina, 
-										PILOT: req.body.piloto,
-										COPILOT: req.body.copiloto,
-										YEAR: req.body.año,
-										AIRLINE_ID: req.body.id_aerolinea,
-										T_MODEL: req.body.id_tipo_avion
+	connection.query('UPDATE airplane SET ? WHERE ID ='+req.body.idd , {	GAS_LEVEL: req.body.gas_level, 
+										PILOT: req.body.pilot,
+										COPILOT: req.body.copilot,
+										YEAR: req.body.year,
+										AIRLINE_ID: req.body.airline_id,
+										T_MODEL: req.body.t_model
 										},function(err, result, t) {
   		if(err)
-     		console.log('error');
+     		console.log(err);
 	    else{
 	    	res.redirect('/aviones');
 	    }
@@ -109,24 +114,11 @@ avion.prototype.borrar = function(req, res) {
 		database : 'aeropuerto'
 	});
 	connection.connect();
-
-
-	async.parallel({
-	    avion: function(callback){
-	    	connection.query('SELECT * FROM avion WHERE id ='+req.params.id, function(err, result) {
-	    		callback(null, result);
-			})
-	    },
-	    aerolineas: function(callback){
-	    	connection.query('SELECT id, nombre FROM aerolinea', function(err, result) {
-				callback(null, result);
-			})
-	    }
-	},
-	function(err, results) {
-	    res.render('avionesBorrar', { data: results.avion, aerolineas: results.aerolineas})
-	});
-
+	    
+	connection.query('SELECT * FROM avion WHERE ID ='+req.params.id, function(err, result) {
+		res.render('avionesBorrar', { data: result})
+		})
+	
 	connection.end();
 };
 
@@ -139,7 +131,7 @@ avion.prototype.borr=function(req,res) {
 	});
 	connection.connect();
 
-	connection.query('DELETE FROM airplane WHERE id ='+req.body.idd, function(err, result) {
+	connection.query('DELETE FROM airplane WHERE ID ='+req.body.idd, function(err, result) {
   		if(err)
      		console.log('error');
 	    else{
@@ -151,7 +143,7 @@ avion.prototype.borr=function(req,res) {
 };
 
 
-avion.prototype.insert=function(req,res) {
+avion.prototype. insert=function(req,res) {
 	var connection = mysql.createConnection({
 		host     : 'localhost',
 		user     : 'root',
@@ -159,7 +151,7 @@ avion.prototype.insert=function(req,res) {
 		database : 'aeropuerto'
 		});
 	connection.connect();
-	connection.query('INSERT INTO airplane SET ?', {	GAS_LEVEL: req.body.gas_level,
+	connection.query('INSERT INTO airplane SET ?', {GAS_LEVEL: req.body.gas_level, 
 							PILOT: req.body.pilot,
 							COPILOT: req.body.copilot,
 							YEAR: req.body.year,
@@ -167,7 +159,7 @@ avion.prototype.insert=function(req,res) {
 							T_MODEL: req.body.t_model
 							},function(err, result, t) {
   		if(err)
-     		console.log('error');
+     		console.log(err);
 	    else{
 	    	res.redirect('/aviones');
 	    }
