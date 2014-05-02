@@ -26,9 +26,9 @@ block entidad
                         td #{data[i].GATE_NAME}
                         td(style='width:5px;')
                             a(href="/vuelos/modificar/#{data[i].ID}")
-                                span.glyphicon.glyphicon-pencil
+                                span.glyphicon.glyphicon-edit
                         td(style='width:5px;')
-                            a(onclick="confirmGetMessage(#{data[i].ID})")
+                            a(href="/vuelos/borrar" onclick="confirmGetMessage(#{data[i].ID})")
                                 span.glyphicon.glyphicon-trash
     ul.pagination
         li
