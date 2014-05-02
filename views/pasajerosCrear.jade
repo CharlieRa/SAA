@@ -11,7 +11,7 @@ block entidad
 				a(href="/pasajeros/crear") New
 	.container-fluid
 		h3.sub-header New Passenger 
-		form.form-horizontal(method='post', action='/pasajeros/modificar')
+		form.form-horizontal(method='post', action='/pasajeros/crear')
 			.form-group.row
 				label.col-sm-2.control-label Name
 				.col-sm-8
@@ -19,7 +19,7 @@ block entidad
 			.form-group.row
 				label.col-sm-2.control-label Personal Identification Number
 				.col-sm-8
-					input.form-control(type='number', placeholder='142347433' name='pin',required, max='11')
+					input.form-control(type='text', placeholder='142347433' name='pin',required, maxlength='15')
 			.form-group.row
 				label.col-sm-2.control-label Sex (M o F)
 				.col-sm-8
