@@ -39,10 +39,10 @@ ciudad.prototype.insert=function(req,res) {
 		database : 'aeropuerto'
 		});
 	connection.connect();
-	connection.query('INSERT INTO city SET ?', {CODE: req.body.code , 
-												 NAME: req.body.name,
-												 C_CODE: req.body.c_code
-												},function(err, result, t) {
+	connection.query('INSERT INTO city SET ?', {	CODE: req.body.code , 
+							NAME: req.body.name,
+							C_CODE: req.body.c_code
+							},function(err, result, t) {
   		if(err)
      		console.log(err);
 	    else{
