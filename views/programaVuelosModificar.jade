@@ -18,25 +18,38 @@ block entidad
 		h3.titulo Modificar Programa Vuelo
 		form.form-horizontal(method='post', action='/programaVuelos/modificar')
 			.form-group.row
-				label.col-sm-2.control-label
-				.col-sm-10
-					input.form-control(type='text', placeholder='Fecha', name='week_days')
+				label.col-sm-2.control-label Weeks Days
+				.col-sm-8
+					label.checkbox-inline
+						input(type='checkbox',value='1')
+					label.checkbox-inline
+						input(type='checkbox',value='2')
+					label.checkbox-inline
+						input(type='checkbox',value='3')
+					label.checkbox-inline
+						input(type='checkbox',value='4')
+					label.checkbox-inline
+						input(type='checkbox',value='5')
+					label.checkbox-inline
+						input(type='checkbox',value='6')
+					label.checkbox-inline
+						input(type='checkbox',value='7')
 			.form-group.row
 				label.col-sm-2.control-label
-				.col-sm-10
+				.col-sm-8
 					input.form-control(type='time', placeholder='Hora de Salida', name='estimated_departure')
 			.form-group.row
 				label.col-sm-2.control-label 
-				.col-sm-10
+				.col-sm-8
 					input.form-control(type='time', placeholder='Duracion del Viaje', name='estimated_duration')
 			.form-group.row
 				label.col-sm-2.control-label 
-				.col-sm-10
+				.col-sm-8
 					input.form-control(type='text', placeholder='Codigo Ciudad Destino', name='destiny_code')
 			.form-group.row
 				label.col-sm-2.control-label 
-				.col-sm-10
+				.col-sm-8
 					input.form-control(type='text', placeholder='Codigo Ciudad Destino', name='origin_code')
 			.form-group
 				.col-sm-offset-2.col-sm-10
-					button.btn.btn-primary.btn-lg.btn-block(type='submit') Enviar
+					button.btn.btn-primary.btn-lg(type='submit') Submit
