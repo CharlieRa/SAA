@@ -2,7 +2,7 @@ extends admin
 
 block entidad
     script(type="text/javascript").
-    h1.page-header Fligths
+    h1.page-header Flights
     .botones
         ul.nav.nav-tabs
             li
@@ -19,7 +19,11 @@ block entidad
             .form-group
                 label.col-sm-2.control-label Arrival Time
                 .col-sm-8
-                    input.form-control(type='time', placeholder='13:00', name='arrival_time', required)
+                    input.form-control(type='time', placeholder='2010-10-10 12:00', name='departure_time', required)
+            .form-group
+                label.col-sm-2.control-label Arrival Time
+                .col-sm-8
+                    input.form-control(type='time', placeholder='2010-10-10 13:00', name='arrival_time', required)
             .form-group
                 label.col-sm-2.control-label Plane
                 .col-sm-8
@@ -32,14 +36,14 @@ block entidad
                 .col-sm-8
                     select.form-control.selectFull(name='s_flight_id',required)
                         - for(var i=0; i< data.length; i++){
-                        option(value=data2[i].S_FLIGHT_ID) #{data2[i].S_FLIGHT_ID}
+                        option(value=data2[i].ID) #{data2[i].ID}
                         - }
-            .form-group.row
+            .form-group
                 label.col-sm-2.control-label Gate
                 .col-sm-8
                     select.form-control.selectFull(name='gate_name' required)
                         - for(var i=0; i< data.length; i++){
-                        option(value=data3[i].GATE_NAME) #{data3[i].GATE_NAME}
+                        option(value=data3[i].NAME) #{data3[i].NAME}
                         - }
             .form-group
                 .col-sm-offset-2.col-sm-10
