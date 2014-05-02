@@ -52,4 +52,44 @@ pais.prototype.crear = function(req, res) {
 	//})
 	connection.end();
 };
+
+pais.prototype.modificar = function(req, res) {
+		var connection = mysql.createConnection({
+		host     : 'localhost',
+		user     : 'root',
+		password : '',
+		database : 'aeropuerto'
+	});
+	connection.connect();
+
+	connection.query('SELECT * FROM country WHERE CODE ="' + req.params.id + '"', function(err, result) {
+  		if(err)
+     		console.log(err);
+	    else{
+	    	res.render('paisesModificar',{ data: result});
+	    }
+	});  
+
+	connection.end();
+};
+
+pais.prototype.borrar=function(req,res) {
+		var connection = mysql.createConnection({
+		host     : 'localhost',
+		user     : 'root',
+		password : '',
+		database : 'aeropuerto'
+	});
+	connection.connect();
+
+	connection.query('DELETE FROM country WHERE CODE ="' + req.params.id + '"', function(err, result) {
+  		if(err)
+     		console.log(err);
+	    else{
+	    	res.redirect('/paises');
+	    }
+	});  
+
+	connection.end();
+};
 module.exports = pais;

@@ -175,6 +175,8 @@ app.get('/pasajeros/crear',Pasajero.crear);
 app.get('/paises',Pais.get);
 app.get('/paises/crear',Pais.crear);
 app.post('/paises',Pais.insert);
+app.get('/paises/modificar/:id', Pais.modificar);
+app.get('/paises/borrar/:id', Pais.borrar);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
