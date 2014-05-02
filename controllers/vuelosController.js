@@ -32,9 +32,12 @@ flight.prototype.insert = function(req, res) {
         S_FLIGHT_ID: req.body.s_flight_id,
         GATE_NAME: req.body.gate_name
     }, function(err, result) {
-        console.log(result)
-        res.render('vuelosCrear', { data: result})
-    })
+        if(err)
+            console.log('error');
+        else{
+            res.redirect('/vuelos');
+        }
+    });
     connection.end();
 };
 
