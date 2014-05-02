@@ -8,6 +8,7 @@ block entidad
     .container-fluid
         h3.sub-header Flight Edit
         form.form-horizontal(method='post', action='/vuelos/modificar')
+            input.form-control(type='hidden', value='#{data[0].ID}', name='id', required)
             .form-group.row
                 label.col-sm-2.control-label Departure Time
                 .col-sm-8

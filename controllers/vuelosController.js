@@ -13,12 +13,7 @@ flight.prototype.get= function(req, res) {
     connection.connect();
     connection.query('SELECT * FROM flight', function(err, result) {
         res.render('vuelos', { data: result})
-    })
-    if(err)
-        console.log('error');
-    else{
-
-    }
+    });
     connection.end();
 };
 
@@ -116,7 +111,7 @@ flight.prototype.borr=function(req,res) {
     });
     connection.connect();
 
-    connection.query('DELETE FROM flight WHERE ID ='+req.body.id, function(err, result) {
+    connection.query('DELETE FROM flight WHERE ID ='+req.params.id, function(err, result) {
         if(err)
             console.log('error');
         else{

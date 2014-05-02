@@ -158,7 +158,7 @@ app.get('/vuelos/crear', Flight.crear);
 app.post('/vuelos',Flight.insert);
 app.get('/vuelos/modificar/:id', Flight.modificar);
 app.post('/vuelos/modificar', Flight.mod);
-app.get('/vuelos/borrar', Flight.borr);
+app.get('/vuelos/borrar/:id', Flight.borr);
 
 app.get('/pasajeros',Pasajero.get);
 app.get('/pasajeros/crear',Pasajero.crear);
