@@ -40,7 +40,7 @@ pasajero.prototype.insert=function(req,res) {
 		database : 'aeropuerto'
 		});
 	connection.connect();
-	connection.query('INSERT INTO passenger SET ?', {	PIN: req.body.code , 
+	connection.query('INSERT INTO passenger SET ?', {	PIN: req.body.pin , 
 								NAME: req.body.name,
 								SEX: req.body.sex,
 								BIRTHDAY: req.body.birthday,
