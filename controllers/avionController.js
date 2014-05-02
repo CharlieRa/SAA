@@ -142,7 +142,6 @@ avion.prototype.borr=function(req,res) {
 	connection.end();
 };
 
-
 avion.prototype. insert=function(req,res) {
 	var connection = mysql.createConnection({
 		host     : 'localhost',
