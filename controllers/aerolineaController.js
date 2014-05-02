@@ -42,7 +42,7 @@ aerolinea.prototype.modificar = function(req, res) {
 	connection.end();
 };
 
-aerolinea.prototype.borr=function(req,res) {
+aerolinea.prototype.borrar=function(req,res) {
 		var connection = mysql.createConnection({
 		host     : 'localhost',
 		user     : 'root',
@@ -51,11 +51,11 @@ aerolinea.prototype.borr=function(req,res) {
 	});
 	connection.connect();
 
-	connection.query('DELETE FROM airline WHERE id ='+req.body.id, function(err, result) {
+	connection.query('DELETE FROM airline WHERE id ='+req.params.id, function(err, result) {
   		if(err)
      		console.log('error');
 	    else{
-	    	res.redirect('/aviones');
+	    	res.redirect('/aerolineas');
 	    }
 	});  
 

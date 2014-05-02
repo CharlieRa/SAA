@@ -121,7 +121,7 @@ app.post('/aerolineas',Aerolinea.insert);
 app.get('/aerolineas/crear', Aerolinea.crear);
 app.get('/aerolineas/modificar/:id', Aerolinea.modificar);
 // app.post('/aerolineas/modificar', Aerolinea.mod);
-// app.get('/aerolineas/borrar/:id', Aerolinea.borrar);
+app.get('/aerolineas/borrar/:id', Aerolinea.borrar);
 // app.post('/aerolineas/borrar', Aerolinea.borr);
 
 
