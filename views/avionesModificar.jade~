@@ -1,0 +1,67 @@
+extends admin
+
+block entidad
+	script(type="text/javascript").
+	h1.page-header Airplanes
+	.page-header
+		.botones
+			ul.nav.nav-tabs
+				li
+					a(href="/aviones") Ver
+				li
+					a(href="/aviones/crear") Crear
+				li.active
+					a(href="#") Modificar
+				li
+					a(href="#") Borrar	
+	.container
+		h3.sub-header Modificar Avion
+		form.form-horizontal(method='post', action='/aviones/modificar')
+			.form-group.row
+				label.col-sm-2.control-label ID
+				.col-sm-10
+					input.form-control(type='text', placeholder='ID', name='idd', value="#{data[0].ID}" disabled)
+					span.help-block ID autogenerado
+			.form-group.row
+				label.col-sm-2.control-label Gasolina
+				.col-sm-10
+					input.form-control(type='text', placeholder='Tipo Gasolina', name='gasolina', value="#{data[0].GAS_LEVEL}")
+					span.help-block Octanage
+			.form-group.row
+				label.col-sm-2.control-label Aerolinea
+				.col-sm-10
+					select.from-control.selectFull(name='AIRLINE_ID')
+						- for(var i=0; i< aerolineas.length; i++){
+							if(data[0].AIRLINE_ID == aerolineas[i].ID)
+								option(value=aerolineas[i].ID, selected="selected") #{aerolineas[i].NAME}
+							else
+								option(value=aerolineas[i].ID) #{aerolineas[i].NAME}
+						- }
+
+					span.help-block Id de la aerolinea del avion
+			.form-group.row
+				label.col-sm-2.control-label Piloto
+				.col-sm-10
+					input.form-control(type='text', placeholder='Nombre Piloto', name='piloto', value="#{data[0].PILOTO}")
+					span.help-block Nombre del piloto
+			.form-group.row
+				label.col-sm-2.control-label Año
+				.col-sm-10
+					input.form-control(type='text', placeholder='Año', 
+					name='año', value="#{data[0].AÑO}")
+					span.help-block Año de fabricacion
+//-			.form-group.row
+//-				label.col-sm-2.control-label Tipo Avion
+//-				.col-sm-10
+//-					select.from-control.selectFull(name='T_MODEL')
+//-						- for(var i=0; i< modelos.length; i++){
+//-							if(data[0].T_MODEL == modelos[i].MODEL)
+//-								option(value=modelos[i].MODEL, selected="selected") #{modelos[i].MODEL}
+//-							else
+//-								option(value=modelos[i].MODEL) #{modelos[i].MODEL}
+//-						- }
+
+
+			.form-group
+				.col-sm-offset-2.col-sm-10
+					button.btn.btn-primary.btn-lg.btn-block(type='submit') Enviar

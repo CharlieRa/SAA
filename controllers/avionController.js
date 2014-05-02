@@ -25,10 +25,25 @@ avion.prototype.crear = function(req, res) {
 		database : 'aeropuerto'
 	});
 	connection.connect();
-	connection.query('SELECT ID, NAME FROM airline', function(err, result) {
-		console.log(result)
-		res.render('avionesCrear', { data: result})
-	})
+
+	async.parallel({
+	    aero: function(callback){
+		connection.query('SELECT ID, NAME FROM airline', function(err, result) {
+				callback(null, result);
+		})
+	    },
+	    modelos: function(callback){
+	    	connection.query('SELECT MODEL, CAPACITY FROM airplane_type', function(err, result) {
+				callback(null, result);
+			})
+	    }
+	},
+	function(err, results) {
+	    res.render('avionesCrear', { data: results.aero, mods: results.modelos})
+	});
+
+
+
 	connection.end();
 };
 
@@ -40,7 +55,6 @@ avion.prototype.modificar = function(req, res) {
 		database : 'aeropuerto'
 	});
 	connection.connect();
-
 
 	async.parallel({
 	    avion: function(callback){
@@ -145,13 +159,13 @@ avion.prototype. insert=function(req,res) {
 		database : 'aeropuerto'
 		});
 	connection.connect();
-	connection.query('INSERT INTO avion SET ?', {GAS_LEVEL: req.body.gasolina, 
-												PILOT: req.body.piloto,
-												COPILOT: req.body.copiloto,
-												YEAR: req.body.año,
-												AIRLINE_ID: req.body.id_aerolinea,
-												T_MODEL: req.body.id_tipo_avion
-												},function(err, result, t) {
+	connection.query('INSERT INTO avion SET ?', {	GAS_LEVEL: req.body.gasolina, 
+							PILOT: req.body.pilot,
+							COPILOT: req.body.copilot,
+							YEAR: req.body.year,
+							AIRLINE_ID: req.body.airline_id,
+							T_MODEL: req.body.t_model
+							},function(err, result, t) {
   		if(err)
      		console.log('error');
 	    else{

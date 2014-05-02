@@ -1,58 +1,38 @@
 extends admin
+
 block entidad
+	script(type="text/javascript").
 	h1.page-header Ciudades
 	.page-header
 		.botones
-		button(id='btn_crear' type="button").btn.btn-success.btnaero Crear Nueva Ciudad
-		button(id='btn_cerrar' type="button" style='display:none;').btn.btn-danger.btnaerocerrar X
-	.container.ciudad(style='display:none;')
-		h3.titulo Crear Ciudad
-		form.form-horizontal(method='post', action='/ciudades')
-			.form-group.row
-				label.col-sm-2.control-label ID
-				.col-sm-10
-					input.form-control(type='text', placeholder='ID' disabled)
-					span.help-block ID autogenerado
-			.form-group.row
-				label.col-sm-2.control-label Codigo
-				.col-sm-10
-					input.form-control(type='text', placeholder='Codigo', name='codigo')
-					span.help-block Cogigo Ciudad
-			.form-group.row
-				label.col-sm-2.control-label Nombre
-				.col-sm-10
-					input.form-control(type='text', placeholder='Nombre', name='nombre')
-					span.help-block Nombre Ciudad
-			.form-group.row
-				label.col-sm-2.control-label Id_Pais 
-				.col-sm-10
-					input.form-control(type='text', placeholder='Id_Pais', name='id_pais')
-					span.help-block Id del Pais
-			.form-group
-				.col-sm-offset-2.col-sm-10
-					button.btn.btn-primary.btn-lg.btn-block(type='submit') Enviar
+			ul.nav.nav-tabs
+				li.active
+					a(href="/ciudades") Ver
+				li
+					a(href="/ciudades/crear") Crear
+				li
+					a(href="#") Modificar
+				li
+					a(href="#") Borrar	
 	.container2
-			h2.sub-header Listado de Ciudades
+			h2.sub-header Ciudades
 			table.table.table-striped.table-bordered
 				thead
 					tr
-						th ID
-						th Codigo
+						th Codigo Ciudad
 						th Nombre
-						th Id_Pais
+						th Codigo Pais
+						th Editar
+						th Eliminar
 				tbody
 					- for (var i = 0; i < data.length; i++)
 							tr
-								td #{data[i].id}
-								td #{data[i].codigo}
-								td #{data[i].nombre}
-								td #{data[i].id_pais}
-	script
-		$( ".btnaero" ).click(function(){
-		$( ".aero" ).show( 400 );
-		$( ".btnaerocerrar" ).show( 400 );
-		});
-		$( ".btnaerocerrar" ).click(function(){
-		$( ".aero" ).hide( 400 );
-		$( ".btnaerocerrar" ).hide( 400 );
-		});
+								td #{data[i].CODE}
+								td #{data[i].NAME}
+								td #{data[i].C_CODE}
+								td(style='width:5px;')
+									a(href="/ciudades/modificar/#{data[i].ID}")
+										span.glyphicon.glyphicon-pencil
+								td(style='width:5px;')
+									a(href="/ciudades/borrar/#{data[i].ID}")
+										span.glyphicon.glyphicon-trash
