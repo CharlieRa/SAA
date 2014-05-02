@@ -31,7 +31,7 @@ flight.prototype.insert = function(req, res) {
         PLANE_ID: req.body.plane_id,
         S_FLIGHT_ID: req.body.s_flight_id,
         GATE_NAME: req.body.gate_name
-    }, function(err, result, t) {
+    }, function(err, result) {
         console.log(result)
         res.render('vuelosCrear', { data: result})
     })
@@ -147,13 +147,13 @@ flight.prototype.crear=function(req, res) {
     });
     connection.connect();
     async.parallel({
-            avion: function(callback){
-                connection.query('SELECT ID as PLANE_ID FROM airplane', function(err, result) {
+            plane: function(callback){
+                connection.query('SELECT ID FROM airplane', function(err, result) {
                     callback(null, result);
                 })
             },
             sflight: function(callback){
-                connection.query('SELECT ID as S_FLIGHT_ID FROM scheduled_flight', function(err, result) {
+                connection.query('SELECT ID FROM scheduled_flight', function(err, result) {
                     callback(null, result);
                 })
             },
@@ -164,7 +164,7 @@ flight.prototype.crear=function(req, res) {
             }
         },
         function(err, results) {
-            res.render('vuelosCrear', { data: results.avion, data2: results.sflight, data3: results.gate})
+            res.render('vuelosCrear', { data: results.plane, data2: results.sflight, data3: results.gate})
         });
 
     connection.end();
