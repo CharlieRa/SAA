@@ -1,3 +1,3 @@
-/**
- * Created by Pablo on 02-05-14.
- */
+exports.tipoAvion = function(req, res){
+    res.render('tipoAvion');
+};

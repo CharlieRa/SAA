@@ -144,7 +144,7 @@ app.post('/ciudades',Ciudad.insert);
 app.get('/tipoAvion', AirplaneType.get);
 app.get('/tipoAvion/crear', AirplaneType.crear);
 app.get('/tipoAvion/modificar/:model', AirplaneType.modificar);
-app.get('/tipoAvion/borrar/:id', AirplaneType.borr);
+app.get('/tipoAvion/borrar/:model', AirplaneType.borr);
 app.post('/tipoAvion', AirplaneType.insert);
 app.post('/tipoAvion/modificar', AirplaneType.mod);
 

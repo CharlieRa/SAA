@@ -19,18 +19,18 @@ block entidad
 						th Delete
 				tbody
 					- for (var i = 0; i < data.length; i++)
-							tr
-								td #{data[i].DEPARTURE_TIME}
-								td #{data[i].ARRIVAL_TIME}
-								td #{data[i].PLANE_ID}
-								td #{data[i].S_FLIGHT_ID}
-								td #{data[i].GATE_NAME}
-								td(style='width:5px;')
-									a(href="/vuelos/modificar/#{data[i].ID}")
-										span.glyphicon.glyphicon-edit
-								td(style='width:5px;')
-									a(onclick="confirmGetMessage(#{data[i].ID})")
-										span.glyphicon.glyphicon-trash
+                        tr
+                            td #{data[i].DEPARTURE_TIME}
+                            td #{data[i].ARRIVAL_TIME}
+                            td #{data[i].PLANE_ID}
+                            td #{data[i].S_FLIGHT_ID}
+                            td #{data[i].GATE_NAME}
+                            td(style='width:5px;')
+                                a(href="/vuelos/modificar/#{data[i].ID}")
+                                    span.glyphicon.glyphicon-edit
+                            td(style='width:5px;')
+                                a(onclick="confirmGetMessage(#{data[i].ID})")
+                                    span.glyphicon.glyphicon-trash
 			ul.pagination
 				li
 					a(href='#') «

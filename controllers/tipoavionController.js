@@ -88,10 +88,9 @@ airplaneType.prototype.borr=function(req,res) {
         database : 'aeropuerto'
     });
     connection.connect();
-    var modelo = req.params.id.replace('%20', ' ');
     connection.query('DELETE FROM airplane_type WHERE MODEL ='+ mysql.escape(""+req.params.model), function(err, result) {
         if(err)
-            console.log('error');
+            console.log(err);
         else{
             res.redirect('/tipoAvion');
         }
