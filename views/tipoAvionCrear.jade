@@ -14,15 +14,15 @@ block entidad
             .form-group
                 label.col-sm-2.control-label Model
                 .col-sm-8
-                    input.form-control(type='text', placeholder='Airbus 380', name='model', required)
+                    input.form-control(type='text', placeholder='Airbus 380', name='model', required,maxlength='10')
             .form-group
                 label.col-sm-2.control-label Made By
                 .col-sm-8
-                    input.form-control(type='text', placeholder='Airbus', name='made_by', required)
+                    input.form-control(type='text', placeholder='Airbus', name='made_by', required,maxlength='15')
             .form-group
                 label.col-sm-2.control-label Capacity
                 .col-sm-8
-                    input.form-control(type='text', placeholder='350', name='capacity', required)
+                    input.form-control(type='number', placeholder='350', name='capacity', required,min='0',max='2000')
             .form-group
                 .col-sm-offset-2.col-sm-10
                     button.btn.btn-primary.btn-lg(type='submit') Submit

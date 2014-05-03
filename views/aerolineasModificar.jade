@@ -10,10 +10,6 @@ block entidad
 		h3.sub-header Edit Airline
 		form.form-horizontal(method='post', action='/aerolineas/modificar/', id='formulario')
 			.form-group
-				label.col-sm-2.control-label ID
-				.col-sm-8
-					input.form-control(type='text', value='#{data[0].ID}', name='id', required, maxlength='15')
-			.form-group
 				label.col-sm-2.control-label Name
 				.col-sm-8
 					input.form-control(type='text', value='#{data[0].NAME}', name='name', required, maxlength='15')

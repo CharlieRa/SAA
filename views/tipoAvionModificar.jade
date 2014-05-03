@@ -11,15 +11,15 @@ block entidad
             .form-group
                 label.col-sm-2.control-label Model
                 .col-sm-8
-                    input.form-control(type='text', value="#{data[0].MODEL}", name='model', required)
+                    input.form-control(type='text', value="#{data[0].MODEL}", name='model',readonly)
             .form-group
                 label.col-sm-2.control-label Made By
                 .col-sm-8
-                    input.form-control(type='text', value="#{data[0].MADE_BY}", name='made_by', required)
+                    input.form-control(type='text', value="#{data[0].MADE_BY}", name='made_by', required,maxlength='15')
             .form-group
                 label.col-sm-2.control-label Capacity
                 .col-sm-8
-                    input.form-control(type='text', value="#{data[0].CAPACITY}", name='capacity', required)
+                    input.form-control(type='number', value="#{data[0].CAPACITY}", name='capacity', required,min='0',max='2000')
             .form-group
                 .col-sm-offset-2.col-sm-10
                     button.btn.btn-primary.btn-lg(type='submit') Submit

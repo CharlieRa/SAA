@@ -52,4 +52,23 @@ ciudad.prototype.insert=function(req,res) {
 
 	connection.end();
 };
+ciudad.prototype.modificar = function(req, res) {
+		var connection = mysql.createConnection({
+		host     : 'localhost',
+		user     : 'root',
+		password : '',
+		database : 'aeropuerto'
+	});
+	connection.connect();
+
+	connection.query('SELECT * FROM city WHERE CODE =' + mysql.escape(""+req.params.code), function(err, result) {
+  		if(err)
+     		console.log(err);
+	    else{
+	    	res.render('ciudadesModificar',{ data: result});
+	    }
+	});  
+
+	connection.end();
+};
 module.exports = ciudad;

@@ -12,11 +12,11 @@ block entidad
 			.form-group
 				label.col-sm-2.control-label Country Code
 				.col-sm-8
-					input.form-control(type='text',name='code',required,maxlength='3', value='#{data[0].CODE}')
+					input.form-control(type='text',name='code',required,maxlength='3', value='#{data[0].CODE}',readonly)
 			.form-group
 				label.col-sm-2.control-label Name
 				.col-sm-8
-					input.form-control(type='text',required,maxlength='255', value='#{data[0].NAME}')
+					input.form-control(type='text',name='name',required,maxlength='255', value='#{data[0].NAME}')
 			.form-group
 				label.col-sm-2.control-label Main Language
 				.col-sm-8

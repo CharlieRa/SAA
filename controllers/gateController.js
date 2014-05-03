@@ -51,4 +51,23 @@ gate.prototype.crear = function(req, res) {
 	//})
 	connection.end();
 };
+gate.prototype.modificar = function(req, res) {
+		var connection = mysql.createConnection({
+		host     : 'localhost',
+		user     : 'root',
+		password : '',
+		database : 'aeropuerto'
+	});
+	connection.connect();
+
+	connection.query('SELECT * FROM gate WHERE NAME =' + mysql.escape("" + req.params.name), function(err, result) {
+  		if(err)
+     		console.log(err);
+	    else{
+	    	res.render('gatesModificar',{ data: result});
+	    }
+	});  
+
+	connection.end();
+};
 module.exports = gate;

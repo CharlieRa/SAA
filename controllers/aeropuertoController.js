@@ -38,7 +38,6 @@ aeropuerto.prototype.modificar = function(req, res) {
 		password : '',
 		database : 'aeropuerto'
 	});
-	//res.render('aerolineasModificar');
 	connection.connect();
 
 	connection.query('SELECT * FROM airport WHERE CODE ='+ mysql.escape(""+req.params.CODE), function(err, result) {

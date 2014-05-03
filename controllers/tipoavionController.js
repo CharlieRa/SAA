@@ -66,10 +66,12 @@ airplaneType.prototype.mod=function(req,res) {
         database : 'aeropuerto'
     });
     connection.connect();
-    connection.query('UPDATE airplane_type SET ? WHERE MODEL ='+ mysql.escape(""+req.body.model), {
-        MADE_BY: req.body.made_by,
-        CAPACITY: req.body.capacity
-    },function(err, result, t) {
+    connection.query('UPDATE airplane_type SET ? WHERE MODEL =' + mysql.escape("" + req.body.model), {
+                                                                MADE_BY: req.body.made_by,
+                                                                CAPACITY: req.body.capacity
+    },function(err, result) {
+        console.log(result);
+        console.log(req.body.model)
         if(err)
             console.log('error');
         else{

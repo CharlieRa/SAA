@@ -62,7 +62,8 @@ aerolinea.prototype.mod=function(req,res) {
 
 	connection.end();
 };
-
+//*****************************//
+//******Arreglar borrado de demases entidades*****//
 aerolinea.prototype.borrar=function(req,res) {
 		var connection = mysql.createConnection({
 		host     : 'localhost',
@@ -72,9 +73,9 @@ aerolinea.prototype.borrar=function(req,res) {
 	});
 	connection.connect();
 
-	connection.query('DELETE FROM airline WHERE id ='+req.params.id, function(err, result) {
+	connection.query('DELETE FROM airline WHERE ID =' + req.params.id, function(err, result) {
   		if(err)
-     		console.log('error');
+     		console.log(err);
 	    else{
 	    	res.redirect('/aerolineas');
 	    }
