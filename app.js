@@ -163,7 +163,7 @@ app.post('/programaVuelos/modificar', Programavuelos.mod);
 
 app.get('/vuelos', Flight.get);
 app.get('/vuelos/crear', Flight.crear);
-app.post('/vuelos',Flight.insert);
+app.post('/vuelos/insertar',Flight.insert);
 app.get('/vuelos/modificar/:id', Flight.modificar);
 app.post('/vuelos/modificar', Flight.mod);
 app.get('/vuelos/borrar/:id', Flight.borr);

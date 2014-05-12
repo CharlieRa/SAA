@@ -22,7 +22,7 @@ block entidad
 								td(style='width:5px;')
 									a(href="/gates/modificar/#{data[i].NAME}")
 										span.glyphicon.glyphicon-edit
-								td(style='width:5px;')
+                                td(style='cursor: pointer; width:5px;')
 									a(onclick="confirmGetMessage('#{data[i].NAME}')")
 										span.glyphicon.glyphicon-trash
 		ul.pagination

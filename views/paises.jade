@@ -24,7 +24,7 @@ block entidad
 								td(style='width:5px;')
 									a(href="/paises/modificar/#{data[i].CODE}")
 										span.glyphicon.glyphicon-edit
-								td(style='width:5px;')
+                                td(style='cursor: pointer; width:5px;')
 									a(onclick="confirmGetMessage('#{data[i].CODE}')")
 										span.glyphicon.glyphicon-trash
 			ul.pagination
