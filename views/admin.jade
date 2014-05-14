@@ -1,65 +1,68 @@
 doctype html
 html(lang="es")
-    head
-        title Servicio de Administracion de Aeropuertos - SAA
-        meta(name='viewport', content='width=device-width, initial-scale=1.0')
-        //Bootstrap CSS
-        link(href='/stylesheets/bootstrap.css', rel='stylesheet', media='screen')
-        link(href='/stylesheets/dashboard.css', rel='stylesheet')
-        link(href='/stylesheets/style.css', rel='stylesheet')
-        link(href='/stylesheets/simplePagination.css', rel='stylesheet')
-        body
-        .navbar.navbar-default.navbar-fixed-top(role="navigation")
-            .container-fluid
-                .navbar-header
-                    button.navbar-toggle(type='button', data-toggle='collapse', data-
-                    target='.navbar-collapse')
-                        span.sr-only Toggle navigation
-                        span.icon-bar
-                        span.icon-bar
-                        span.icon-bar
-                    a.navbar-brand(href='#') SAA
-                .navbar-collapse.collapse
-                    ul.nav.navbar-nav
-                        li.active
-                            a(href='#') Home
-                        li
-                            a(href='/about') About
-                        li
-                            a(href='#contact') Contact
-                    ul.nav.navbar-nav.navbar-right
-                        li.active
-                            a(href='/logout') salir
-        .container-fluid
-            .row
-                .col-sm-3.col-md-2.sidebar
-                    ul.nav.nav-pills.nav-stacked
-                        p Editar Entidades
-                        li
-                            a(href='/aerolineas' class='aerolineas') Airlines
-                        li
-                            a(href='/aeropuertos' class='aeropuertos') Airports
-                        li
-                            a(href='/aviones' class='aviones') Airplanes
-                        li
-                            a(href='/tipoAvion' class='tipoAvion') Airplane Type
-                        li
-                            a(href='/programaVuelos' class='programaVuelos') Scheduled Flights
-                        li
-                            a(href='/vuelos' class='vuelos') Flights
-                        li
-                            a(href='/pasajeros' class='pasajeros') Passenger
-                        li
-                            a(href='/gates' class='gates') Gates
-                        li
-                            a(href='/ciudades' class='ciudades') Citys
-                        li
-                            a(href='/paises' class='paises') Countrys
-                .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
-                    block entidad
+	head
+		title Servicio de Administracion de Aeropuertos - SAA
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		//Bootstrap CSS
+		link(href='/stylesheets/bootstrap.css', rel='stylesheet', media='screen')
+		link(href='/stylesheets/dashboard.css', rel='stylesheet')
+		link(href='/stylesheets/style.css', rel='stylesheet')
+		link(href='/stylesheets/simplePagination.css', rel='stylesheet')
+		link(type='text/css', href='/javascripts/datetimepicker/jquery.simple-dtpicker.css', rel='stylesheet')
+		link(type='text/css', href='/javascripts/datetimepicker/jquery.simple-dtpicker.css', rel='stylesheet')
+		body
+		.navbar.navbar-default.navbar-fixed-top(role="navigation")
+			.container-fluid
+				.navbar-header
+					button.navbar-toggle(type='button', data-toggle='collapse', data-
+					target='.navbar-collapse')
+						span.sr-only Toggle navigation
+						span.icon-bar
+						span.icon-bar
+						span.icon-bar
+					a.navbar-brand(href='#') SAA
+				.navbar-collapse.collapse
+					ul.nav.navbar-nav
+						li.active
+							a(href='#') Home
+						li
+							a(href='/about') About
+						li
+							a(href='#contact') Contact
+					ul.nav.navbar-nav.navbar-right
+						li.active
+							a(href='/logout') salir
+		.container-fluid
+			.row
+				.col-sm-3.col-md-2.sidebar
+					ul.nav.nav-pills.nav-stacked
+						p Editar Entidades
+						li
+							a(href='/aerolineas' class='aerolineas') Airlines
+						li
+							a(href='/aeropuertos' class='aeropuertos') Airports
+						li
+							a(href='/aviones' class='aviones') Airplanes
+						li
+							a(href='/tipoAvion' class='tipoAvion') Airplane Type
+						li
+							a(href='/programaVuelos' class='programaVuelos') Scheduled Flights
+						li
+							a(href='/vuelos' class='vuelos') Flights
+						li
+							a(href='/pasajeros' class='pasajeros') Passenger
+						li
+							a(href='/gates' class='gates') Gates
+						li
+							a(href='/ciudades' class='ciudades') Citys
+						li
+							a(href='/paises' class='paises') Countrys
+				.col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+					block entidad
 
-    script(type='text/javascript', src='/javascripts/jquery.js')
-    script(type='text/javascript', src='/javascripts/bootstrap.min.js')
-    script(type='text/javascript', src='/javascripts/functions.js')
-    script(type='text/javascript', src='/javascripts/jquery.searchable.js')
-    script(type="text/javascript", src="/javascripts/jquery.simplePagination.js")
+	script(type='text/javascript', src='/javascripts/jquery.js')
+	script(type='text/javascript', src='/javascripts/bootstrap.min.js')
+	script(type='text/javascript', src='/javascripts/functions.js')
+	script(type='text/javascript', src='/javascripts/jquery.searchable.js')
+	script(type="text/javascript", src="/javascripts/jquery.simplePagination.js")
+	script(type='text/javascript', src='/javascripts/datetimepicker/jquery.simple-dtpicker.js')
