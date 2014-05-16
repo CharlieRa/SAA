@@ -37,7 +37,7 @@ scheduled_flight.prototype.crear = function(req, res) {
 				})
 		    },
 		    origen: function(callback){
-		    	connection.query('SELECT airport.NAME, city.NAME FROM airport join city WHERE city.CODE = CITY_ID', function(err, result) {
+		    	connection.query('SELECT airport.NAME AS aname, city.NAME AS cname FROM airport join city WHERE city.CODE = CITY_ID', function(err, result) {
 						callback(null, result);
 				})
 		    },
