@@ -16,25 +16,25 @@ block entidad
 					label.col-sm-2.control-label Weeks Days
 					.col-sm-10
 						label.checkbox-inline
-							input(type='checkbox',value='1')
+							input(type='checkbox',value=1)
 							label Monday
 						label.checkbox-inline
-							input(type='checkbox',value='2')
+							input(type='checkbox',value=2)
 							label Tuesday
 						label.checkbox-inline
-							input(type='checkbox',value='3')
+							input(type='checkbox',value=4)
 							label Wednesday
 						label.checkbox-inline
-							input(type='checkbox',value='4')
+							input(type='checkbox',value=8)
 							label Thursday
 						label.checkbox-inline
-							input(type='checkbox',value='5')
+							input(type='checkbox',value=16)
 							label  Friday
 						label.checkbox-inline
-							input(type='checkbox',value='6')
+							input(type='checkbox',value=32)
 							label Saturday
 						label.checkbox-inline
-							input(type='checkbox',value='7')
+							input(type='checkbox',value=64)
 							label Sunday
 				.form-group.row
 					label.col-sm-2.control-label Estimated Departure
@@ -44,18 +44,61 @@ block entidad
 					label.col-sm-2.control-label Estimated Duration
 					.col-sm-8
 						input.form-control(type='time', placeholder='54 Hours', name='estimated_duration', required)
-				.form-group.row
-					label.col-sm-2.control-label Destiny City
-					.col-sm-8
-						input.form-control(type='text', placeholder='Destiny Code', name='destiny_code', required)
-				.form-group.row
-					label.col-sm-2.control-label Origin City
-					.col-sm-8
-						input.form-control(type='text', placeholder='Origin Code', name='origin_code', required)
+				//- .form-group.row
+				//- 	label.col-sm-2.control-label Destiny Airport
+				//- 	.col-sm-8
+				//- 		select.form-control.selectFull(name='c_code',required)
+				//- 			- for(var i=0; i< dest.length; i++){
+				//- 			option(value=dest[i].aname) #{dest[i].aname}
+				//- 			- }
+				//- 	.col-sm-2
+				//- 		a(href="#",data-toggle='modal', data-target='#myModal')
+				//- 						span.glyphicon.glyphicon-edit
+				//- .form-group.row
+				//- 	label.col-sm-2.control-label Origin Airport
+				//- 	.col-sm-8
+				//- 		select.form-control.selectFull(name='c_code',required)
+				//- 			- for(var j=0; j< orgn.length; j++){
+				//- 			option(value=orgn[j].aname) #{orgn[j].aname}
+				//- 			- }
 				.form-group.row
 					label.col-sm-2.control-label Airplane Model
 					.col-sm-8
-						input.form-control(type='text', placeholder='Codigo Ciudad Destino', name='airplane_t_model', required)
+						select.form-control.selectFull(name='c_code',required)
+							- for(var z=0; z< mods.length; z++){
+							option(value=mods[z].MODEL) #{mods[z].MODEL}
+							- }
 				.form-group
 					.col-sm-offset-2.col-sm-10
 						button.btn.btn-primary.btn-lg(type='submit') Submit
+	#myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+		.modal-dialog
+			.modal-content
+				.modal-header
+					button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+					h4#myModalLabel.modal-title New Airport
+				.modal-body 
+					h3.sub-header New Airport
+					form.form-horizontal(method='post', action='/aeropuertos')
+						.form-group.row
+							label.col-sm-2.control-label Code
+							.col-sm-8
+								input.form-control(type='text', placeholder='LAX',name='code',required, maxlength='3')
+						.form-group.row
+							label.col-sm-2.control-label Name
+							.col-sm-8
+								input.form-control(type='text', placeholder='Los Angeles', name='name',required, maxlength='30')
+						.form-group.row
+							label.col-sm-2.control-label Coordinates
+							.col-sm-8
+								input.form-control(type='text', placeholder='-22.32,27.43', name='coordinates', maxlength='11')
+						.form-group.row
+							label.col-sm-2.control-label City
+							.col-sm-8
+								select.form-control(name='city_id')
+									- for(var i=0; i< data.length; i++){
+									option(value=data[i].CODE) #{data[i].NAME}
+									- }
+				.modal-footer
+					button.btn.btn-default(type='button', data-dismiss='modal') Close
+					button.btn.btn-primary(type='button') Save changes
