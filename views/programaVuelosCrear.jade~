@@ -46,21 +46,21 @@ block entidad
 						input.form-control(type='time', placeholder='54 Hours', name='estimated_duration', required)
 				.form-group.row
 					label.col-sm-2.control-label Destiny Airport
-					.col-sm-8
-						select.form-control.selectFull(name='c_code',required)
-							- for(var i=0; i< dest.length; i++){
-							option(value=dest[i].aname) #{dest[i].aname}
-							- }
-					.col-sm-2
-						a(href="#",data-toggle='modal', data-target='#myModal')
-										span.glyphicon.glyphicon-edit
+				 	.col-sm-8
+				 		select.form-control.selectFull(name='c_code',required)
+				 			- for(var i=0; i< dest.length; i++){
+				 			option(value=dest[i].aname) #{dest[i].aname}
+				 			- }
+				 	.col-sm-2
+				 		a(href="#",data-toggle='modal', data-target='#myModal')
+				 						span.glyphicon.glyphicon-edit
 				.form-group.row
 					label.col-sm-2.control-label Origin Airport
-					.col-sm-8
-						select.form-control.selectFull(name='c_code',required)
-							- for(var j=0; j< orgn.length; j++){
-							option(value=orgn[j].aname) #{orgn[j].aname}
-							- }
+				 	.col-sm-8
+				 		select.form-control.selectFull(name='c_code',required)
+				 			- for(var j=0; j< orgn.length; j++){
+				 			option(value=orgn[j].aname) #{orgn[j].aname}
+				 			- }
 				.form-group.row
 					label.col-sm-2.control-label Airplane Model
 					.col-sm-8
