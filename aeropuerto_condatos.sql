@@ -27,7 +27,7 @@ CREATE TABLE `airline` (
   `NAME` varchar(15) NOT NULL,
   `ACRONYM` varchar(3) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,7 +36,7 @@ CREATE TABLE `airline` (
 
 LOCK TABLES `airline` WRITE;
 /*!40000 ALTER TABLE `airline` DISABLE KEYS */;
-INSERT INTO `airline` VALUES (1,'LanAirlines','LAN'),(2,'ChanchoPlanes','CP'),(3,'AirFrance','AF'),(4,'LanAirlineseses','LAN');
+INSERT INTO `airline` VALUES (1,'LanAirlines','LAN'),(2,'ChanchoPlanes','CP'),(3,'AirFrance','AF');
 /*!40000 ALTER TABLE `airline` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -58,8 +58,8 @@ CREATE TABLE `airplane` (
   PRIMARY KEY (`ID`),
   KEY `AIRLINE_ID` (`AIRLINE_ID`),
   KEY `T_MODEL` (`T_MODEL`),
-  CONSTRAINT `airplane_ibfk_2` FOREIGN KEY (`T_MODEL`) REFERENCES `airplane_type` (`MODEL`) ON UPDATE CASCADE,
-  CONSTRAINT `airplane_ibfk_1` FOREIGN KEY (`AIRLINE_ID`) REFERENCES `airline` (`ID`) ON UPDATE CASCADE
+  CONSTRAINT `airplane_ibfk_1` FOREIGN KEY (`AIRLINE_ID`) REFERENCES `airline` (`ID`) ON UPDATE CASCADE,
+  CONSTRAINT `airplane_ibfk_2` FOREIGN KEY (`T_MODEL`) REFERENCES `airplane_type` (`MODEL`) ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -69,7 +69,7 @@ CREATE TABLE `airplane` (
 
 LOCK TABLES `airplane` WRITE;
 /*!40000 ALTER TABLE `airplane` DISABLE KEYS */;
-INSERT INTO `airplane` VALUES (4,2012,85,'Amelia Earhart','Oliver Wright',1,'Boeing 747'),(5,2012,88,'Amelia Earhart','Bugs Bunny',2,'JumboJet'),(6,2013,66,'Gato Felix','Bugs Bunny',1,'JumboJet'),(7,2012,88,'Amelia Earhart','Bugs Bunny',1,'Boeing 747'),(8,2012,88,'Asdc fg','Bugs Bunny',1,'JumboJet');
+INSERT INTO `airplane` VALUES (4,2012,85,'Amelia Earhart','Oliver Wright',1,'Boeing 747'),(6,2013,66,'Gato Felix','Bugs Bunny',1,'JumboJet'),(8,2012,88,'Rocky','Bullwinkle',1,'Boeing 747');
 /*!40000 ALTER TABLE `airplane` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -94,7 +94,7 @@ CREATE TABLE `airplane_type` (
 
 LOCK TABLES `airplane_type` WRITE;
 /*!40000 ALTER TABLE `airplane_type` DISABLE KEYS */;
-INSERT INTO `airplane_type` VALUES ('Boeing 747','PlaneFactory',350),('JumboJet','PlaneMakers',450);
+INSERT INTO `airplane_type` VALUES ('Boeing 747','PlaneFactory',350),('JumboJet','PlaneMakerz',450);
 /*!40000 ALTER TABLE `airplane_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -122,7 +122,7 @@ CREATE TABLE `airport` (
 
 LOCK TABLES `airport` WRITE;
 /*!40000 ALTER TABLE `airport` DISABLE KEYS */;
-INSERT INTO `airport` VALUES ('AMB','Aeropuerto Arturo M. Benitez','-28.54,-25.66','STC');
+INSERT INTO `airport` VALUES ('AMB','Aeropuerto Arturo M. Benitez','-28.54,-25.65','STC'),('LX2','L.A. airport 2','-33.54,23.46','LA');
 /*!40000 ALTER TABLE `airport` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -140,8 +140,8 @@ CREATE TABLE `boarding_pass` (
   PRIMARY KEY (`ID`),
   KEY `FLIGHT_ID` (`FLIGHT_ID`),
   KEY `TICKET_ID` (`TICKET_ID`),
-  CONSTRAINT `boarding_pass_ibfk_2` FOREIGN KEY (`TICKET_ID`) REFERENCES `ticket` (`ID`) ON UPDATE CASCADE,
-  CONSTRAINT `boarding_pass_ibfk_1` FOREIGN KEY (`FLIGHT_ID`) REFERENCES `flight` (`ID`) ON UPDATE CASCADE
+  CONSTRAINT `boarding_pass_ibfk_1` FOREIGN KEY (`FLIGHT_ID`) REFERENCES `flight` (`ID`) ON UPDATE CASCADE,
+  CONSTRAINT `boarding_pass_ibfk_2` FOREIGN KEY (`TICKET_ID`) REFERENCES `ticket` (`ID`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -224,9 +224,9 @@ CREATE TABLE `flight` (
   KEY `PLANE_ID` (`PLANE_ID`),
   KEY `S_FLIGHT_ID` (`S_FLIGHT_ID`),
   KEY `GATE_NAME` (`GATE_NAME`),
-  CONSTRAINT `flight_ibfk_3` FOREIGN KEY (`GATE_NAME`) REFERENCES `gate` (`NAME`) ON UPDATE CASCADE,
   CONSTRAINT `flight_ibfk_1` FOREIGN KEY (`PLANE_ID`) REFERENCES `airplane` (`ID`) ON UPDATE CASCADE,
-  CONSTRAINT `flight_ibfk_2` FOREIGN KEY (`S_FLIGHT_ID`) REFERENCES `scheduled_flight` (`ID`) ON UPDATE CASCADE
+  CONSTRAINT `flight_ibfk_2` FOREIGN KEY (`S_FLIGHT_ID`) REFERENCES `scheduled_flight` (`ID`) ON UPDATE CASCADE,
+  CONSTRAINT `flight_ibfk_3` FOREIGN KEY (`GATE_NAME`) REFERENCES `gate` (`NAME`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -259,7 +259,7 @@ CREATE TABLE `gate` (
 
 LOCK TABLES `gate` WRITE;
 /*!40000 ALTER TABLE `gate` DISABLE KEYS */;
-INSERT INTO `gate` VALUES ('A23',1),('B34',0);
+INSERT INTO `gate` VALUES ('A23',1),('A25',0),('B34',0);
 /*!40000 ALTER TABLE `gate` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -307,7 +307,7 @@ CREATE TABLE `passenger` (
   PRIMARY KEY (`ID`),
   KEY `C_CODE` (`C_CODE`),
   CONSTRAINT `passenger_ibfk_1` FOREIGN KEY (`C_CODE`) REFERENCES `country` (`CODE`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -316,6 +316,7 @@ CREATE TABLE `passenger` (
 
 LOCK TABLES `passenger` WRITE;
 /*!40000 ALTER TABLE `passenger` DISABLE KEYS */;
+INSERT INTO `passenger` VALUES (3,'7.654.321-8','John Doe','M','1990-04-08','US');
 /*!40000 ALTER TABLE `passenger` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -338,9 +339,9 @@ CREATE TABLE `scheduled_flight` (
   KEY `DESTINY_CODE` (`DESTINY_CODE`),
   KEY `ORIGIN_CODE` (`ORIGIN_CODE`),
   KEY `AIRPLANE_T_MODEL` (`AIRPLANE_T_MODEL`),
-  CONSTRAINT `scheduled_flight_ibfk_3` FOREIGN KEY (`AIRPLANE_T_MODEL`) REFERENCES `airplane_type` (`MODEL`) ON UPDATE CASCADE,
   CONSTRAINT `scheduled_flight_ibfk_1` FOREIGN KEY (`DESTINY_CODE`) REFERENCES `airport` (`CODE`) ON UPDATE CASCADE,
-  CONSTRAINT `scheduled_flight_ibfk_2` FOREIGN KEY (`ORIGIN_CODE`) REFERENCES `airport` (`CODE`) ON UPDATE CASCADE
+  CONSTRAINT `scheduled_flight_ibfk_2` FOREIGN KEY (`ORIGIN_CODE`) REFERENCES `airport` (`CODE`) ON UPDATE CASCADE,
+  CONSTRAINT `scheduled_flight_ibfk_3` FOREIGN KEY (`AIRPLANE_T_MODEL`) REFERENCES `airplane_type` (`MODEL`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -367,8 +368,8 @@ CREATE TABLE `ticket` (
   PRIMARY KEY (`ID`),
   KEY `PASSENGER_ID` (`PASSENGER_ID`),
   KEY `T_GROUP_ID` (`T_GROUP_ID`),
-  CONSTRAINT `ticket_ibfk_2` FOREIGN KEY (`T_GROUP_ID`) REFERENCES `ticket_group` (`ID`) ON UPDATE CASCADE,
-  CONSTRAINT `ticket_ibfk_1` FOREIGN KEY (`PASSENGER_ID`) REFERENCES `passenger` (`ID`) ON UPDATE CASCADE
+  CONSTRAINT `ticket_ibfk_1` FOREIGN KEY (`PASSENGER_ID`) REFERENCES `passenger` (`ID`) ON UPDATE CASCADE,
+  CONSTRAINT `ticket_ibfk_2` FOREIGN KEY (`T_GROUP_ID`) REFERENCES `ticket_group` (`ID`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -416,4 +417,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-05-02  3:32:57
+-- Dump completed on 2014-05-15 18:35:53
