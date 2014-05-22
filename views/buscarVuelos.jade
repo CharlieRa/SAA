@@ -10,7 +10,7 @@ block entidad
 						h1.panel-title Search Flights
 					.panel-bodyPanel#panel
 						form.form-horizontal(method='post', action='/aerolineas', id='formulario')
-							.form-group.row
+							.form-group.row#idavuelta
 								.col-md-5
 									label.checkbox-inline
 										input(type='checkbox',value=1)
@@ -29,19 +29,26 @@ block entidad
 								label.col-sm-2 To
 								.col-sm-11
 									input.form-control(type='text', placeholder='', name='acronym', required,maxlength='3')
-
+							.form-group
+								label.col-sm-5 Departure Date
+								.col-sm-11
+									input.form-control#fecha(type='date', placeholder='', name='departureDate', required)					
 							.row(align='left')
-								label.col-md-5 Departure Date
-								label.col-md-5 Time
+								label.col-md-5 Adults
+								.col-md-1
+								label.col-md-5 Kids
 							.form-group.row
 								.col-sm-5
-									input.form-control#fecha(type='date', placeholder='', name='departureDate', required)
+									select.form-control.selectFull(name='adults',required)
+										- for(var i=0; i< 11; i++){
+											option(value=i)= i
+											- }  
+								.col-md-1
 								.col-md-5
-									input.form-control(type='time', placeholder='', name='departureTime', required)
-							.form-group.row
-								.col-md-5
-									select.form-control.selectFull(name='',required)
-										option(value='') 1 Adult 
-										option(value='') 2 Adult 
-								.col-md-5
+									select.form-control.selectFull(name='kids',required)
+										- for(var i=0; i< 11; i++){
+											option(value=i)= i
+											- }  
+							.form-group									
+								.col-md-11
 									button.btn.btn-primary.btn-block(type='submit') Find Flights
