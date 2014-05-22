@@ -181,6 +181,10 @@ app.get('/paises/modificar/:id', Pais.modificar);
 app.post('/paises/modificar', Pais.edit);
 app.get('/paises/borrar/:code', Pais.borrar);
 
+app.get('/buscar', function (req, res){
+  res.render('buscarVuelos');
+});
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });

@@ -1,12 +1,47 @@
 extends admin
 
 block entidad
-		include layout	
-		.container-fluid
-			.panel.panel-default
-    			.panel-heading Panel heading without title
-					.panel-body Panel content
-    		.panel.panel-default
-      			.panel-heading
-        			h3.panel-title Panel title
-      			.panel-bodyPanel content
+	h1.page-header#titulo Search Flights
+	.container-fluid(align='center')
+		.row
+			.col-md-5.col-md-offset-3
+				.panel.panel-primary
+					.panel-heading
+						h1.panel-title Search Flights
+					.panel-bodyPanel#panel
+						form.form-horizontal(method='post', action='/aerolineas', id='formulario')
+							.form-group.row
+								.col-md-5
+									label.checkbox-inline
+										input(type='checkbox',value=1)
+										p One-way&nbsp;&nbsp;
+									label.glyphicon.glyphicon-arrow-right
+								.col-md-5
+									label.checkbox-inline
+										input(type='checkbox',value=2)
+										p Return Trip&nbsp;&nbsp;
+									label.glyphicon.glyphicon-retweet
+							.form-group
+								label.col-sm-2 From
+								.col-sm-11
+									input.form-control(type='text', placeholder='', name='name', required, maxlength='15')
+							.form-group
+								label.col-sm-2 To
+								.col-sm-11
+									input.form-control(type='text', placeholder='', name='acronym', required,maxlength='3')
+
+							.row(align='left')
+								label.col-md-5 Departure Date
+								label.col-md-5 Time
+							.form-group.row
+								.col-sm-5
+									input.form-control#fecha(type='date', placeholder='', name='departureDate', required)
+								.col-md-5
+									input.form-control(type='time', placeholder='', name='departureTime', required)
+							.form-group.row
+								.col-md-5
+									select.form-control.selectFull(name='',required)
+										option(value='') 1 Adult 
+										option(value='') 2 Adult 
+								.col-md-5
+									button.btn.btn-primary.btn-block(type='submit') Find Flights
