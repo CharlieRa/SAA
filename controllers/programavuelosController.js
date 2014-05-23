@@ -13,7 +13,7 @@ scheduled_flight.prototype.get= function(req, res) {
 	var destino = '(select city.NAME from airport join city join scheduled_flight where CITY_ID = city.CODE and airport.CODE = DESTINY_CODE)';
 	var origen = '(select city.NAME from airport join city join scheduled_flight where CITY_ID = city.CODE and airport.CODE = ORIGIN_CODE)';
 	connection.connect();
-	connection.query('SELECT WEEK_DAYS, ESTIMATED_DEPARTURE, ESTIMATED_DURATION,'+destino+','+origen+' , AIRPLANE_T_MODEL FROM scheduled_flight', function(err, result) {
+	connection.query('SELECT WEEK_DAYS, ESTIMATED_DEPARTURE, ESTIMATED_DURATION,'+destino+' AS dest,'+origen+' AS org, AIRPLANE_T_MODEL FROM scheduled_flight', function(err, result) {
 		if(err)
      		console.log(err);
 		res.render('programaVuelos', { data: result})
@@ -32,12 +32,12 @@ scheduled_flight.prototype.crear = function(req, res) {
 
 	async.parallel({
 		    destino: function(callback){
-		    	connection.query('SELECT airport.NAME AS aname, city.NAME AS cname FROM airport join city WHERE city.CODE = CITY_ID', function(err, result) {
+		    	connection.query('SELECT airport.NAME AS aname, city.NAME AS cname, airport.CODE FROM airport join city WHERE city.CODE = CITY_ID', function(err, result) {
 		    		callback(null, result);
 				})
 		    },
 		    origen: function(callback){
-		    	connection.query('SELECT airport.NAME AS aname, city.NAME AS cname FROM airport join city WHERE city.CODE = CITY_ID', function(err, result) {
+		    	connection.query('SELECT airport.NAME AS aname, city.NAME AS cname, airport.CODE FROM airport join city WHERE city.CODE = CITY_ID', function(err, result) {
 						callback(null, result);
 				})
 		    },
@@ -166,14 +166,21 @@ scheduled_flight.prototype. insert=function(req,res) {
 		database : 'aeropuerto'
 		});
 	connection.connect();
-	connection.query('INSERT INTO scheduled_flight SET ?', {gasolina: req.body.gasolina , 
-												 piloto: req.body.piloto,
-												 año: req.body.año,
-												 id_aerolinea: req.body.id_aerolinea,
-												 id_tipo_scheduled_flight: req.body.id_tipo_scheduled_flight
-												},function(err, result, t) {
-  		if(err)
-     		console.log('error');
+	var days = parseInt((req.body.mo || 0)) + parseInt((req.body.tu || 0)) + parseInt((req.body.we || 0)) + parseInt((req.body.th || 0)) + parseInt((req.body.fr || 0)) + parseInt((req.body.sa || 0)) + parseInt((req.body.su || 0)); 
+	console.log('1.-'+(req.body.mo || 0)+'-'+(req.body.tu || 0)+'-'+(req.body.we || 0)+'-'+(req.body.th || 0)+'-'+(req.body.fr || 0)+'-'+(req.body.sa || 0)+'-'+(req.body.su || 0)+' - '+days);
+
+
+	connection.query('INSERT INTO scheduled_flight SET ?', {	WEEK_DAYS: days,
+									ESTIMATED_DEPARTURE: req.body.estimated_departure,
+									ESTIMATED_DURATION: req.body.estimated_duration,
+									DESTINY_CODE: req.body.destiny_code,
+									ORIGIN_CODE: req.body.origin_code,
+									AIRPLANE_T_MODEL: req.body.airplane_t_model
+									},function(err, result, t) {
+  		if(err){
+     		console.log('2.- '+result);
+		console.log('3.- '+err);
+		}
 	    else{
 	    	res.redirect('/programaVuelos');
 	    }

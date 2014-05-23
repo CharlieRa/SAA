@@ -1,0 +1,11 @@
+1001001 = 73
+
+
+
+							input(type='hidden', name='mo',value='')
+							input(type='hidden', name='tu',value='')
+							input(type='hidden', name='we',value='')
+							input(type='hidden', name='th',value='')
+							input(type='hidden', name='fr',value='')
+							input(type='hidden', name='sa',value='')
+							input(type='hidden', name='su',value='')

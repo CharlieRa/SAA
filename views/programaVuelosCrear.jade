@@ -16,25 +16,25 @@ block entidad
 					label.col-sm-2.control-label Weeks Days
 					.col-sm-10
 						label.checkbox-inline
-							input(type='checkbox',value=1)
+							input(type='checkbox', name='mo',value='64')
 							label Monday
 						label.checkbox-inline
-							input(type='checkbox',value=2)
+							input(type='checkbox', name='tu', value='32')
 							label Tuesday
 						label.checkbox-inline
-							input(type='checkbox',value=4)
+							input(type='checkbox', name='we', value='16')
 							label Wednesday
 						label.checkbox-inline
-							input(type='checkbox',value=8)
+							input(type='checkbox', name='th', value='8')
 							label Thursday
 						label.checkbox-inline
-							input(type='checkbox',value=16)
+							input(type='checkbox', name='fr', value='4')
 							label  Friday
 						label.checkbox-inline
-							input(type='checkbox',value=32)
+							input(type='checkbox', name='sa', value='2')
 							label Saturday
 						label.checkbox-inline
-							input(type='checkbox',value=64)
+							input(type='checkbox', name='su', value='1')
 							label Sunday
 				.form-group.row
 					label.col-sm-2.control-label Estimated Departure
@@ -47,24 +47,22 @@ block entidad
 				.form-group.row
 					label.col-sm-2.control-label Destiny Airport
 					.col-sm-8
-						select.form-control.selectFull(name='c_code',required)
+						select.form-control.selectFull(name='destiny_code',required)
 							- for(var i=0; i< dest.length; i++){
-							option(value=dest[i].aname) #{dest[i].aname}
+							option(value=dest[i].CODE) #{dest[i].aname}
 							- }
-					.col-sm-2
-						a(href="#",data-toggle='modal', data-target='#myModal')
-										span.glyphicon.glyphicon-edit
+
 				.form-group.row
 					label.col-sm-2.control-label Origin Airport
 					.col-sm-8
-						select.form-control.selectFull(name='c_code',required)
+						select.form-control.selectFull(name='origin_code',required)
 							- for(var j=0; j< orgn.length; j++){
-							option(value=orgn[j].aname) #{orgn[j].aname}
+							option(value=orgn[j].CODE) #{orgn[j].aname}
 							- }
 				.form-group.row
 					label.col-sm-2.control-label Airplane Model
 					.col-sm-8
-						select.form-control.selectFull(name='c_code',required)
+						select.form-control.selectFull(name='airplane_t_model',required)
 							- for(var z=0; z< mods.length; z++){
 							option(value=mods[z].MODEL) #{mods[z].MODEL}
 							- }
