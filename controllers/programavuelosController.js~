@@ -10,10 +10,10 @@ scheduled_flight.prototype.get= function(req, res) {
 		password : '',
 		database : 'aeropuerto'
 	});
-	var destino = '';
-	var origen = '';
+	var destino = '(select city.NAME from airport join city join scheduled_flight where CITY_ID = city.CODE and airport.CODE = DESTINY_CODE)';
+	var origen = '(select city.NAME from airport join city join scheduled_flight where CITY_ID = city.CODE and airport.CODE = ORIGIN_CODE)';
 	connection.connect();
-	connection.query('SELECT WEEK_DAYS, ESTIMATED_DEPARTURE, ESTIMATED_DURATION,(select city.NAME from airport join city join scheduled_flight where CITY_ID = city.CODE and airport.CODE = DESTINY_CODE) AS dest,(select city.NAME from airport join city join scheduled_flight where CITY_ID = city.CODE and airport.CODE = ORIGIN_CODE) AS org, AIRPLANE_T_MODEL FROM scheduled_flight', function(err, result) {
+	connection.query('SELECT WEEK_DAYS, ESTIMATED_DEPARTURE, ESTIMATED_DURATION,'+destino+' AS dest,'+origen+' AS org, AIRPLANE_T_MODEL FROM scheduled_flight', function(err, result) {
 		if(err)
      		console.log(err);
 		res.render('programaVuelos', { data: result})
