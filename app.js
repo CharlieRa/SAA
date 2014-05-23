@@ -185,6 +185,10 @@ app.get('/buscar', function (req, res){
   res.render('buscarVuelos');
 });
 
+app.get('/vuelosBuscados', function (req, res){
+  res.render('vuelosBuscados');
+});
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });

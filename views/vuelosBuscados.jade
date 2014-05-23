@@ -1,0 +1,27 @@
+extends admin
+
+block entidad
+	- for(var i = 0;i < 3; i++){
+		div.panel.panel-default
+			div.panel-body
+				.info.page-header
+					h4.page-header 
+						strong LAN 
+					.code#menu(align='center')
+						p.glyphicon.glyphicon-plane&nbsp; Flight Code: 
+						br
+						strong AA-123
+					.place#menu(align='center')
+						h4 SCL -> SAO
+				.comprar
+					.panel.panel-default
+						.panel-body(align='center')
+							p Buy Precio por adulto
+							p US$494
+							p 1 Adulto US$494
+							p Imp. y tasas US$69
+							p Cargos US$60
+							p Total US$623
+							button.btn.btn-primary.btn-lg.btn-block Buy
+						
+		-}

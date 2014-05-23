@@ -12,13 +12,13 @@ block entidad
 						form.form-horizontal(method='post', action='/aerolineas', id='formulario')
 							.form-group.row#idavuelta
 								.col-md-5
-									label.checkbox-inline
-										input(type='checkbox',value=1)
+									label.radio-inline
+										input(type='radio',value=1)
 										p One-way&nbsp;&nbsp;
 									label.glyphicon.glyphicon-arrow-right
 								.col-md-5
-									label.checkbox-inline
-										input(type='checkbox',value=2)
+									label.radio-inline
+										input(type='radio',value=2)
 										p Return Trip&nbsp;&nbsp;
 									label.glyphicon.glyphicon-retweet
 							.form-group
@@ -40,12 +40,12 @@ block entidad
 							.form-group.row
 								.col-sm-5
 									select.form-control.selectFull(name='adults',required)
-										- for(var i=0; i< 11; i++){
+										- for(var i=1; i< 11; i++){
 											option(value=i)= i
 											- }  
 								.col-md-1
 								.col-md-5
-									select.form-control.selectFull(name='kids',required)
+									select.form-control.selectFull(name='kids')
 										- for(var i=0; i< 11; i++){
 											option(value=i)= i
 											- }  
