@@ -18,13 +18,12 @@ aerolinea.prototype.crear = function(req, res) {
 };
 
 aerolinea.prototype.modificar = function(req, res) {
-		var connection = mysql.createConnection(c_info);
-	//res.render('aerolineasModificar');
+	var connection = mysql.createConnection(c_info);
 	connection.connect();
 
-	connection.query('SELECT * FROM airline WHERE id ='+req.params.id, function(err, result) {
+	connection.query('SELECT * FROM airline WHERE ID ='+req.params.id, function(err, result) {
   		if(err)
-     		console.log('error');
+     		console.log(err);
 	    else{
 	    	res.render('aerolineasModificar',{ data: result});
 	    }
@@ -36,9 +35,10 @@ aerolinea.prototype.modificar = function(req, res) {
 aerolinea.prototype.mod=function(req,res) {
 	var connection = mysql.createConnection(c_info);
 	connection.connect();
-	connection.query('UPDATE airline SET ? WHERE id ='+req.body.id , {NAME: req.body.name,
-													 				 ACRONYM: req.body.acronym
-													},function(err, result) {
+	connection.query('UPDATE airline SET ? WHERE ID ='+req.body.id , {	
+										NAME: req.body.name,
+										ACRONYM: req.body.acronym
+										},function(err, result) {
   		if(err)
      		console.log(err);
 	    else{

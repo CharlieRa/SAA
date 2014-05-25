@@ -4,12 +4,7 @@ require ('./datos_glob');
 var gate  = function () {};
 
 gate.prototype.get= function(req, res) {
-	var connection = mysql.createConnection({
-		host     : 'localhost',
-		user     : 'root',
-		password : '',
-		database : 'aeropuerto'
-	});
+	var connection = mysql.createConnection(c_info);
 	connection.connect();
 	connection.query('SELECT * FROM gate', function(err, result) {
  		res.render('gates', { data: result})
@@ -18,12 +13,7 @@ gate.prototype.get= function(req, res) {
 };
 
 gate.prototype.insert=function(req,res) {
-	var connection = mysql.createConnection({
-		host     : 'localhost',
-		user     : 'root',
-		password : '',
-		database : 'aeropuerto'
-		});
+	var connection = mysql.createConnection(c_info);
 	connection.connect();
 	connection.query('INSERT INTO gate SET ?', {	NAME: req.body.name,
 							STATUS: req.body.status, 
@@ -39,12 +29,7 @@ gate.prototype.insert=function(req,res) {
 };
 
 gate.prototype.crear = function(req, res) {
-		var connection = mysql.createConnection({
-		host     : 'localhost',
-		user     : 'root',
-		password : '',
-		database : 'aeropuerto'
-	});
+		var connection = mysql.createConnection(c_info);
 	connection.connect();
 	// connection.query('SELECT id, nombre FROM airline', function(err, result) {
 	// 	console.log(result)
@@ -53,12 +38,7 @@ gate.prototype.crear = function(req, res) {
 	connection.end();
 };
 gate.prototype.modificar = function(req, res) {
-		var connection = mysql.createConnection({
-		host     : 'localhost',
-		user     : 'root',
-		password : '',
-		database : 'aeropuerto'
-	});
+		var connection = mysql.createConnection(c_info);
 	connection.connect();
 
 	connection.query('SELECT * FROM gate WHERE NAME =' + mysql.escape("" + req.params.name), function(err, result) {

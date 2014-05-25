@@ -3,5 +3,3 @@ c_info = {	host : 'localhost',
 		password : '',
 		database : 'aeropuerto'
 		};
-
-//- exports.c_info = c_info;

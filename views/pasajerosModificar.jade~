@@ -18,7 +18,7 @@ block entidad
 				.col-sm-8
 					input.form-control(type='text', name='name',required ,value='#{data[0].NAME}')
 			.form-group.row
-				label.col-sm-2.control-label PIN
+				label.col-sm-2.control-label Personal Identification Number
 				.col-sm-8
 					input.form-control(type='text', name='pin',required, value='#{data[0].PIN}')
 			.form-group.row
