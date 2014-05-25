@@ -1,5 +1,6 @@
 var mysql = require ('mysql');
 var async = require ('async');
+require ('./datos_glob');
 
 var flight  = function () {};
 

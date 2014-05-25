@@ -5,7 +5,12 @@ require ('./datos_glob');
 var airplaneType  = function () {};
 
 airplaneType.prototype.get= function(req, res) {
-    var connection = mysql.createConnection(c_info);
+    var connection = mysql.createConnection({
+        host     : 'localhost',
+        user     : 'root',
+        password : '',
+        database : 'aeropuerto'
+    });
     connection.connect();
     connection.query('SELECT * FROM airplane_type', function(err, result) {
         res.render('tipoAvion', { data: result})
@@ -14,7 +19,12 @@ airplaneType.prototype.get= function(req, res) {
 };
 
 airplaneType.prototype.insert = function(req, res) {
-    var connection = mysql.createConnection(c_info);
+    var connection = mysql.createConnection({
+        host     : 'localhost',
+        user     : 'root',
+        password : '',
+        database : 'aeropuerto'
+    });
     connection.connect();
     connection.query('INSERT INTO airplane_type SET ?',{
         MODEL: req.body.model,
@@ -31,7 +41,12 @@ airplaneType.prototype.insert = function(req, res) {
 };
 
 airplaneType.prototype.modificar = function(req, res) {
-    var connection = mysql.createConnection(c_info);
+    var connection = mysql.createConnection({
+        host     : 'localhost',
+        user     : 'root',
+        password : '',
+        database : 'aeropuerto'
+    });
     connection.connect();
     connection.query('SELECT * FROM airplane_type WHERE MODEL ='+ mysql.escape(""+req.params.model), function(err, result) {
   if(err)
@@ -45,7 +60,12 @@ airplaneType.prototype.modificar = function(req, res) {
 };
 
 airplaneType.prototype.mod=function(req,res) {
-    var connection = mysql.createConnection(c_info);
+    var connection = mysql.createConnection({
+        host     : 'localhost',
+        user     : 'root',
+        password : '',
+        database : 'aeropuerto'
+    });
     connection.connect();
     connection.query('UPDATE airplane_type SET ? WHERE MODEL =' + mysql.escape("" + req.body.model), {
                                                                 MADE_BY: req.body.made_by,
@@ -64,7 +84,12 @@ airplaneType.prototype.mod=function(req,res) {
 };
 
 airplaneType.prototype.borr=function(req,res) {
-    var connection = mysql.createConnection(c_info);
+    var connection = mysql.createConnection({
+        host     : 'localhost',
+        user     : 'root',
+        password : '',
+        database : 'aeropuerto'
+    });
     connection.connect();
     connection.query('DELETE FROM airplane_type WHERE MODEL ='+ mysql.escape(""+req.params.model), function(err, result) {
         if(err)

@@ -1,14 +1,10 @@
 var mysql = require ('mysql');
+require ('./datos_glob');
 
 var pasajero  = function () {};
 
 pasajero.prototype.get= function(req, res) {
-	var connection = mysql.createConnection({
-		host     : 'localhost',
-		user     : 'root',
-		password : '',
-		database : 'aeropuerto'
-	});
+	var connection = mysql.createConnection(c_info);
 	connection.connect();
 	connection.query('SELECT * FROM passenger', function(err, result) {
  		res.render('pasajeros', { data: result})
@@ -18,12 +14,7 @@ pasajero.prototype.get= function(req, res) {
 };
 
 pasajero.prototype.crear = function(req, res) {
-		var connection = mysql.createConnection({
-		host     : 'localhost',
-		user     : 'root',
-		password : '',
-		database : 'aeropuerto'
-	});
+		var connection = mysql.createConnection(c_info);
 	connection.connect();
 	connection.query('SELECT CODE, NAME FROM country', function(err, result) {
 		console.log(result)
@@ -33,12 +24,7 @@ pasajero.prototype.crear = function(req, res) {
 };
 
 pasajero.prototype.insert=function(req,res) {
-	var connection = mysql.createConnection({
-		host     : 'localhost',
-		user     : 'root',
-		password : '',
-		database : 'aeropuerto'
-		});
+	var connection = mysql.createConnection(c_info);
 	connection.connect();
 	connection.query('INSERT INTO passenger SET ?', {	PIN: req.body.pin , 
 								NAME: req.body.name,

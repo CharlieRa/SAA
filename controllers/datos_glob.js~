@@ -1,0 +1,7 @@
+c_info = {	host : 'localhost',
+		user     : 'root',
+		password : '',
+		database : 'aeropuerto'
+		};
+
+//- exports.c_info = c_info;

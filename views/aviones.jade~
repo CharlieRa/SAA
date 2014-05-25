@@ -27,12 +27,12 @@ block entidad
 								td #{data[i].GAS_LEVEL}
 								td #{data[i].PILOT}
 								td #{data[i].COPILOT}
-								td #{data[i].AIRLINE_ID}
+								td #{data[i].AL}
 								td #{data[i].T_MODEL}	
 								td(style='width:5px;') 
 									a(href="/aviones/modificar/#{data[i].ID}")
 										span.glyphicon.glyphicon-edit
-								td(style='width:5px;') 
+								td(style='cursor: pointer; width:5px;')
 									a(onclick="confirmGetMessage(#{data[i].ID})")
 										span.glyphicon.glyphicon-trash
 		ul.pagination
@@ -49,4 +49,4 @@ block entidad
 			li
 				a(href='#') 5
 			li
-				a(href='#') »									
+				a(href='#') »													

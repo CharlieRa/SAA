@@ -5,30 +5,3 @@ body {
 a {
   color: #00b7ff;
 }
-#menu
-{
-border-right: 1px solid black;
-height: 100%;
-padding-right: 10px;
-}
-
-.code{
-	width: 200px;
-	height: auto;
-	float: left;
-}
-.place{
-	width: 200px;
-	height: auto;
-	float: left;
-}
-.info{
-	width: 71%;
-	height: auto;
-	float: left;
-}
-.comprar{
-	width: 30%;
-	height:auto;
-	float: left;
-}

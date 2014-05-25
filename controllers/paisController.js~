@@ -4,7 +4,12 @@ require ('./datos_glob');
 var pais  = function () {};
 
 pais.prototype.get= function(req, res) {
-	var connection = mysql.createConnection(c_info);
+	var connection = mysql.createConnection({
+		host     : 'localhost',
+		user     : 'root',
+		password : '',
+		database : 'aeropuerto'
+	});
 	connection.connect();
 	connection.query('SELECT * FROM country', function(err, result) {
  		res.render('paises', { data: result})
@@ -13,7 +18,12 @@ pais.prototype.get= function(req, res) {
 };
 
 pais.prototype.insert=function(req,res) {
-	var connection = mysql.createConnection(c_info);
+	var connection = mysql.createConnection({
+		host     : 'localhost',
+		user     : 'root',
+		password : '',
+		database : 'aeropuerto'
+		});
 	connection.connect();
 	connection.query('INSERT INTO country SET ?', {	CODE: req.body.code,
 							NAME: req.body.name,
@@ -30,7 +40,12 @@ pais.prototype.insert=function(req,res) {
 };
 
 pais.prototype.crear = function(req, res) {
-		var connection = mysql.createConnection(c_info);
+		var connection = mysql.createConnection({
+		host     : 'localhost',
+		user     : 'root',
+		password : '',
+		database : 'aeropuerto'
+	});
 	connection.connect();
 	// connection.query('SELECT id, nombre FROM airline', function(err, result) {
 	// 	console.log(result)
@@ -40,7 +55,12 @@ pais.prototype.crear = function(req, res) {
 };
 
 pais.prototype.modificar = function(req, res) {
-		var connection = mysql.createConnection(c_info);
+		var connection = mysql.createConnection({
+		host     : 'localhost',
+		user     : 'root',
+		password : '',
+		database : 'aeropuerto'
+	});
 	connection.connect();
 
 	connection.query('SELECT * FROM country WHERE CODE ="' + req.params.id + '"', function(err, result) {
@@ -55,7 +75,12 @@ pais.prototype.modificar = function(req, res) {
 };
 
 pais.prototype.edit=function(req,res) {
-	var connection = mysql.createConnection(c_info);
+	var connection = mysql.createConnection({
+		host     : 'localhost',
+		user     : 'root',
+		password : '',
+		database : 'aeropuerto'
+	});
 	connection.connect();
 	connection.query('UPDATE country SET ? WHERE CODE =' + mysql.escape(""+req.body.code), {NAME: req.body.name,
 													 				 MAIN_LANG: req.body.main_lang
@@ -71,7 +96,12 @@ pais.prototype.edit=function(req,res) {
 };
 
 pais.prototype.borrar=function(req,res) {
-		var connection = mysql.createConnection(c_info);
+		var connection = mysql.createConnection({
+		host     : 'localhost',
+		user     : 'root',
+		password : '',
+		database : 'aeropuerto'
+	});
 	connection.connect();
 
 	connection.query('DELETE FROM country WHERE CODE =' + mysql.escape(""+req.params.code), function(err, result) {

@@ -1,33 +1,30 @@
 var mysql = require ('mysql');
 var async = require ('async');
+require ('./datos_glob');
 
 var scheduled_flight  = function () {};
 
+
 scheduled_flight.prototype.get= function(req, res) {
-	var connection = mysql.createConnection({
-		host     : 'localhost',
-		user     : 'root',
-		password : '',
-		database : 'aeropuerto'
-	});
-	var destino = '(select city.NAME from airport join city join scheduled_flight where CITY_ID = city.CODE and airport.CODE = DESTINY_CODE)';
-	var origen = '(select city.NAME from airport join city join scheduled_flight where CITY_ID = city.CODE and airport.CODE = ORIGIN_CODE)';
+	var connection = mysql.createConnection(c_info);
+	var destino = '(select city.NAME AS dest, airport.CODE AS d_code from airport join city where CITY_ID = city.CODE)';
+	var origen = '(select city.NAME AS org, airport.CODE AS d_code from airport join city where CITY_ID = city.CODE)';
 	connection.connect();
-	connection.query('SELECT WEEK_DAYS, ESTIMATED_DEPARTURE, ESTIMATED_DURATION,'+destino+' AS dest,'+origen+' AS org, AIRPLANE_T_MODEL FROM scheduled_flight', function(err, result) {
-		if(err)
-     		console.log(err);
+	connection.query('SELECT WEEK_DAYS, ESTIMATED_DEPARTURE, ESTIMATED_DURATION, dest, org, AIRPLANE_T_MODEL FROM scheduled_flight join '+destino+' AS dsts join '+origen+' AS orgs where DESTINY_CODE = d_code and ORIGIN_CODE = o_code', function(err, result) {
+		console.log(result);
+		for(var i=0; i< result.length; i++)
+		result[i].WEEK_DAYS = result[i].WEEK_DAYS.toString(2);
+
+		if(err)console.log(err);
+
 		res.render('programaVuelos', { data: result})
 	})
 	connection.end();
+
 };
 
 scheduled_flight.prototype.crear = function(req, res) {
-		var connection = mysql.createConnection({
-		host     : 'localhost',
-		user     : 'root',
-		password : '',
-		database : 'aeropuerto'
-	});
+		var connection = mysql.createConnection(c_info);
 	connection.connect();
 
 	async.parallel({
@@ -55,12 +52,7 @@ scheduled_flight.prototype.crear = function(req, res) {
 };
 
 scheduled_flight.prototype.modificar = function(req, res) {
-		var connection = mysql.createConnection({
-		host     : 'localhost',
-		user     : 'root',
-		password : '',
-		database : 'aeropuerto'
-	});
+		var connection = mysql.createConnection(c_info);
 	connection.connect();
 	res.render('programaVuelosModificar')
 
@@ -85,12 +77,7 @@ scheduled_flight.prototype.modificar = function(req, res) {
 
 
 scheduled_flight.prototype.mod=function(req,res) {
-	var connection = mysql.createConnection({
-		host     : 'localhost',
-		user     : 'root',
-		password : '',
-		database : 'aeropuerto'
-	});
+	var connection = mysql.createConnection(c_info);
 	connection.connect();
 	connection.query('UPDATE scheduled_flight SET ? WHERE ID ='+req.body.idd , {GAS_LEVEL: req.body.gasolina, 
 											PILOT: req.body.piloto,
@@ -109,12 +96,7 @@ scheduled_flight.prototype.mod=function(req,res) {
 };
 
 scheduled_flight.prototype.borrar = function(req, res) {
-		var connection = mysql.createConnection({
-		host     : 'localhost',
-		user     : 'root',
-		password : '',
-		database : 'aeropuerto'
-	});
+		var connection = mysql.createConnection(c_info);
 	connection.connect();
 
 
@@ -138,12 +120,7 @@ scheduled_flight.prototype.borrar = function(req, res) {
 };
 
 scheduled_flight.prototype.borr=function(req,res) {
-		var connection = mysql.createConnection({
-		host     : 'localhost',
-		user     : 'root',
-		password : '',
-		database : 'aeropuerto'
-	});
+		var connection = mysql.createConnection(c_info);
 	connection.connect();
 
 	connection.query('DELETE FROM scheduled_flight WHERE id ='+req.body.idd, function(err, result) {
@@ -159,12 +136,7 @@ scheduled_flight.prototype.borr=function(req,res) {
 
 
 scheduled_flight.prototype. insert=function(req,res) {
-	var connection = mysql.createConnection({
-		host     : 'localhost',
-		user     : 'root',
-		password : '',
-		database : 'aeropuerto'
-		});
+	var connection = mysql.createConnection(c_info);
 	connection.connect();
 	var days = parseInt((req.body.mo || 0)) + parseInt((req.body.tu || 0)) + parseInt((req.body.we || 0)) + parseInt((req.body.th || 0)) + parseInt((req.body.fr || 0)) + parseInt((req.body.sa || 0)) + parseInt((req.body.su || 0)); 
 	console.log('1.-'+(req.body.mo || 0)+'-'+(req.body.tu || 0)+'-'+(req.body.we || 0)+'-'+(req.body.th || 0)+'-'+(req.body.fr || 0)+'-'+(req.body.sa || 0)+'-'+(req.body.su || 0)+' - '+days);
