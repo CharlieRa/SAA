@@ -19,7 +19,7 @@ gate.prototype.insert=function(req,res) {
 							STATUS: req.body.status, 
 							},function(err, result) {
   		if(err)
-     		console.log(err);
+     		console.log('error');
 	    else{
 	    	res.redirect('/gates');
 	    }

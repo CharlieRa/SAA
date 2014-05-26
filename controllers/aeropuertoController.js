@@ -1,14 +1,10 @@
 var mysql = require ('mysql');
+require ('./datos_glob');
 
 var aeropuerto  = function () {};
 
 aeropuerto.prototype.get= function(req, res) {
-	var connection = mysql.createConnection({
-		host     : 'localhost',
-		user     : 'root',
-		password : '',
-		database : 'aeropuerto'
-	});
+	var connection = mysql.createConnection(c_info);
 	connection.connect();
 	connection.query('SELECT CODE, NAME, COORDINATES, (SELECT NAME FROM city WHERE airport.CITY_ID = city.CODE )AS OIN FROM airport', function(err, result) {
  		res.render('aeropuertos', { data: result})
@@ -17,12 +13,7 @@ aeropuerto.prototype.get= function(req, res) {
 };
 
 aeropuerto.prototype.crear = function(req, res) {
-	var connection = mysql.createConnection({
-		host     : 'localhost',
-		user     : 'root',
-		password : '',
-		database : 'aeropuerto'
-	});
+	var connection = mysql.createConnection(c_info);
 	connection.connect();
 		connection.query('SELECT CODE, NAME FROM city', function(err, result) {
 		 	console.log(result)
@@ -32,12 +23,7 @@ aeropuerto.prototype.crear = function(req, res) {
 };
 
 aeropuerto.prototype.modificar = function(req, res) {
-	var connection = mysql.createConnection({
-		host     : 'localhost',
-		user     : 'root',
-		password : '',
-		database : 'aeropuerto'
-	});
+	var connection = mysql.createConnection(c_info);
 	connection.connect();
 
 	connection.query('SELECT * FROM airport WHERE CODE ='+ mysql.escape(""+req.params.CODE), function(err, result) {
@@ -52,12 +38,7 @@ aeropuerto.prototype.modificar = function(req, res) {
 };
 
 aeropuerto.prototype.mod=function(req,res) {
-	var connection = mysql.createConnection({
-		host     : 'localhost',
-		user     : 'root',
-		password : '',
-		database : 'aeropuerto'
-	});
+	var connection = mysql.createConnection(c_info);
 	connection.connect();
 	connection.query('UPDATE airport SET ? WHERE CODE ='+ mysql.escape(""+req.body.code), 
 																	{NAME: req.body.name,
@@ -74,12 +55,7 @@ aeropuerto.prototype.mod=function(req,res) {
 	connection.end();
 };
 aeropuerto.prototype.insert=function(req,res){
-	var connection = mysql.createConnection({
-		host     : 'localhost',
-		user     : 'root',
-		password : '',
-		database : 'aeropuerto'
-		});
+	var connection = mysql.createConnection(c_info);
 	connection.connect();
 	connection.query('INSERT INTO airport SET ?', {CODE: req.body.code, 
 							NAME: req.body.name,
@@ -97,12 +73,7 @@ aeropuerto.prototype.insert=function(req,res){
 };
 
 aeropuerto.prototype.borrar=function(req,res) {
-		var connection = mysql.createConnection({
-		host     : 'localhost',
-		user     : 'root',
-		password : '',
-		database : 'aeropuerto'
-	});
+		var connection = mysql.createConnection(c_info);
 	connection.connect();
 
 	connection.query('DELETE FROM airport WHERE CODE ='+ mysql.escape(""+req.params.CODE), function(err, result) {

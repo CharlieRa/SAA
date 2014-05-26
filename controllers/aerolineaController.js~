@@ -23,7 +23,7 @@ aerolinea.prototype.modificar = function(req, res) {
 
 	connection.query('SELECT * FROM airline WHERE ID ='+req.params.id, function(err, result) {
   		if(err)
-     		console.log(err);
+     		console.log('error');
 	    else{
 	    	res.render('aerolineasModificar',{ data: result});
 	    }

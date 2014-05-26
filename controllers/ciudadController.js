@@ -1,14 +1,10 @@
 var mysql = require ('mysql');
+require ('./datos_glob');
 
 var ciudad  = function () {};
 
 ciudad.prototype.get= function(req, res) {
-	var connection = mysql.createConnection({
-		host     : 'localhost',
-		user     : 'root',
-		password : '',
-		database : 'aeropuerto'
-	});
+	var connection = mysql.createConnection(c_info);
 	connection.connect();
 	connection.query('SELECT * FROM city', function(err, result) {
  		res.render('ciudades', { data: result})
@@ -17,12 +13,7 @@ ciudad.prototype.get= function(req, res) {
 };
 
 ciudad.prototype.crear = function(req, res) {
-		var connection = mysql.createConnection({
-		host     : 'localhost',
-		user     : 'root',
-		password : '',
-		database : 'aeropuerto'
-	});
+		var connection = mysql.createConnection(c_info);
 	connection.connect();
 	connection.query('SELECT CODE, NAME FROM country', function(err, result) {
 		console.log(result)
@@ -32,12 +23,7 @@ ciudad.prototype.crear = function(req, res) {
 };
 
 ciudad.prototype.insert=function(req,res) {
-	var connection = mysql.createConnection({
-		host     : 'localhost',
-		user     : 'root',
-		password : '',
-		database : 'aeropuerto'
-		});
+	var connection = mysql.createConnection(c_info);
 	connection.connect();
 	connection.query('INSERT INTO city SET ?', {	CODE: req.body.code , 
 							NAME: req.body.name,
@@ -53,14 +39,8 @@ ciudad.prototype.insert=function(req,res) {
 	connection.end();
 };
 ciudad.prototype.modificar = function(req, res) {
-		var connection = mysql.createConnection({
-		host     : 'localhost',
-		user     : 'root',
-		password : '',
-		database : 'aeropuerto'
-	});
+		var connection = mysql.createConnection(c_info);
 	connection.connect();
-
 	connection.query('SELECT * FROM city WHERE CODE =' + mysql.escape(""+req.params.code), function(err, result) {
   		if(err)
      		console.log(err);

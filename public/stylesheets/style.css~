@@ -1,0 +1,55 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+a {
+  color: #00b7ff;
+}
+<<<<<<< HEAD
+#menu {
+  border-right: 1px solid #000;
+  height: 100%;
+  padding-right: 10px;
+}
+.code {
+  width: 200px;
+  height: auto;
+  float: left;
+}
+.place {
+  width: 200px;
+  height: auto;
+  float: left;
+}
+.info {
+  width: 71%;
+  height: auto;
+  float: left;
+}
+.comprar {
+  width: 30%;
+  height: auto;
+  float: left;
+}
+#panel {
+  padding-left: 30px;
+}
+.autocomplete-suggestions {
+  border: 1px solid #999;
+  background: #fff;
+  overflow: auto;
+}
+.autocomplete-suggestions strong {
+  font-weight: normal;
+  color: #39f;
+}
+.autocomplete-suggestion {
+  padding: 2px 5px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.autocomplete-selected {
+  background: #f0f0f0;
+}
+=======
+>>>>>>> 1aca8d774dc1115f4cb700abad27cc4a18176b09

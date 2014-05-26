@@ -1,15 +1,11 @@
 var mysql = require ('mysql');
 var async = require ('async');
+require ('./datos_glob');
 
 var avion  = function () {};
 
 avion.prototype. get= function(req, res) {
-	var connection = mysql.createConnection({
-		host     : 'localhost',
-		user     : 'root',
-		password : '',
-		database : 'aeropuerto'
-	});
+	var connection = mysql.createConnection(c_info);
 	connection.connect();
 	connection.query('SELECT ID, (SELECT NAME FROM airline WHERE AIRLINE_ID = airline.ID) AS AL, T_MODEL, YEAR, PILOT, COPILOT, GAS_LEVEL FROM airplane', function(err, result) {res.render('aviones', { data: result})
 		console.log(result)
@@ -18,12 +14,7 @@ avion.prototype. get= function(req, res) {
 };
 
 avion.prototype.crear = function(req, res) {
-		var connection = mysql.createConnection({
-		host     : 'localhost',
-		user     : 'root',
-		password : '',
-		database : 'aeropuerto'
-	});
+		var connection = mysql.createConnection(c_info);
 	connection.connect();
 
 	async.parallel({
@@ -48,12 +39,7 @@ avion.prototype.crear = function(req, res) {
 };
 
 avion.prototype.modificar = function(req, res) {
-		var connection = mysql.createConnection({
-		host     : 'localhost',
-		user     : 'root',
-		password : '',
-		database : 'aeropuerto'
-	});
+		var connection = mysql.createConnection(c_info);
 	connection.connect();
 
 	async.parallel({
@@ -82,12 +68,7 @@ avion.prototype.modificar = function(req, res) {
 
 
 avion.prototype.mod=function(req,res) {
-	var connection = mysql.createConnection({
-		host     : 'localhost',
-		user     : 'root',
-		password : '',
-		database : 'aeropuerto'
-	});
+	var connection = mysql.createConnection(c_info);
 	connection.connect();
 	connection.query('UPDATE airplane SET ? WHERE ID = '+req.body.id, {	GAS_LEVEL: req.body.gas_level, 
 										PILOT: req.body.pilot,
@@ -108,12 +89,7 @@ avion.prototype.mod=function(req,res) {
 };
 
 avion.prototype.borrar=function(req,res) {
-		var connection = mysql.createConnection({
-		host     : 'localhost',
-		user     : 'root',
-		password : '',
-		database : 'aeropuerto'
-	});
+		var connection = mysql.createConnection(c_info);
 	connection.connect();
 
 	connection.query('DELETE FROM airplane WHERE ID ='+req.params.id, function(err, result) {
@@ -128,12 +104,7 @@ avion.prototype.borrar=function(req,res) {
 };
 
 avion.prototype. insert=function(req,res) {
-	var connection = mysql.createConnection({
-		host     : 'localhost',
-		user     : 'root',
-		password : '',
-		database : 'aeropuerto'
-		});
+	var connection = mysql.createConnection(c_info);
 	connection.connect();
 	connection.query('INSERT INTO airplane SET ?', {GAS_LEVEL: req.body.gas_level, 
 							PILOT: req.body.pilot,

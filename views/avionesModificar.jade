@@ -12,6 +12,10 @@ block entidad
 	.container-fluid
 		h3.sub-header New Airplane
 		form.form-horizontal(method='post', action='/aviones/modificar')
+			.form-group
+				label.col-sm-2.control
+				.col-sm-8
+					input(type='hidden',name='id' ,value='#{data[0].ID}')
 			.form-group.row
 				label.col-sm-2.control-label Year
 				.col-sm-8

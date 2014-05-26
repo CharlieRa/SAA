@@ -154,7 +154,6 @@ app.post('/gates',Gate.insert);
 app.get('/gates/crear',Gate.crear);
 app.get('/gates/modificar/:name', Gate.modificar);
 
-
 app.get('/programaVuelos',Programavuelos.get);
 app.get('/programaVuelos/modificar/:id', Programavuelos.modificar);
 app.get('/programaVuelos/crear', Programavuelos.crear);
@@ -174,6 +173,8 @@ app.get('/vuelos/borrar/:id', Flight.borr);
 app.get('/pasajeros',Pasajero.get);
 app.get('/pasajeros/crear',Pasajero.crear);
 app.post('/pasajeros',Pasajero.insert);
+app.get('/pasajeros/modificar/:id', Pasajero.modificar);
+app.post('/pasajeros/modificar', Pasajero.mod);
 
 app.get('/paises',Pais.get);
 app.get('/paises/crear',Pais.crear);
