@@ -29,6 +29,8 @@ var pasajero = require ('./controllers/pasajeroController');
 var Pasajero = new pasajero();
 var pais = require ('./controllers/paisController');
 var Pais = new pais();
+var buscarVuelos = require ('./controllers/buscarVuelosController');
+var BuscarVuelos = new buscarVuelos();
 
 
 //==================================================================
@@ -185,7 +187,7 @@ app.post('/paises/modificar', Pais.edit);
 app.get('/paises/borrar/:code', Pais.borrar);
 
 
-app.get('/buscar',Pasajero.buscar);
+app.get('/buscar',BuscarVuelos.get);
 // app.get('/buscar', function (req, res){
 //   res.render('buscarVuelos');
 // });

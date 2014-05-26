@@ -22,7 +22,7 @@ block entidad
 										p Return Trip&nbsp;&nbsp;
 									label.glyphicon.glyphicon-retweet
 							.form-group
-								label.col-sm-2 Customer
+								label.col-sm-2 Owner Passage
 								.col-sm-11
 									select.form-control.selectFull(name='passenger',required)
 										- for(var i=0; i< data.length; i++){
