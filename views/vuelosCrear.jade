@@ -54,7 +54,7 @@ block entidad
 			.form-group
 				label.col-sm-2.control-label Gate
 				.col-sm-8
-					select.form-control.selectFull(name='gate_name' required)
+					select.form-control.selectFull(name='gate_name', required)
 						- for(var i=0; i< data3.length; i++){
 						option(value=data3[i].NAME) #{data3[i].NAME}
 						- }
