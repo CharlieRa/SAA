@@ -1,5 +1,29 @@
 $(document).ready(function(){
 
+    // Setup jQuery ajax mock:
+    // $.mockjax({
+    //     url: '*',
+    //     responseTime: 2000,
+    //     response: function (settings) {
+    //         var query = settings.data.query,
+    //             queryLowerCase = query.toLowerCase(),
+    //             re = new RegExp('\\b' + $.Autocomplete.utils.escapeRegExChars(queryLowerCase), 'gi'),
+    //             suggestions = $.grep(countriesArray, function (country) {
+    //                  // return country.value.toLowerCase().indexOf(queryLowerCase) === 0;
+    //                 return re.test(country.value);
+    //             }),
+    //         this.responseText = JSON.stringify(response);
+    //     }
+    // });
+
+  $('#from').autocomplete({
+    serviceUrl: '/ciudades/buscar',
+    onSelect: function (suggestion) {
+        //alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
+    }
+});
+
+
   $('li > a').click(function() {
     $('li').removeClass();
     $(this).parent().addClass('active');

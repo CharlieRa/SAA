@@ -5,30 +5,48 @@ body {
 a {
   color: #00b7ff;
 }
-#menu
-{
-border-right: 1px solid black;
-height: 100%;
-padding-right: 10px;
+#menu {
+  border-right: 1px solid #000;
+  height: 100%;
+  padding-right: 10px;
 }
-
-.code{
-	width: 200px;
-	height: auto;
-	float: left;
+.code {
+  width: 200px;
+  height: auto;
+  float: left;
 }
-.place{
-	width: 200px;
-	height: auto;
-	float: left;
+.place {
+  width: 200px;
+  height: auto;
+  float: left;
 }
-.info{
-	width: 71%;
-	height: auto;
-	float: left;
+.info {
+  width: 71%;
+  height: auto;
+  float: left;
 }
-.comprar{
-	width: 30%;
-	height:auto;
-	float: left;
+.comprar {
+  width: 30%;
+  height: auto;
+  float: left;
+}
+#panel {
+  padding-left: 30px;
+}
+.autocomplete-suggestions {
+  border: 1px solid #999;
+  background: #fff;
+  overflow: auto;
+}
+.autocomplete-suggestions strong {
+  font-weight: normal;
+  color: #39f;
+}
+.autocomplete-suggestion {
+  padding: 2px 5px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.autocomplete-selected {
+  background: #f0f0f0;
 }

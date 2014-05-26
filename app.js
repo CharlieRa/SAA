@@ -137,7 +137,9 @@ app.post('/aeropuertos',Aeropuerto.insert);
 app.get('/ciudades',Ciudad.get);
 app.get('/ciudades/crear',Ciudad.crear);
 app.get('/ciudades/modificar/:code',Ciudad.modificar);
+app.get('/ciudades/buscar',Ciudad.buscar)
 app.post('/ciudades',Ciudad.insert);
+
 
 app.get('/tipoAvion', AirplaneType.get);
 app.get('/tipoAvion/crear', AirplaneType.crear);

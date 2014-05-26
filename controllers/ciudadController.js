@@ -71,4 +71,27 @@ ciudad.prototype.modificar = function(req, res) {
 
 	connection.end();
 };
+
+
+ciudad.prototype.buscar = function(req, res) {
+		var connection = mysql.createConnection({
+		host     : 'localhost',
+		user     : 'root',
+		password : '',
+		database : 'aeropuerto'
+	});
+	connection.connect();
+
+	connection.query('SELECT NAME AS value, CODE AS data FROM city ', function(err, result) {
+  		if(err)
+     		console.log(err);
+	    else{
+			var eventsObj = { 'suggestions': result };
+			console.log(eventsObj);
+			res.send(eventsObj);
+	    }
+	});
+
+	connection.end();
+};
 module.exports = ciudad;
