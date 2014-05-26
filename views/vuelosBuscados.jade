@@ -2,9 +2,9 @@ extends admin
 
 block entidad
 	- for(var i = 0;i < 3; i++){
-		div.panel.panel-default
-			div.panel-body
-				.info.page-header
+		.panel.panel-default
+			.panel-body
+				.info
 					h4.page-header 
 						strong LAN 
 					.code#menu(align='center')
@@ -13,6 +13,41 @@ block entidad
 						strong AA-123
 					.place#menu(align='center')
 						h4 SCL -> SAO
+					.date(align='center')
+						p 
+						strong Departure Date: 
+						br
+						p 12 Mayo 2014
+					.schedule
+						table.table.table-hover
+							form.form-horizontal(method='post', action='/programaVuelos')
+							thead 
+								tr
+									th 
+									th Departure time
+									th Arrival time
+							tbody
+								tr
+									td
+										input(type='checkbox', name='mo',value='64')
+									td
+										p 21:00 hrs
+									td
+										p 10:00 hrs
+								tr
+									td
+										input(type='checkbox', name='mo',value='64')
+									td
+										p 22:00 hrs
+									td
+										p 11:00 hrs
+								tr
+									td
+										input(type='checkbox', name='mo',value='64')
+									td
+										p 23:00 hrs
+									td
+										p 12:00 hrs
 				.comprar
 					.panel.panel-default
 						.panel-body(align='center')
@@ -23,5 +58,5 @@ block entidad
 							p Cargos US$60
 							p Total US$623
 							button.btn.btn-primary.btn-lg.btn-block Buy
-						
-		-}
+
+								-}

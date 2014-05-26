@@ -184,9 +184,11 @@ app.get('/paises/modificar/:id', Pais.modificar);
 app.post('/paises/modificar', Pais.edit);
 app.get('/paises/borrar/:code', Pais.borrar);
 
-app.get('/buscar', function (req, res){
-  res.render('buscarVuelos');
-});
+
+app.get('/buscar',Pasajero.buscar);
+// app.get('/buscar', function (req, res){
+//   res.render('buscarVuelos');
+// });
 
 app.get('/vuelosBuscados', function (req, res){
   res.render('vuelosBuscados');

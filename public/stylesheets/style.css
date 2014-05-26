@@ -21,14 +21,16 @@ a {
   float: left;
 }
 .info {
-  width: 71%;
+  width: 70%;
   height: auto;
   float: left;
 }
 .comprar {
   width: 30%;
-  height: auto;
+  height: 100%;
   float: left;
+  postion: relative;
+  padding-top: 28px;
 }
 #panel {
   padding-left: 30px;
@@ -49,4 +51,10 @@ a {
 }
 .autocomplete-selected {
   background: #f0f0f0;
+}
+#fecha::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.info.page-header {
+  float: left;
 }

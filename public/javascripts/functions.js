@@ -23,6 +23,13 @@ $(document).ready(function(){
     }
 });
 
+  $('#to').autocomplete({
+    serviceUrl: '/ciudades/buscar',
+    onSelect: function (suggestion) {
+        //alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
+    }
+});
+
 
   $('li > a').click(function() {
     $('li').removeClass();

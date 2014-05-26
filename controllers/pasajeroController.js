@@ -75,4 +75,14 @@ pasajero.prototype.mod=function(req,res) {
 	connection.end();
 };
 
+pasajero.prototype.buscar= function(req, res) {
+	var connection = mysql.createConnection(c_info);
+	connection.connect();
+	connection.query('SELECT * FROM passenger', function(err, result) {
+ 		res.render('buscarVuelos', { data: result})
+ 		console.log(result)
+	})
+	connection.end();
+};
+
 module.exports = pasajero;
