@@ -7,11 +7,7 @@ var flight  = function () {};
 flight.prototype.get= function(req, res) {
 	var connection = mysql.createConnection(c_info);
 	connection.connect();
-	connection.query('SELECT * FROM flight', function(err, result) {
-		console.log(result);
-		for(var i=0; i< result.length; i++){
-			result[i].DEPARTURE_TIME = result[i].DEPARTURE_TIME.toISOString().replace("T", " ").replace("Z", "");
-            result[i].ARRIVAL_TIME = result[i].ARRIVAL_TIME.toISOString().replace("T", " ").replace("Z", "");}
+	connection.query("SELECT ID, DATE_FORMAT(DEPARTURE_TIME, '%Y-%m-%d %H:%i:%s') AS DEPARTURE_TIME, DATE_FORMAT(ARRIVAL_TIME, '%Y-%m-%d %H:%i:%s') AS ARRIVAL_TIME, PLANE_ID, S_FLIGHT_ID, GATE_NAME FROM flight", function(err, result) {
 		console.log(result);
 		res.render('vuelos', { data: result})
 	});
