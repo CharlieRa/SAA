@@ -96,15 +96,19 @@ if ('development' == app.get('env')) {
 
 
 
-app.get('/', auth, function (req, res){ 
-	res.render('admin');
+app.get('/',  function (req, res){ 
+	res.render('index');
+});
+
+app.get('/admin',  function (req, res){ 
+  res.render('admin');
 });
 
 // app.get('/admin', auth, function (req, res){ res.render('admin');});
 
 app.get('/login', function (req, res){ res.render('login'); });
 
-app.post('/login', passport.authenticate('local', { successRedirect: '/', failureRedirect: '/login' }));
+app.post('/login', passport.authenticate('local', { successRedirect: '/admin', failureRedirect: '/login' }));
 
 app.get('/logout', function(req, res){
   req.logOut();
@@ -186,9 +190,10 @@ app.get('/paises/borrar/:code', Pais.borrar);
 
 
 app.get('/buscar',Pasajero.buscar);
-// app.get('/buscar', function (req, res){
-//   res.render('buscarVuelos');
-// });
+
+app.get('/signup', function (req, res){
+  res.render('signup');
+});
 
 app.get('/vuelosBuscados', function (req, res){
   res.render('vuelosBuscados');
