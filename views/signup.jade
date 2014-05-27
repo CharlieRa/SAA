@@ -19,8 +19,26 @@ html(lang="es")
 								li
 									a(href='/login') Admin
 						.inner.cover
-
-						.mastfoot
+							.register(align='center')
+								.container-fluid
+									h3.sub-header Register
+									form.form-horizontal(method='post', action='/newuser')
+										.form-group
+											label.col-sm-2.control-label Name
+											.col-sm-8
+												input.form-control(type='text', placeholder='Juan', name='name', required,maxlength='10')
+										.form-group
+											label.col-sm-2.control-label Lastname
+											.col-sm-8
+												input.form-control(type='text', placeholder='Perez', name='lastname', required,maxlength='15')
+										.form-group
+											label.col-sm-2.control-label Birthday
+											.col-sm-8
+												input.form-control(type='date', placeholder='350', name='birthday', required,min='0',max='2000')
+										.form-group
+											.col-sm-offset-2.col-sm-10
+												button.btn.btn-primary(type='submit',align='center') Submit
+							.mastfoot
 							.inner
 		script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
 		script(type='text/javascript', src='/javascripts/bootstrap.min.js')
