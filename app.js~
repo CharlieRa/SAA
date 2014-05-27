@@ -29,6 +29,8 @@ var pasajero = require ('./controllers/pasajeroController');
 var Pasajero = new pasajero();
 var pais = require ('./controllers/paisController');
 var Pais = new pais();
+var buscarVuelos = require ('./controllers/buscarVuelosController');
+var BuscarVuelos = new buscarVuelos();
 
 
 //==================================================================
@@ -137,7 +139,9 @@ app.post('/aeropuertos',Aeropuerto.insert);
 app.get('/ciudades',Ciudad.get);
 app.get('/ciudades/crear',Ciudad.crear);
 app.get('/ciudades/modificar/:code',Ciudad.modificar);
+app.get('/ciudades/buscar',Ciudad.buscar)
 app.post('/ciudades',Ciudad.insert);
+
 
 app.get('/tipoAvion', AirplaneType.get);
 app.get('/tipoAvion/crear', AirplaneType.crear);
@@ -151,7 +155,6 @@ app.get('/gates',Gate.get);
 app.post('/gates',Gate.insert);
 app.get('/gates/crear',Gate.crear);
 app.get('/gates/modificar/:name', Gate.modificar);
-
 
 app.get('/programaVuelos',Programavuelos.get);
 app.get('/programaVuelos/modificar/:id', Programavuelos.modificar);
@@ -183,9 +186,11 @@ app.get('/paises/modificar/:id', Pais.modificar);
 app.post('/paises/modificar', Pais.edit);
 app.get('/paises/borrar/:code', Pais.borrar);
 
-app.get('/buscar', function (req, res){
-  res.render('buscarVuelos');
-});
+
+app.get('/buscar',Pasajero.buscar);
+// app.get('/buscar', function (req, res){
+//   res.render('buscarVuelos');
+// });
 
 app.get('/vuelosBuscados', function (req, res){
   res.render('vuelosBuscados');

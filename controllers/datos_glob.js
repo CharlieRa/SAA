@@ -3,3 +3,10 @@ c_info = {	host : 'localhost',
 		password : '',
 		database : 'aeropuerto'
 		};
+
+userdata = {	userid: '1234',
+		userpass:'1234',
+		username:'Mr.User'
+		};
+
+
