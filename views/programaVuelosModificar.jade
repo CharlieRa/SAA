@@ -2,20 +2,12 @@ extends admin
 
 block entidad
 	script(type="text/javascript").
-	h1.page-header Programa de Vuelos
-	.page-header
-		.botones
-			ul.nav.nav-tabs
-				li
-					a(href="/programaVuelos") Ver
-				li
-					a(href="/programaVuelos/crear") Crear
-				li.active
-					a(href="#") Modificar
-				li
-					a(href="#") Borrar
+	h1.page-header Scheduled Flights
+	.botones
+		a.btn.btn-primary(type='button',href="/programaVuelos")
+			span.glyphicon.glyphicon-chevron-left Back
 	.container
-		h3.titulo Modificar Programa Vuelo
+		h3.titulo Scheduled Flights Edit
 		form.form-horizontal(method='post', action='/programaVuelos/modificar')
 			.form-group.row
 				label.col-sm-2.control-label Weeks Days
