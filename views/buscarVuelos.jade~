@@ -22,20 +22,22 @@ block entidad
 										p Return Trip&nbsp;&nbsp;
 									label.glyphicon.glyphicon-retweet
 							.form-group
-								label.col-sm-2 Owner Passage
+								label.col-sm-2 #{usrname}
 								.col-sm-11
-									select.form-control.selectFull(name='passenger',required)
-										- for(var i=0; i< data.length; i++){
-											option(value=data[i].ID) #{data[i].NAME}
-										- }
 							.form-group
 								label.col-sm-2 From
 								.col-sm-11
-									input.form-control(type='text', placeholder='',id='from' ,name='name', required, maxlength='15')
+									select.form-control.selectFull(name='org',required)
+										- for(var i=0; i< origen.length; i++){
+											option(value=origen[i].ciname) #{origen[i].ciname}
+										- }
 							.form-group
 								label.col-sm-2 To
 								.col-sm-11
-									input.form-control(type='text', placeholder='',id='to' ,name='acronym', required,maxlength='3')
+									select.form-control.selectFull(name='dest',required)
+										- for(var i=0; i< destino.length; i++){
+											option(value=destino[i].ciname) #{destino[i].ciname}
+										- }
 							.form-group
 								label.col-sm-5 Departure Date
 								.col-sm-11
