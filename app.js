@@ -179,6 +179,7 @@ app.post('/pasajeros/modificar', Pasajero.mod);
 
 app.get('/paises',Pais.get);
 app.get('/paises/crear',Pais.crear);
+
 app.post('/paises',Pais.insert);
 app.get('/paises/modificar/:id', Pais.modificar);
 app.post('/paises/modificar', Pais.edit);
@@ -186,7 +187,6 @@ app.get('/paises/borrar/:code', Pais.borrar);
 
 
 app.get('/buscar',BuscarVuelos.get);
-app.post('/buscar',BuscarVuelos.enviar);
 // app.get('/buscar', function (req, res){
 //   res.render('buscarVuelos');
 // });
