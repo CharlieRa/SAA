@@ -187,6 +187,7 @@ app.get('/paises/borrar/:code', Pais.borrar);
 
 
 app.get('/buscar',BuscarVuelos.get);
+app.post('/buscar',BuscarVuelos.enviar);
 // app.get('/buscar', function (req, res){
 //   res.render('buscarVuelos');
 // });

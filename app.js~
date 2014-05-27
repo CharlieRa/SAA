@@ -179,6 +179,7 @@ app.post('/pasajeros/modificar', Pasajero.mod);
 
 app.get('/paises',Pais.get);
 app.get('/paises/crear',Pais.crear);
+
 app.post('/paises',Pais.insert);
 app.get('/paises/modificar/:id', Pais.modificar);
 app.post('/paises/modificar', Pais.edit);
