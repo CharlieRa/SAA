@@ -7,6 +7,9 @@ pasajero.prototype.get= function(req, res) {
 	var connection = mysql.createConnection(c_info);
 	connection.connect();
 	connection.query('SELECT * FROM passenger', function(err, result) {
+        for(var i=0; i< result.length; i++){
+            result[i].BIRTHDAY = result[i].BIRTHDAY.toISOString().replace("T", " ").replace("Z", "");
+        }
  		res.render('pasajeros', { data: result})
  		console.log(result)
 	})
@@ -49,6 +52,9 @@ pasajero.prototype.modificar = function(req, res) {
   		if(err)
      		console.log(err);
 	    else{
+            for(var i=0; i< result.length; i++){
+                result[i].BIRTHDAY = result[i].BIRTHDAY.toISOString().replace("T", " ").replace("Z", "");
+            }
 	    	res.render('pasajerosModificar',{ data: result});
 	    }
 	});  
