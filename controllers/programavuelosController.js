@@ -82,7 +82,8 @@ scheduled_flight.prototype.modificar = function(req, res) {
 scheduled_flight.prototype.mod=function(req,res) {
 	var connection = mysql.createConnection(c_info);
 	connection.connect();
-	connection.query('UPDATE scheduled_flight SET ? WHERE ID ='+req.body.idd , {GAS_LEVEL: req.body.gasolina, 
+	connection.query('UPDATE scheduled_flight SET ? WHERE ID ='+req.body.idd , 
+											{GAS_LEVEL: req.body.gasolina, 
 											PILOT: req.body.piloto,
 											año: req.body.año,
 											id_aerolinea: req.body.id_aerolinea,
