@@ -1,52 +1,69 @@
 extends admin
 block entidad
-    script(type="text/javascript").
-    h1.page-header Flights
-    .botones
-        a.btn.btn-primary(type='button',href="/vuelos")
-            span.glyphicon.glyphicon-chevron-left Back
-    .container-fluid
-        h3.sub-header Flight Edit
-        form.form-horizontal(method='post', action='/vuelos/modificar')
-            input.form-control(type='hidden', value='#{data[0].ID}', name='id', required)
-            .form-group.row
-                label.col-sm-2.control-label Departure Time
-                .col-sm-8
-                    input.form-control(type='time', value='#{data[0].DEPARTURE_TIME}', name='departure_time', required)
-            .form-group.row
-                label.col-sm-2.control-label Arrival Time
-                .col-sm-8
-                    input.form-control(type='time', value='#{data[0].ARRIVAL_TIME}', name='arrival_time', required)
-            .form-group.row
-                label.col-sm-2.control-label Plane
-                .col-sm-8
-                    select.from-control.selectFull(name='plane_id', required)
-                        - for(var i=0; i< data1.length; i++){
-                        if(data[0].PLANE_ID==data1[i].ID)
-                            option(value=data1[i].ID, selected=true) #{data1[i].ID}
-                        else
-                            option(value=data1[i].ID) #{data1[i].ID}
-                        - }
-            .form-group.row
-                label.col-sm-2.control-label Scheduled Flight
-                .col-sm-8
-                    select.from-control.selectFull(name='s_flight_id', required)
-                        - for(var i=0; i< data2.length; i++){
-                        if(data[0].S_FLIGHT_ID==data2[i].ID)
-                            option(value=data2[i].ID, selected=true) #{data2[i].ID}
-                        else
-                            option(value=data2[i].ID) #{data2[i].ID}
-                        - }
-            .form-group.row
-                label.col-sm-2.control-label Gate
-                .col-sm-8
-                    select.from-control.selectFull(name='gate_name', required)
-                        - for(var i=0; i< data3.length; i++){
-                        if(data[0].GATE_NAME==data3[i].NAME)
-                            option(value=data3[i].NAME, selected=true) #{data3[i].NAME}
-                        else
-                            option(value=data3[i].NAME) #{data3[i].NAME}
-                        - }
-            .form-group
-                .col-sm-offset-2.col-sm-10
-                    button.btn.btn-primary.btn-lg(type='submit') Submit
+	script(type='text/javascript', src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js')
+	script(type="text/javascript").
+	h1.page-header Flights
+	.botones
+		a.btn.btn-primary(type='button',href="/vuelos")
+			span.glyphicon.glyphicon-chevron-left Back
+	.container-fluid
+		h3.sub-header Flight Edit
+		form.form-horizontal(method='post', action='/vuelos/modificar')
+			input.form-control(type='hidden', value='#{data[0].ID}', name='id', required)
+			.form-group.row
+				label.col-sm-2.control-label Departure Time
+				.col-sm-8
+					input.form-control(type='text', value='#{data[0].DEPARTURE_TIME}', name='departure_time', required)
+				.col-sm-4
+					script(type='text/javascript').
+						$(function(){
+						$('*[name=departure_time]').appendDtpicker({
+						"closeOnSelected": true,
+						"autodateOnStart": false
+						});
+						});
+			.form-group.row
+				label.col-sm-2.control-label Arrival Time
+				.col-sm-8
+					input.form-control(type='text', value='#{data[0].ARRIVAL_TIME}', name='arrival_time', required)
+				.col-sm-4
+					script(type='text/javascript').
+						$(function(){
+						$('*[name=arrival_time]').appendDtpicker({
+						"closeOnSelected": true,
+						"autodateOnStart": false
+						});
+						});
+			.form-group.row
+				label.col-sm-2.control-label Plane
+				.col-sm-8
+					select.from-control.selectFull(name='plane_id', required)
+						- for(var i=0; i< data1.length; i++){
+						if(data[0].PLANE_ID==data1[i].ID)
+							option(value=data1[i].ID, selected=true) #{data1[i].ID}
+						else
+							option(value=data1[i].ID) #{data1[i].ID}
+						- }
+			.form-group.row
+				label.col-sm-2.control-label Scheduled Flight
+				.col-sm-8
+					select.from-control.selectFull(name='s_flight_id', required)
+						- for(var i=0; i< data2.length; i++){
+						if(data[0].S_FLIGHT_ID==data2[i].ID)
+							option(value=data2[i].ID, selected=true) #{data2[i].ID}
+						else
+							option(value=data2[i].ID) #{data2[i].ID}
+						- }
+			.form-group.row
+				label.col-sm-2.control-label Gate
+				.col-sm-8
+					select.from-control.selectFull(name='gate_name', required)
+						- for(var i=0; i< data3.length; i++){
+						if(data[0].GATE_NAME==data3[i].NAME)
+							option(value=data3[i].NAME, selected=true) #{data3[i].NAME}
+						else
+							option(value=data3[i].NAME) #{data3[i].NAME}
+						- }
+			.form-group
+				.col-sm-offset-2.col-sm-10
+					button.btn.btn-primary.btn-lg(type='submit') Submit
