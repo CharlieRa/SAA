@@ -27,9 +27,6 @@ flight.prototype.insert = function(req, res) {
 		if(err)
 			console.log('error');
 		else{
-            for(var i=0; i< result.length; i++){
-                result[i].DEPARTURE_TIME = result[i].DEPARTURE_TIME.toISOString().replace("T", " ").replace("Z", "");
-                result[i].ARRIVAL_TIME = result[i].ARRIVAL_TIME.toISOString().replace("T", " ").replace("Z", "");}
 			res.redirect('/vuelos');
 		}
 	});
@@ -41,10 +38,7 @@ flight.prototype.modificar = function(req, res) {
 	connection.connect();
 	async.parallel({
 			flight: function(callback){
-				connection.query('SELECT * FROM flight WHERE id ='+req.params.id, function(err, result) {
-                    for(var i=0; i< result.length; i++){
-                        result[i].DEPARTURE_TIME = result[i].DEPARTURE_TIME.toISOString().replace("T", " ").replace("Z", "");
-                        result[i].ARRIVAL_TIME = result[i].ARRIVAL_TIME.toISOString().replace("T", " ").replace("Z", "");}
+				connection.query("SELECT ID, DATE_FORMAT(DEPARTURE_TIME, '%Y-%m-%d %H:%i:%s') AS DEPARTURE_TIME, DATE_FORMAT(ARRIVAL_TIME, '%Y-%m-%d %H:%i:%s') AS ARRIVAL_TIME, PLANE_ID, S_FLIGHT_ID, GATE_NAME FROM flight WHERE id ="+req.params.id, function(err, result) {
 					callback(null, result);
 				})
 			},

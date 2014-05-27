@@ -6,10 +6,7 @@ var pasajero  = function () {};
 pasajero.prototype.get= function(req, res) {
 	var connection = mysql.createConnection(c_info);
 	connection.connect();
-	connection.query('SELECT * FROM passenger', function(err, result) {
-        for(var i=0; i< result.length; i++){
-            result[i].BIRTHDAY = result[i].BIRTHDAY;
-        }
+	connection.query("SELECT ID, PIN, NAME, SEX, DATE_FORMAT(BIRTHDAY, '%Y-%m-%d') AS BIRTHDAY, C_CODE FROM passenger", function(err, result) {
  		res.render('pasajeros', { data: result})
  		console.log(result)
 	})
@@ -48,7 +45,7 @@ pasajero.prototype.insert=function(req,res) {
 pasajero.prototype.modificar = function(req, res) {
 	var connection = mysql.createConnection(c_info);
 	connection.connect();
-	connection.query('SELECT * FROM passenger WHERE ID =' + mysql.escape("" + req.params.id), function(err, result) {
+	connection.query("SELECT ID, PIN, NAME, SEX, DATE_FORMAT(BIRTHDAY, '%Y-%m-%d') AS BIRTHDAY, C_CODE FROM passenger WHERE ID =" + mysql.escape("" + req.params.id), function(err, result) {
   		if(err)
      		console.log(err);
 	    else{

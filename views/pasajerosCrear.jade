@@ -1,6 +1,7 @@
 extends admin
 
 block entidad
+	script(type='text/javascript', src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js')
 	script(type="text/javascript").
 	h1.page-header Passenger
 	.botones
@@ -28,7 +29,7 @@ block entidad
 				label.col-sm-2.control-label Birthday
 				.col-sm-8
 					input.form-control(type='text', placeholder='yyyy-mm-dd', name="birthday",required,maxlength='20')
-                .col-sm-4
+				.col-sm-4
 					script(type='text/javascript').
 						$(function(){
 						$('*[name=birthday]').appendDtpicker({
