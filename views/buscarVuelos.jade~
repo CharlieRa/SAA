@@ -9,7 +9,7 @@ block entidad
 					.panel-heading
 						h1.panel-title Search Flights
 					.panel-bodyPanel#panel
-						form.form-horizontal(method='post', action='/buscar/post', id='formulario')
+						form.form-horizontal(method='post', action='/buscar', id='formulario')
 							.form-group.row#idavuelta
 								.col-md-5
 									label.radio-inline
@@ -29,14 +29,14 @@ block entidad
 								.col-sm-11
 									select.form-control.selectFull(name='org',required)
 										- for(var i=0; i< origen.length; i++){
-											option(value=origen[i].ciname) #{origen[i].ciname}
+											option(value=origen[i].acode) #{origen[i].ciname}, #{origen[i].coname}
 										- }
 							.form-group
 								label.col-sm-2 To
 								.col-sm-11
 									select.form-control.selectFull(name='dest',required)
 										- for(var i=0; i< destino.length; i++){
-											option(value=destino[i].ciname) #{destino[i].ciname}
+											option(value=destino[i].acode) #{destino[i].ciname}
 										- }
 							.form-group
 								label.col-sm-5 Departure Date

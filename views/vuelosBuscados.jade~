@@ -29,7 +29,7 @@ block entidad
 									td
 										p #{data[i].ESTIMATED_DEPARTURE} hrs
 									td
-										p #{data[i].ESTIMATED_ARRIVAL} hrs
+										p #{data[i].ESTIMATED_DEPARTURE} + #{data[i].ESTIMATED_DURATION} hrs
 							-}
 
 				.comprar

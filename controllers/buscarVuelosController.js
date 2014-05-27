@@ -11,12 +11,12 @@ buscarVuelos.prototype.get= function(req, res) {
 	async.parallel({
 
 		    origen: function(callback){
-		    	connection.query('SELECT city.name AS ciname, country.NAME AS coname FROM city join country WHERE city.C_CODE = country.CODE', function(err, result) {
+		    	connection.query('SELECT airport.CODE AS acode, city.NAME AS ciname, country.NAME AS coname FROM city join country join airport WHERE city.C_CODE = country.CODE and CITY_ID = city.CODE  ORDER  BY  coname', function(err, result) {
 				callback(null, result);
 				})
 		    },
 		    destino: function(callback){
-		    	connection.query('SELECT city.name AS ciname, country.NAME AS coname FROM city join country WHERE city.C_CODE = country.CODE', function(err, result) {
+		    	connection.query('SELECT airport.CODE AS acode, city.NAME AS ciname, country.NAME AS coname FROM city join country join airport WHERE city.C_CODE = country.CODE and CITY_ID = city.CODE  ORDER  BY  coname', function(err, result) {
 		    		callback(null, result);
 				})
 		    },
@@ -33,7 +33,8 @@ buscarVuelos.prototype.get= function(req, res) {
 buscarVuelos.prototype.enviar= function(req, res) {
 	var connection = mysql.createConnection(c_info);
 	connection.connect();
-	connection.query('SELECT * FROM flight where ', function(err, result) {
+	console.log("select flight.ID AS fid, ESTIMATED_DEPARTURE, ADDTIME(ESTIMATED_DEPARTURE,ESTIMATED_DURATION) AS ESTIMATED_ARRIVAL, ORIGIN_CODE, DESTINY_CODE, AIRPLANE_T_MODEL from scheduled_flight join flight where S_FLIGHT_ID = scheduled_flight.ID and ORIGIN_CODE = '"+req.body.org+"' and DESTINY_CODE = '"+req.body.dest+"' and DEPARTURE_TIME like '"+req.body.departureDate+"%'");
+	connection.query("select flight.ID AS fid, ESTIMATED_DEPARTURE, ADDTIME(ESTIMATED_DEPARTURE,ESTIMATED_DURATION) AS ESTIMATED_ARRIVAL, ORIGIN_CODE, DESTINY_CODE, AIRPLANE_T_MODEL from scheduled_flight join flight where S_FLIGHT_ID = scheduled_flight.ID and ORIGIN_CODE = '"+req.body.org+"' and DESTINY_CODE = '"+req.body.dest+"' and DEPARTURE_TIME like '"+req.body.departureDate+"%' ORDER  BY  DEPARTURE_TIME", function(err, result) {
  		res.render('vuelosBuscados', { data: result})
  		console.log(result)
 	})
