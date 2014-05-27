@@ -7,27 +7,34 @@ block entidad
 	.botones
 		a.btn.btn-primary(type='button',href="/programaVuelos")
 			span.glyphicon.glyphicon-chevron-left Back
-	.container
+	.container-fluid
 		h3.titulo Scheduled Flights Edit
 		form.form-horizontal(method='post', action='/programaVuelos/modificar')
 			input.form-control(type='hidden', value='#{data[0].ID}', name='id', required)
 			.form-group.row
 				label.col-sm-3.control-label Weeks Days
-				.col-sm-8
+				.col-sm-9
 					label.checkbox-inline
 						input(type='checkbox',value='1')
+						label Monday
 					label.checkbox-inline
 						input(type='checkbox',value='2')
+						label Tuesday
 					label.checkbox-inline
 						input(type='checkbox',value='3')
+						label Wednesday
 					label.checkbox-inline
 						input(type='checkbox',value='4')
+						label Thursday
 					label.checkbox-inline
 						input(type='checkbox',value='5')
+						label  Friday
 					label.checkbox-inline
 						input(type='checkbox',value='6')
+						label Saturday
 					label.checkbox-inline
 						input(type='checkbox',value='7')
+						label Sunday
 			.form-group.row
 				label.col-sm-3.control-label Estimated Departure
 				.col-sm-8
