@@ -99,37 +99,15 @@ scheduled_flight.prototype.mod=function(req,res) {
 	connection.end();
 };
 
-scheduled_flight.prototype.borrar = function(req, res) {
-		var connection = mysql.createConnection(c_info);
+
+scheduled_flight.prototype.borrar=function(req,res) {
+	var connection = mysql.createConnection(c_info);
 	connection.connect();
 
-
-	async.parallel({
-	    scheduled_flight: function(callback){
-	    	connection.query('SELECT * FROM scheduled_flight WHERE id ='+req.params.id, function(err, result) {
-	    		callback(null, result);
-			})
-	    },
-	    aerolineas: function(callback){
-	    	connection.query('SELECT id, nombre FROM aerolinea', function(err, result) {
-				callback(null, result);
-			})
-	    }
-	},
-	function(err, results) {
-	    res.render('scheduled_flightesBorrar', { data: results.scheduled_flight, aerolineas: results.aerolineas})
-	});
-
-	connection.end();
-};
-
-scheduled_flight.prototype.borr=function(req,res) {
-		var connection = mysql.createConnection(c_info);
-	connection.connect();
-
-	connection.query('DELETE FROM scheduled_flight WHERE id ='+req.body.idd, function(err, result) {
-  		if(err)
-     		console.log('error');
+	connection.query('DELETE FROM scheduled_flight WHERE ID =' +req.params.id, function(err, result) {
+  		if(err){
+  			res.send('Vuelo relacionado a este programa');
+     		console.log(err);}
 	    else{
 	    	res.redirect('/programaVuelos');
 	    }
@@ -139,7 +117,7 @@ scheduled_flight.prototype.borr=function(req,res) {
 };
 
 
-scheduled_flight.prototype. insert=function(req,res) {
+scheduled_flight.prototype.insert=function(req,res) {
 	var connection = mysql.createConnection(c_info);
 	connection.connect();
 	var days = parseInt((req.body.mo || 0)) + parseInt((req.body.tu || 0)) + parseInt((req.body.we || 0)) + parseInt((req.body.th || 0)) + parseInt((req.body.fr || 0)) + parseInt((req.body.sa || 0)) + parseInt((req.body.su || 0)); 

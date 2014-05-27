@@ -98,19 +98,15 @@ if ('development' == app.get('env')) {
 
 
 
-app.get('/',  function (req, res){ 
-	res.render('index');
-});
-
-app.get('/admin',  function (req, res){ 
-  res.render('admin');
+app.get('/', auth, function (req, res){ 
+	res.render('admin');
 });
 
 // app.get('/admin', auth, function (req, res){ res.render('admin');});
 
 app.get('/login', function (req, res){ res.render('login'); });
 
-app.post('/login', passport.authenticate('local', { successRedirect: '/admin', failureRedirect: '/login' }));
+app.post('/login', passport.authenticate('local', { successRedirect: '/', failureRedirect: '/login' }));
 
 app.get('/logout', function(req, res){
   req.logOut();
@@ -166,14 +162,13 @@ app.get('/programaVuelos/crear', Programavuelos.crear);
 app.get('/programaVuelos/borrar/:id', Programavuelos.borrar);
 app.post('/programaVuelos',Programavuelos.insert);
 app.post('/programaVuelos/modificar', Programavuelos.mod);
-// app.post('/programaVuelos/borrar', Programavuelos.borr);
 
 app.get('/vuelos', Flight.get);
 app.get('/vuelos/crear', Flight.crear);
-app.post('/vuelos/insertar',Flight.insert);
 app.get('/vuelos/modificar/:id', Flight.modificar);
-app.post('/vuelos/modificar', Flight.mod);
 app.get('/vuelos/borrar/:id', Flight.borr);
+app.post('/vuelos/insertar',Flight.insert);
+app.post('/vuelos/modificar', Flight.mod);
 
 
 app.get('/pasajeros',Pasajero.get);
@@ -191,19 +186,7 @@ app.post('/paises/modificar', Pais.edit);
 app.get('/paises/borrar/:code', Pais.borrar);
 
 
-// app.get('/buscar',Pasajero.buscar);
-
-app.get('/signup', function (req, res){
-  res.render('signup');
-});
-
-app.get('/users', function (req, res){
-  res.render('users');
-});
-
 app.get('/buscar',BuscarVuelos.get);
-app.post('/buscar',BuscarVuelos.enviar);
-
 // app.get('/buscar', function (req, res){
 //   res.render('buscarVuelos');
 // });
