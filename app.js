@@ -198,7 +198,7 @@ app.get('/signup', function (req, res){
 });
 
 app.get('/buscar',BuscarVuelos.get);
-app.get('/buscar/post',BuscarVuelos.post);
+app.post('/buscar',BuscarVuelos.enviar);
 
 // app.get('/buscar', function (req, res){
 //   res.render('buscarVuelos');

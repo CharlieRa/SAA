@@ -30,10 +30,10 @@ buscarVuelos.prototype.get= function(req, res) {
 	connection.end();
 };
 
-buscarVuelos.prototype.post= function(req, res) {
+buscarVuelos.prototype.enviar= function(req, res) {
 	var connection = mysql.createConnection(c_info);
 	connection.connect();
-	connection.query('SELECT * FROM passenger', function(err, result) {
+	connection.query('SELECT * FROM flight where ', function(err, result) {
  		res.render('vuelosBuscados', { data: result})
  		console.log(result)
 	})

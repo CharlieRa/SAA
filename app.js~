@@ -196,8 +196,10 @@ app.get('/paises/borrar/:code', Pais.borrar);
 app.get('/signup', function (req, res){
   res.render('signup');
 });
+
 app.get('/buscar',BuscarVuelos.get);
-app.get('/buscar/post',BuscarVuelos.post);
+app.post('/buscar',BuscarVuelos.post);
+
 // app.get('/buscar', function (req, res){
 //   res.render('buscarVuelos');
 // });
