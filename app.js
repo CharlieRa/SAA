@@ -191,12 +191,12 @@ app.post('/paises/modificar', Pais.edit);
 app.get('/paises/borrar/:code', Pais.borrar);
 
 
-app.get('/buscar',Pasajero.buscar);
+// app.get('/buscar',Pasajero.buscar);
 
 app.get('/signup', function (req, res){
   res.render('signup');
 });
-app.get('/buscar',BuscarVuelos.get);
+// app.get('/buscar',BuscarVuelos.get);
 // app.get('/buscar', function (req, res){
 //   res.render('buscarVuelos');
 // });
