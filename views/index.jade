@@ -15,7 +15,7 @@ html(lang="es")
 								li.active
 									a(href='#') Sign In
 								li
-									a(href='#') Sign Up
+									a(href='/signup') Sign Up
 								li
 									a(href='/login') Admin
 					.inner.cover
@@ -24,16 +24,5 @@ html(lang="es")
 							a.btn.btn-lg.btn-default(href='#',data-toggle='modal', data-target='#myModal') Sign In
 					.mastfoot
 						.inner
-	#myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
-		.modal-dialog
-			.modal-content
-				.modal-header
-					button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-					h4#myModalLabel.modal-title New Airport
-				.modal-body 
-					
-				.modal-footer
-					button.btn.btn-default(type='button', data-dismiss='modal') Close
-					button.btn.btn-primary(type='button') Save changes
 		script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
 		script(type='text/javascript', src='/javascripts/bootstrap.min.js')
