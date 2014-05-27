@@ -29,6 +29,15 @@ block entidad
 				label.col-sm-2.control-label Birthday
 				.col-sm-8
 					input.form-control(type='date',  name='birthday', required, value='#{data[0].BIRTHDAY}')
+				.col-sm-4
+					script(type='text/javascript').
+						$(function(){
+						$('*[name=birthday]').appendDtpicker({
+						"closeOnSelected": true,
+						"autodateOnStart": false,
+						"dateOnly": true
+						});
+						});
 			.form-group.row
 				label.col-sm-2.control-label Nacionality
 				.col-sm-8

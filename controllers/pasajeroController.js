@@ -8,7 +8,7 @@ pasajero.prototype.get= function(req, res) {
 	connection.connect();
 	connection.query('SELECT * FROM passenger', function(err, result) {
         for(var i=0; i< result.length; i++){
-            result[i].BIRTHDAY = result[i].BIRTHDAY.toISOString().replace("T", " ").replace("Z", "");
+            result[i].BIRTHDAY = result[i].BIRTHDAY;
         }
  		res.render('pasajeros', { data: result})
  		console.log(result)
@@ -52,9 +52,6 @@ pasajero.prototype.modificar = function(req, res) {
   		if(err)
      		console.log(err);
 	    else{
-            for(var i=0; i< result.length; i++){
-                result[i].BIRTHDAY = result[i].BIRTHDAY.toISOString().replace("T", " ").replace("Z", "");
-            }
 	    	res.render('pasajerosModificar',{ data: result});
 	    }
 	});  
