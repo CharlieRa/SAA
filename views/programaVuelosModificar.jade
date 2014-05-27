@@ -9,8 +9,9 @@ block entidad
 	.container
 		h3.titulo Scheduled Flights Edit
 		form.form-horizontal(method='post', action='/programaVuelos/modificar')
+			input.form-control(type='hidden', value='#{data[0].ID}', name='id', required)
 			.form-group.row
-				label.col-sm-2.control-label Weeks Days
+				label.col-sm-3.control-label Weeks Days
 				.col-sm-8
 					label.checkbox-inline
 						input(type='checkbox',value='1')
@@ -27,21 +28,21 @@ block entidad
 					label.checkbox-inline
 						input(type='checkbox',value='7')
 			.form-group.row
-				label.col-sm-2.control-label
+				label.col-sm-3.control-label Estimated Departure
 				.col-sm-8
-					input.form-control(type='time', placeholder='Hora de Salida', name='estimated_departure')
+					input.form-control(type='time', placeholder='Hora de Salida', name='estimated_departure', value ='#{data[0].ESTIMATED_DEPARTURE}')
 			.form-group.row
-				label.col-sm-2.control-label 
+				label.col-sm-3.control-label Estimated Duration
 				.col-sm-8
-					input.form-control(type='time', placeholder='Duracion del Viaje', name='estimated_duration')
+					input.form-control(type='time', placeholder='Duracion del Viaje', name='estimated_duration', value = '#{data[0].ESTIMATED_DURATION}')
 			.form-group.row
-				label.col-sm-2.control-label 
+				label.col-sm-3.control-label Destino
 				.col-sm-8
-					input.form-control(type='text', placeholder='Codigo Ciudad Destino', name='destiny_code')
+					input.form-control(type='text', placeholder='Codigo Aeropuerto Destino', name='destiny_code', value = '#{destino[0].NAME}')
 			.form-group.row
-				label.col-sm-2.control-label 
+				label.col-sm-3.control-label Origen
 				.col-sm-8
-					input.form-control(type='text', placeholder='Codigo Ciudad Destino', name='origin_code')
+					input.form-control(type='text', placeholder='Codigo Aeropuerto Origen', name='origin_code', value = '#{origen[0].NAME}')
 			.form-group
-				.col-sm-offset-2.col-sm-10
+				.col-sm-offset-3.col-sm-10
 					button.btn.btn-primary.btn-lg(type='submit') Submit

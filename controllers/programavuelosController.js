@@ -10,7 +10,7 @@ scheduled_flight.prototype.get= function(req, res) {
 	var destino = '(select city.NAME AS dest, airport.CODE AS d_code from airport join city where CITY_ID = city.CODE)';
 	var origen = '(select city.NAME AS org, airport.CODE AS o_code from airport join city where CITY_ID = city.CODE)';
 	connection.connect();
-	connection.query('SELECT WEEK_DAYS, ESTIMATED_DEPARTURE, ESTIMATED_DURATION, dest, org, AIRPLANE_T_MODEL FROM scheduled_flight join '+destino+' AS dsts join '+origen+' AS orgs where DESTINY_CODE = d_code and ORIGIN_CODE = o_code', function(err, result) {
+	connection.query('SELECT ID, WEEK_DAYS, ESTIMATED_DEPARTURE, ESTIMATED_DURATION, dest, org, AIRPLANE_T_MODEL FROM scheduled_flight join '+destino+' AS dsts join '+origen+' AS orgs where DESTINY_CODE = d_code and ORIGIN_CODE = o_code', function(err, result) {
 		console.log(result);
 		for(var i=0; i< result.length; i++)
 		result[i].WEEK_DAYS = result[i].WEEK_DAYS.toString(2);
@@ -60,14 +60,19 @@ scheduled_flight.prototype.modificar = function(req, res) {
 	    		callback(null, result);
 			})
 	    },
-	    aerolineas: function(callback){
-	    	connection.query('SELECT ID, NAME FROM scheduled_flight', function(err, result) {
+	    destino: function(callback){
+	    	connection.query('SELECT CODE, NAME FROM scheduled_flight join airport WHERE airport.CODE = scheduled_flight.DESTINY_CODE and scheduled_flight.ID ='+req.params.id, function(err, result) {
+				callback(null, result);
+			})
+	    },
+	    origen: function(callback){
+	    	connection.query('SELECT CODE, NAME FROM scheduled_flight join airport WHERE airport.CODE = scheduled_flight.ORIGIN_CODE and scheduled_flight.ID ='+req.params.id, function(err, result) {
 				callback(null, result);
 			})
 	    }
 	},
 	function(err, results) {
-	    res.render('programaVuelosModificar', { data: results.scheduled_flight, aerolineas: results.aerolineas})
+	    res.render('programaVuelosModificar', { data: results.scheduled_flight, destino: results.destino, origen: results.origen})
 	});
 
 	connection.end();
