@@ -9,7 +9,7 @@ block entidad
 					.panel-heading
 						h1.panel-title Search Flights
 					.panel-bodyPanel#panel
-						form.form-horizontal(method='post', action='/aerolineas', id='formulario')
+						form.form-horizontal(method='post', action='/buscar/find', id='formulario')
 							.form-group.row#idavuelta
 								.col-md-5
 									label.radio-inline

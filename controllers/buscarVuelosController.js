@@ -12,7 +12,7 @@ buscarVuelos.prototype.get= function(req, res) {
 
 		    origen: function(callback){
 		    	connection.query('SELECT city.name AS ciname, country.NAME AS coname FROM city join country WHERE city.C_CODE = country.CODE', function(err, result) {
-						callback(null, result);
+				callback(null, result);
 				})
 		    },
 		    destino: function(callback){
@@ -34,7 +34,7 @@ buscarVuelos.prototype.post= function(req, res) {
 	var connection = mysql.createConnection(c_info);
 	connection.connect();
 	connection.query('SELECT * FROM passenger', function(err, result) {
- 		res.render('buscarVuelos', { data: result})
+ 		res.render('vuelosBuscados', { data: result})
  		console.log(result)
 	})
 	connection.end();

@@ -8,7 +8,7 @@ var scheduled_flight  = function () {};
 scheduled_flight.prototype.get= function(req, res) {
 	var connection = mysql.createConnection(c_info);
 	var destino = '(select city.NAME AS dest, airport.CODE AS d_code from airport join city where CITY_ID = city.CODE)';
-	var origen = '(select city.NAME AS org, airport.CODE AS d_code from airport join city where CITY_ID = city.CODE)';
+	var origen = '(select city.NAME AS org, airport.CODE AS o_code from airport join city where CITY_ID = city.CODE)';
 	connection.connect();
 	connection.query('SELECT WEEK_DAYS, ESTIMATED_DEPARTURE, ESTIMATED_DURATION, dest, org, AIRPLANE_T_MODEL FROM scheduled_flight join '+destino+' AS dsts join '+origen+' AS orgs where DESTINY_CODE = d_code and ORIGIN_CODE = o_code', function(err, result) {
 		console.log(result);
@@ -52,25 +52,23 @@ scheduled_flight.prototype.crear = function(req, res) {
 };
 
 scheduled_flight.prototype.modificar = function(req, res) {
-		var connection = mysql.createConnection(c_info);
+	var connection = mysql.createConnection(c_info);
 	connection.connect();
-	res.render('programaVuelosModificar')
-
-	// async.parallel({
-	//     scheduled_flight: function(callback){
-	//     	connection.query('SELECT * FROM scheduled_flight WHERE ID ='+req.params.id, function(err, result) {
-	//     		callback(null, result);
-	// 		})
-	//     },
-	//     aerolineas: function(callback){
-	//     	connection.query('SELECT ID, NAME FROM scheduled_flight', function(err, result) {
-	// 			callback(null, result);
-	// 		})
-	//     }
-	// },
-	// function(err, results) {
-	//     res.render('programaVuelosModificar', { data: results.scheduled_flight, aerolineas: results.aerolineas})
-	// });
+	async.parallel({
+	     scheduled_flight: function(callback){
+	     	connection.query('SELECT * FROM scheduled_flight WHERE ID ='+req.params.id, function(err, result) {
+	    		callback(null, result);
+			})
+	    },
+	    aerolineas: function(callback){
+	    	connection.query('SELECT ID, NAME FROM scheduled_flight', function(err, result) {
+				callback(null, result);
+			})
+	    }
+	},
+	function(err, results) {
+	    res.render('programaVuelosModificar', { data: results.scheduled_flight, aerolineas: results.aerolineas})
+	});
 
 	connection.end();
 };
