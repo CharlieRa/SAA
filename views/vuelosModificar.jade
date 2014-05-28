@@ -37,7 +37,7 @@ block entidad
 			.form-group.row
 				label.col-sm-2.control-label Plane
 				.col-sm-8
-					select.from-control.selectFull(name='plane_id', required)
+					select.form-control.selectFull(name='plane_id', required)
 						- for(var i=0; i< data1.length; i++){
 						if(data[0].PLANE_ID==data1[i].ID)
 							option(value=data1[i].ID, selected=true) #{data1[i].ID}
@@ -47,7 +47,7 @@ block entidad
 			.form-group.row
 				label.col-sm-2.control-label Scheduled Flight
 				.col-sm-8
-					select.from-control.selectFull(name='s_flight_id', required)
+					select.form-control.selectFull(name='s_flight_id', required)
 						- for(var i=0; i< data2.length; i++){
 						if(data[0].S_FLIGHT_ID==data2[i].ID)
 							option(value=data2[i].ID, selected=true) #{data2[i].ID}
@@ -57,7 +57,7 @@ block entidad
 			.form-group.row
 				label.col-sm-2.control-label Gate
 				.col-sm-8
-					select.from-control.selectFull(name='gate_name', required)
+					select.form-control.selectFull(name='gate_name', required)
 						- for(var i=0; i< data3.length; i++){
 						if(data[0].GATE_NAME==data3[i].NAME)
 							option(value=data3[i].NAME, selected=true) #{data3[i].NAME}

@@ -106,7 +106,7 @@ app.get('/admin', auth, function (req, res){ res.render('admin');});
 
 app.get('/login', function (req, res){ res.render('login'); });
 
-app.post('/login', passport.authenticate('local', { successRedirect: '/admin', failureRedirect: '/login' }));
+app.post('/login', passport.authenticate('local', { successRedirect: '/estadisticas', failureRedirect: '/login' }));
 
 app.get('/logout', function(req, res){
   req.logOut();
@@ -196,6 +196,10 @@ app.get('/signup', function (req, res){
 
 app.get('/vuelosBuscados', function (req, res){
   res.render('vuelosBuscados');
+});
+
+app.get('/estadisticas', function (req, res){
+  res.render('stadistics');
 });
 
 app.get('/portal', function (req, res){

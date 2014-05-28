@@ -24,43 +24,53 @@ html(lang="es")
 					a.navbar-brand(href='#') SAA
 				.navbar-collapse.collapse
 					ul.nav.navbar-nav
-						li.active
+						li
 							a(href='#') Home
 						li
 							a(href='/about') About
 						li
 							a(href='#contact') Contact
 					ul.nav.navbar-nav.navbar-right
-						li.active
+						li
 							a(href='/logout') salir
 		.container-fluid
 			.row
 				.col-sm-3.col-md-2.sidebar
 					ul.nav.nav-pills.nav-stacked
-						p Editar Entidades
 						li
-							a(href='/aerolineas' class='aerolineas') Airlines
+							a(href='/aerolineas' class='aerolineas',id='airline')
+							p Airlines
 						li
-							a(href='/aeropuertos' class='aeropuertos') Airports
+							a(href='/aeropuertos' class='aeropuertos',id='airports')
+							p Airpors
 						li
-							a(href='/aviones' class='aviones') Airplanes
+							a(href='/aviones' class='aviones', id='plane')
+							p Planes
 						li
-							a(href='/tipoAvion' class='tipoAvion') Airplane Type
+							a(href='/tipoAvion' class='tipoAvion',id='airplaneType')
+							p Airplane Type
 						li
-							a(href='/programaVuelos' class='programaVuelos') Scheduled Flights
+							a(href='/programaVuelos' class='programaVuelos',id='scheduled')
+							p Scheduled Flights
 						li
-							a(href='/vuelos' class='vuelos') Flights
+							a(href='/vuelos' class='vuelos',id='flights')
+							p Flights 
 						li
-							a(href='/pasajeros' class='pasajeros') Passenger
+							a(href='/pasajeros' class='pasajeros',id='passenger')
+							p Passenger 
 						li
-							a(href='/gates' class='gates') Gates
+							a(href='/gates' class='gates',id='gates')
+							p Gates
 						li
-							a(href='/ciudades' class='ciudades') Citys
+							a(href='/ciudades' class='ciudades',id='city')
+							p City 
 						li
-							a(href='/paises' class='paises') Countrys
+							a(href='/paises' class='paises',id='country')
+							p Country 
 						li
-							a(href='/buscar' class='buscar') Search Flights
-				.col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+							a(href='/buscar' class='buscar',id='searchFlights')
+							p Search Flights
+				.col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-1.main
 					block entidad
 
 	script(type='text/javascript', src='/javascripts/jquery.js')
@@ -71,3 +81,4 @@ html(lang="es")
 	script(type="text/javascript", src="/javascripts/jquery.simplePagination.js")
 	script(type='text/javascript', src='/javascripts/datetimepicker/jquery.simple-dtpicker.js')
 	script(type='text/javascript', src='/javascripts/timePicker/jquery.timepicker.js')
+	script(type='text/javascript', src='/javascripts/Chart.min.js')

@@ -1,0 +1,9 @@
+extends admin
+block entidad
+	script(type="text/javascript")
+	h1.page-header Statdistics
+	.container-fluid
+		canvas#canvas(height='450', width='450')
+	script
+		var myPie = new Chart(document.getElementById("canvas").getContext("2d")).Pie(pieData)
+			
