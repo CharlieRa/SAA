@@ -10,10 +10,7 @@ block entidad
 			li.active
 				a(href="/programaVuelos/crear") New
 	.container-fluid
-			h3.sub-header New Scheduled Fligth
-
-			script(type="text/javascript").
-				alert("working");
+			h3.sub-header New Scheduled Flight			
 			
 			form.form-horizontal(method='post', action='/programaVuelos')
 				.form-group.row

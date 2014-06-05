@@ -18,7 +18,7 @@ block entidad
 						th Estimated Duration
 						th Destiny City
 						th Origin City
-						th Airplane Type Model
+						th Aircraft Model
 						th Edit
 						th Delete	
 				tbody
@@ -53,5 +53,5 @@ block entidad
 			a(href='#') »
 
 
-			script(type="text/javascript").
-				alert(#{data[0].WEEK_DAYS});										
+//-			script(type="text/javascript").
+//-				alert(#{data[0].WEEK_DAYS});										

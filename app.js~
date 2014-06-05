@@ -98,15 +98,15 @@ if ('development' == app.get('env')) {
 
 
 
-app.get('/', auth, function (req, res){ 
-	res.render('admin');
+app.get('/', function (req, res){ 
+	res.render('index');
 });
 
-// app.get('/admin', auth, function (req, res){ res.render('admin');});
+app.get('/admin', auth, function (req, res){ res.render('admin');});
 
 app.get('/login', function (req, res){ res.render('login'); });
 
-app.post('/login', passport.authenticate('local', { successRedirect: '/', failureRedirect: '/login' }));
+app.post('/login', passport.authenticate('local', { successRedirect: '/estadisticas', failureRedirect: '/login' }));
 
 app.get('/logout', function(req, res){
   req.logOut();
@@ -188,12 +188,22 @@ app.get('/paises/borrar/:code', Pais.borrar);
 
 app.get('/buscar',BuscarVuelos.get);
 app.post('/buscar',BuscarVuelos.enviar);
-// app.get('/buscar', function (req, res){
-//   res.render('buscarVuelos');
-// });
+
+
+app.get('/signup', function (req, res){
+  res.render('signup');
+});
 
 app.get('/vuelosBuscados', function (req, res){
   res.render('vuelosBuscados');
+});
+
+app.get('/estadisticas', function (req, res){
+  res.render('statistics');
+});
+
+app.get('/portal', function (req, res){
+  res.render('users');
 });
 
 http.createServer(app).listen(app.get('port'), function(){

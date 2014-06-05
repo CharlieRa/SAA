@@ -1,7 +1,7 @@
 extends admin
 block entidad
     script(type="text/javascript").
-    h1.page-header Aiplane Type
+    h1.page-header Aircraft Model
     .botones
         ul.nav.nav-tabs
             li
@@ -9,7 +9,7 @@ block entidad
             li.active
                 a(href="/tipoAvion/crear") New
     .container-fluid
-        h3.sub-header New Airplane Type
+        h3.sub-header New Type
         form.form-horizontal(method='post', action='/tipoAvion')
             .form-group
                 label.col-sm-2.control-label Model

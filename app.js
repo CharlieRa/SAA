@@ -199,7 +199,7 @@ app.get('/vuelosBuscados', function (req, res){
 });
 
 app.get('/estadisticas', function (req, res){
-  res.render('stadistics');
+  res.render('statistics');
 });
 
 app.get('/portal', function (req, res){
