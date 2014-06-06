@@ -23,9 +23,11 @@ buscarVuelos.prototype.get= function(req, res) {
 
 		},
 		function(err, results) {
+		console.log(userdata);
+		console.log( (current_usrtype == 'admin' ));
 		if(err)
 	 	console.log(err);
-			res.render('buscarVuelos', { destino: results.destino, origen: results.origen, 	usrname: userdata.username})
+			res.render('buscarVuelos', { destino: results.destino, origen: results.origen, 	usrname: userdata.username, usrtype: current_usrtype })
 		});
 	connection.end();
 };

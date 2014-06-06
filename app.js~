@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -32,7 +31,7 @@ var Pais = new pais();
 var buscarVuelos = require ('./controllers/buscarVuelosController');
 var BuscarVuelos = new buscarVuelos();
 
-
+require ('./controllers/datos_glob');
 //==================================================================
 // Define the strategy to be used by PassportJS
 passport.use(new LocalStrategy(
@@ -99,12 +98,18 @@ if ('development' == app.get('env')) {
 
 
 app.get('/', function (req, res){ 
+	console.log(current_usrtype);
 	res.render('index');
 });
 
-app.get('/admin', auth, function (req, res){ res.render('admin');});
+app.get('/admin', auth, function (req, res){ current_usrtype = 'admin'; res.render('admin'); });
 
-app.get('/login', function (req, res){ res.render('login'); });
+//esto es solo por que por ahora el login es solo para admins, habra que encontrar algo más permanente
+app.get('/login', function (req, res){ current_usrtype = 'admin'; res.render('login'); });
+
+//solo de prueba
+app.get('/users', function (req, res){ current_usrtype = 'users'; res.render('users'); });
+//--------------
 
 app.post('/login', passport.authenticate('local', { successRedirect: '/estadisticas', failureRedirect: '/login' }));
 

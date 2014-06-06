@@ -1,4 +1,4 @@
-extends users
+extends admin
 
 block entidad
 		.panel.panel-default
