@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.5.35, for Linux (x86_64)
 --
--- Host: localhost    Database: aeropuerto
+-- Host: localhost    Database: aeropuertoV3
 -- ------------------------------------------------------
 -- Server version	5.5.35
 
@@ -26,6 +26,7 @@ CREATE TABLE `airline` (
   `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `NAME` varchar(15) NOT NULL,
   `ACRONYM` varchar(3) NOT NULL,
+  `ally_code` int(11) NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -36,7 +37,7 @@ CREATE TABLE `airline` (
 
 LOCK TABLES `airline` WRITE;
 /*!40000 ALTER TABLE `airline` DISABLE KEYS */;
-INSERT INTO `airline` VALUES (1,'LanAirlines','LAN'),(2,'ChanchoPlanes','CP'),(3,'AirFrancee','AF'),(4,'AirGuatemala','AG');
+INSERT INTO `airline` VALUES (1,'LanAirlines','LAN',0),(2,'ChanchoPlanes','CP',0),(3,'AirFrancee','AF',0),(4,'AirGuatemala','AG',0);
 /*!40000 ALTER TABLE `airline` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -127,6 +128,30 @@ INSERT INTO `airport` VALUES ('AMB','Aeropuerto Arturo M. Benitez','-28.54,-25.6
 UNLOCK TABLES;
 
 --
+-- Table structure for table `alliance`
+--
+
+DROP TABLE IF EXISTS `alliance`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `alliance` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `NAME` varchar(15) NOT NULL,
+  `PTS_PER_DOLLAR` float(10,3) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `alliance`
+--
+
+LOCK TABLES `alliance` WRITE;
+/*!40000 ALTER TABLE `alliance` DISABLE KEYS */;
+/*!40000 ALTER TABLE `alliance` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `boarding_pass`
 --
 
@@ -207,6 +232,31 @@ INSERT INTO `country` VALUES ('CL','Chile','Español'),('FR','France','French'),
 UNLOCK TABLES;
 
 --
+-- Table structure for table `ff_account`
+--
+
+DROP TABLE IF EXISTS `ff_account`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ff_account` (
+  `FFN` int(11) NOT NULL AUTO_INCREMENT,
+  `ALLY_ID` int(11) NOT NULL,
+  `OWNER_ID` int(11) NOT NULL,
+  `POINTS` double DEFAULT NULL,
+  PRIMARY KEY (`FFN`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ff_account`
+--
+
+LOCK TABLES `ff_account` WRITE;
+/*!40000 ALTER TABLE `ff_account` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ff_account` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `flight`
 --
 
@@ -220,6 +270,7 @@ CREATE TABLE `flight` (
   `PLANE_ID` int(10) unsigned NOT NULL,
   `S_FLIGHT_ID` int(10) unsigned NOT NULL,
   `GATE_NAME` varchar(4) NOT NULL DEFAULT '',
+  `SOLD_SEATS` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   KEY `PLANE_ID` (`PLANE_ID`),
   KEY `S_FLIGHT_ID` (`S_FLIGHT_ID`),
@@ -236,7 +287,7 @@ CREATE TABLE `flight` (
 
 LOCK TABLES `flight` WRITE;
 /*!40000 ALTER TABLE `flight` DISABLE KEYS */;
-INSERT INTO `flight` VALUES (2,'2014-05-20 01:30:00','2014-05-20 14:30:00',6,35,'A25');
+INSERT INTO `flight` VALUES (2,'2014-05-20 01:30:00','2014-05-20 14:30:00',6,35,'A25',NULL);
 /*!40000 ALTER TABLE `flight` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -409,6 +460,31 @@ LOCK TABLES `ticket_group` WRITE;
 /*!40000 ALTER TABLE `ticket_group` DISABLE KEYS */;
 /*!40000 ALTER TABLE `ticket_group` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `trip_class`
+--
+
+DROP TABLE IF EXISTS `trip_class`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `trip_class` (
+  `NAME` varchar(10) NOT NULL,
+  `POINT_MULTIPLIER` float(10,3) NOT NULL,
+  `BASE_COST` float(10,3) NOT NULL,
+  `COST_PER_KM` float(10,3) NOT NULL,
+  PRIMARY KEY (`NAME`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `trip_class`
+--
+
+LOCK TABLES `trip_class` WRITE;
+/*!40000 ALTER TABLE `trip_class` DISABLE KEYS */;
+/*!40000 ALTER TABLE `trip_class` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -419,4 +495,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-05-26 18:02:48
+-- Dump completed on 2014-06-05 21:37:51
