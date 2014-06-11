@@ -34,21 +34,37 @@ buscarVuelos.prototype.enviar= function(req, res) {
 	var connection = mysql.createConnection(c_info);
 	connection.connect();
 	async.parallel({
-		results1: function(callback){
+		inf: function(callback){
 			connection.query("select flight.ID AS fid, ESTIMATED_DEPARTURE, DATE_FORMAT(DATE(DEPARTURE_TIME), '%b %e, %Y') AS depdate, TIME_FORMAT(ADDTIME(ESTIMATED_DEPARTURE,ESTIMATED_DURATION), '%H:%i:%S') AS ESTIMATED_ARRIVAL, ORIGIN_CODE, DESTINY_CODE, AIRPLANE_T_MODEL from scheduled_flight join flight where S_FLIGHT_ID = scheduled_flight.ID and ORIGIN_CODE = '"+req.body.org+"' and DESTINY_CODE = '"+req.body.dest+"' and DEPARTURE_TIME like '"+req.body.departureDate+"%' ORDER  BY  DEPARTURE_TIME", function(err, result){
 				if(err)console.log(err);
 			callback(null, result);
 			})
 		},
 		cty: function(callback){
-			connection.query('SELECT CODE FROM city ORDER BY CODE', function(err, result) {
+			connection.query('SELECT CODE, CITY_ID FROM airport ORDER BY CITY_ID', function(err, result) {
 				callback(null, result);
 			})
 		}
 	},
 	function(err, results) {
 		console.log(results.cty);
-		res.render('vuelosBuscados', { data: results.results1 , citylist: results.cty, table: map})
+		if(err)console.log(err);
+		
+		var l = results.inf.length;
+		var kms = new Array(l);
+		for(var i = 0;i < l; i++){
+			for(var j = 0;j < results.cty.length; j++){
+				for(var k = 0;k < results.cty.length; k++){
+					if( results.inf[i].ORIGIN_CODE == results.cty[j].CODE && results.inf[i].DESTINY_CODE == results.cty[k].CODE ){
+						kms[i] = map[j][k];
+					}
+				}
+			}
+		}
+
+
+		res.render('vuelosBuscados', { data: results.inf , citylist: results.cty})
+
 	});
 	connection.end();
 };

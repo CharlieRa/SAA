@@ -41,13 +41,30 @@ buscarVuelos.prototype.enviar= function(req, res) {
 			})
 		},
 		cty: function(callback){
-			connection.query('SELECT CODE FROM city ORDER BY CODE', function(err, result) {
+			connection.query('SELECT CODE, CITY_ID FROM airport ORDER BY CITY_ID', function(err, result) {
 				callback(null, result);
 			})
 		}
 	},
 	function(err, results) {
-		res.render('vuelosBuscados', { data: results.results1 , citylist: results.cty, table: map})
+		console.log(results.cty);
+		if(err)console.log(err);
+		
+		var l = results.results1.length;
+		var kms = new Array(l);
+		for(var i = 0;i < l; i++){
+			for(var j = 0;j < results.cty.length; j++){
+				for(var k = 0;k < results.cty.length; k++){
+					if( results.results1[i].ORIGIN_CODE == results.cty[j].CODE && results.results1[i].DESTINY_CODE == results.cty[k].CODE ){
+						kms[i] = map[j][k];
+					}
+				}
+			}
+		}
+
+
+		res.render('vuelosBuscados', { data: results.results1 , citylist: results.cty})
+
 	});
 	connection.end();
 };

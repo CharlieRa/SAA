@@ -23,6 +23,7 @@ block entidad
 									th 
 									th Departure time
 									th Arrival time
+									th Aircraft Type
 							tbody
 							- for(var i = 0;i < data.length; i++){
 								tr
@@ -33,13 +34,7 @@ block entidad
 									td
 										p #{data[i].ESTIMATED_ARRIVAL} hrs
 									td
-										- for(var j = 0;j < citylist.length; j++){
-											- for(var j = 0;j < citylist.length; j++){
-												-if(
-										p #{map[j][k]} kms.
-
-											-}
-										-}
+										p #{data[i].AIRPLANE_T_MODEL}
 							-}
 
 				.comprar
