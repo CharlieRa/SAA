@@ -98,18 +98,16 @@ if ('development' == app.get('env')) {
 
 
 app.get('/', function (req, res){ 
-	console.log(current_usrtype);
 	res.render('index');
 });
 
-app.get('/admin', auth, function (req, res){ current_usrtype = 'admin'; res.render('admin'); });
-
+app.get('/admin', auth, function (req, res){res.render('admin'); });
 //esto es solo por que por ahora el login es solo para admins..
 
-app.get('/login', function (req, res){ current_usrtype = 'admin'; res.render('login'); });
+app.get('/login', function (req, res){res.render('login'); });
 
 //solo de prueba
-app.get('/users', function (req, res){ current_usrtype = 'users'; res.render('users'); });
+app.get('/users', function (req, res){res.render('users'); });
 //--------------
 
 app.post('/login', passport.authenticate('local', { successRedirect: '/estadisticas', failureRedirect: '/login' }));

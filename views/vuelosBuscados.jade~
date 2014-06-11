@@ -1,4 +1,4 @@
-extends admin
+extends users
 
 block entidad
 		.panel.panel-default
@@ -31,6 +31,11 @@ block entidad
 									td
 										p #{data[i].ESTIMATED_DEPARTURE} hrs
 									td
+										p #{data[i].ESTIMATED_ARRIVAL} hrs
+									td
+										- for(var j = 0;j < citylist.length; j++){
+										p #{citylist[i].CODE} hrs	
+										-}
 										p #{data[i].ESTIMATED_ARRIVAL} hrs
 							-}
 

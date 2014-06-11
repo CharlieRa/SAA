@@ -1,8 +1,5 @@
 extends users
 
-
-
-
 block entidad
 	h1.page-header#titulo Search Flights
 	.container-fluid(align='center')
