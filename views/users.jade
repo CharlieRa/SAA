@@ -1,46 +1,69 @@
 doctype html
-html(lang="es")
-	head
-		title Sistemas de Administracion de Aeropuertos - SAA
-		link(href='/stylesheets/superhero.min.css', rel='stylesheet')
+html(lang='en')
+head
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		meta(name='description', content='')
+		meta(name='author', content='')
+		title User Dashboard
+		link(href='/stylesheets/bootstrap.css', rel='stylesheet', media='screen')
+		link(href='/stylesheets/style.css', rel='stylesheet', media='screen')
+		link(href='/stylesheets/sb-admin.css', rel='stylesheet')
+		link(rel='stylesheet', href='/font-awesome/css/font-awesome.min.css')
 	body
-		.navbar.navbar-default
-				.navbar-header
-						button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-inverse-collapse')
-							span.icon-bar
-							span.icon-bar
-							span.icon-bar
-						a.navbar-brand(href='/users') SAA
-					.navbar-collapse.collapse.navbar-inverse-collapse
-						ul.nav.navbar-nav
-							li.dropdown
-								a.dropdown-toggle(href='#', data-toggle='dropdown')
-									| Useless Dropdown Menu
-									b.caret
-								ul.dropdown-menu
-									li
-										a(href='#') Action
-									li
-										a(href='#') Another action
-									li
-										a(href='#') Something else here
-									li.divider
-									li.dropdown-header Dropdown header
-									li
-										a(href='#') Separated link
-									li
-										a(href='#') One more separated link
+		nav.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
+			.navbar-header
+				button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-ex1-collapse')
+					span.sr-only Toggle navigation
+					span.icon-bar
+					span.icon-bar
+					span.icon-bar
+				a.navbar-brand(href='/') SAA
+			.collapse.navbar-collapse.navbar-ex1-collapse
+				ul.nav.navbar-nav.side-nav
+					li.active
+						a(href='/buscar')
+							i.fa.fa-dashboard Search Flights
+					li.dropdown
+						a.dropdown-toggle(href='#', data-toggle='dropdown')
+							i.fa.fa-caret-square-o-down Dropdown
+							b.caret
+						ul.dropdown-menu
 							li
-								a(href='/buscar') Search Flight
+								a(href='#') Dropdown Item
 							li
-								a(href='#') Frecuent Flyer Account
+								a(href='#') Another Item
 							li
-								a(href='#') Random Link for Unknown Purpose
-
-						form.navbar-form.navbar-right
-							input.form-control.col-lg-8(type='text', id='query', placeholder='Search')
-
-				.col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-1.main
-					block entidad
-
-//- https://www.google.cl/#q=
+								a(href='#') Third Item
+							li
+								a(href='#') Last Item
+				ul.nav.navbar-nav.navbar-right.navbar-user
+					li.dropdown.user-dropdown
+						a.dropdown-toggle(href='#', data-toggle='dropdown')
+							i.fa.fa-user Carlos Ramart
+							b.caret
+						ul.dropdown-menu
+							li
+								a(href='#')
+									i.fa.fa-user Profile
+							li
+								a(href='#')
+									i.fa.fa-gear Settings
+							li.divider
+							li
+								a(href='#')
+									i.fa.fa-power-off Log Out	
+		.container-fluid#containerUser(style='width: 1000px; height: 500px; padding-left: 60px;')
+			block entidad
+		//- .container-fluid(style)
+		//- 	.col-lg-10
+		//- 		h1 Blank Page
+		//- 			small A Blank Slate
+		//- 		ol.breadcrumb
+		//- 			li
+		//- 				a(href='index.html')
+		//- 					i.icon-dashboard Dashboard
+		//- 			li.active
+		//- 				i.icon-file-alt Blank Page
+script(type='text/javascript', src='/javascripts/jquery.js')
+script(type='text/javascript', src='/javascripts/bootstrap.min.js')

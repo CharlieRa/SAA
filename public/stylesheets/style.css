@@ -124,3 +124,13 @@ a {
   text-align: center;
   margin-left: -10px;
 }
+#containerUser {
+  margin-top: -50px;
+}
+#containerMenu {
+  margin-left: 100px;
+  margin-top: -60px;
+}
+#containerTitle {
+  margin-left: -140px;
+}
