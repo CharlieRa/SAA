@@ -1,0 +1,101 @@
+doctype html
+html(lang='en')
+head
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		meta(name='description', content='')
+		meta(name='author', content='')
+		title Administrator Panel
+		link(href='/stylesheets/bootstrap.css', rel='stylesheet', media='screen')
+		link(href='/stylesheets/round-about.css', rel='stylesheet')
+		link(href='/stylesheets/style.css', rel='stylesheet')
+	body
+		.navbar.navbar-default.navbar-fixed-top(role="navigation")
+			.container-fluid
+				.navbar-header
+					button.navbar-toggle(type='button', data-toggle='collapse', data-
+					target='.navbar-collapse')
+						span.sr-only Toggle navigation
+						span.icon-bar
+						span.icon-bar
+						span.icon-bar
+					a.navbar-brand(href='/') SAA
+				.navbar-collapse.collapse
+					ul.nav.navbar-nav
+						li
+							a(href='/adminPanel') Home
+						li
+							a(href='/aerolineas') Airlines
+						li
+							a(href='/aeropuertos') Airports
+						li
+							a(href='/aviones' ) Planes
+						li
+							a(href='/tipoAvion') Aircraft Models
+						li
+							a(href='/programaVuelos') Scheduled Flights
+						li
+							a(href='/vuelos') Flights 
+						li
+							a(href='/pasajeros') Passenger 
+						li
+							a(href='/gates') Gates
+						li
+							a(href='/ciudades') City 
+						li
+							a(href='/paises') Country 
+						li
+							a(href='/buscar') Search Flights
+						li
+							a(href='/estadisticas') Statistics
+					ul.nav.navbar-nav.navbar-right
+						li
+							a(href='/logout') salir
+		.container#containerMenu
+			.row
+				.col-lg-12
+				.col-lg-12
+					h2.page-header#containerTitle Admin Panel
+			.row#Menu
+				.col-lg-4.col-sm-6
+					a(href='/aerolineas')
+						img.img-circle.img-responsive(src='../images/airlines.jpg')
+					h3 Airlines
+				.col-lg-4.col-sm-6
+					a(href='/aeropuertos')
+						img.img-circle.img-responsive(src='../images/airport.png')
+					h3 Airports
+				.col-lg-4.col-sm-6
+					a(href='/tipoAvion')
+						img.img-circle.img-responsive(src='../images/aircraft.png')
+					h3 Aircraft Model
+				.col-lg-4.col-sm-6
+					a(href='/aerolineas')
+						img.img-circle.img-responsive(src='../images/airplane.png')
+					h3 Planes
+				.col-lg-4.col-sm-6
+					a(href='/aviones')
+						img.img-circle.img-responsive(src='../images/scheduled.png')
+					h3 Scheduled Flights
+				.col-lg-4.col-sm-6
+					a(href='/programaVuelos')
+						img.img-circle.img-responsive(src='../images/air.png')
+					h3 Flights
+				.col-lg-4.col-sm-6
+					a(href='/pasajeros')
+						img.img-circle.img-responsive(src='../images/passenger3.png')
+					h3 Passenger
+				.col-lg-4.col-sm-6
+					a(href='/gates')
+						img.img-circle.img-responsive(src='../images/gates.jpg')
+					h3 Gates
+				.col-lg-4.col-sm-6
+					a(href='/ciudades')
+						img.img-circle.img-responsive(src='../images/city.png')
+					h3 Citys
+				.col-lg-4.col-sm-6
+					a(href='/estadisiticas')
+						img.img-circle.img-responsive(src='../images/rsz_chart.jpg')
+					h3 Statistics
+		script(src='js/jquery-1.10.2.js')
+		script(src='js/bootstrap.js')

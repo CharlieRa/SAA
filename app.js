@@ -108,10 +108,10 @@ app.get('/login', function (req, res){res.render('login'); });
 
 //solo de prueba
 app.get('/users', function (req, res){res.render('users'); });
-app.get('/otro', function (req, res){res.render('otro'); });
+app.get('/adminPanel', function (req, res){res.render('adminPanel'); });
 //--------------
 
-app.post('/login', passport.authenticate('local', { successRedirect: '/estadisticas', failureRedirect: '/login' }));
+app.post('/login', passport.authenticate('local', { successRedirect: '/adminPanel', failureRedirect: '/login' }));
 
 app.get('/logout', function(req, res){
   req.logOut();

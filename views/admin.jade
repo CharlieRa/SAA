@@ -21,64 +21,40 @@ html(lang="es")
 						span.icon-bar
 						span.icon-bar
 						span.icon-bar
-					a.navbar-brand(href='#') SAA
+					a.navbar-brand(href='/') SAA
 				.navbar-collapse.collapse
 					ul.nav.navbar-nav
 						li
-							a(href='#') Home
+							a(href='/adminPanel') Home
 						li
-							a(href='/about') About
+							a(href='/aerolineas') Airlines
 						li
-							a(href='#contact') Contact
+							a(href='/aeropuertos') Airports
 						li
-							a(href='/about') About
+							a(href='/aviones' ) Planes
 						li
-							a(href='#contact') Contact
+							a(href='/tipoAvion') Aircraft Models
 						li
-							a(href='/about') About
+							a(href='/programaVuelos') Scheduled Flights
 						li
-							a(href='#contact') Contact
-						
+							a(href='/vuelos') Flights 
+						li
+							a(href='/pasajeros') Passenger 
+						li
+							a(href='/gates') Gates
+						li
+							a(href='/ciudades') City 
+						li
+							a(href='/paises') Country 
+						li
+							a(href='/buscar') Search Flights
+						li
+							a(href='/estadisticas') ]Statistics
 					ul.nav.navbar-nav.navbar-right
 						li
 							a(href='/logout') salir
 		.container-fluid
 			.row
-				.col-sm-3.col-md-2.sidebar
-					ul.nav.nav-pills.nav-stacked
-						li
-							a(href='/aerolineas' class='aerolineas',id='airline')
-							p Airlines
-						li
-							a(href='/aeropuertos' class='aeropuertos',id='airports')
-							p Airports
-						li
-							a(href='/aviones' class='aviones', id='plane')
-							p Planes
-						li
-							a(href='/tipoAvion' class='tipoAvion',id='airplaneType')
-							p Aircraft Models
-						li
-							a(href='/programaVuelos' class='programaVuelos',id='scheduled')
-							p Scheduled Flights
-						li
-							a(href='/vuelos' class='vuelos',id='flights')
-							p Flights 
-						li
-							a(href='/pasajeros' class='pasajeros',id='passenger')
-							p Passenger 
-						li
-							a(href='/gates' class='gates',id='gates')
-							p Gates
-						li
-							a(href='/ciudades' class='ciudades',id='city')
-							p City 
-						li
-							a(href='/paises' class='paises',id='country')
-							p Country 
-						li
-							a(href='/buscar' class='buscar',id='searchFlights')
-							p Search Flights
 				.col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-1.main
 					block entidad
 
