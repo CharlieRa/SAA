@@ -37,7 +37,8 @@ aerolinea.prototype.mod=function(req,res) {
 	connection.connect();
 	connection.query('UPDATE airline SET ? WHERE ID ='+req.body.id , {	
 										NAME: req.body.name,
-										ACRONYM: req.body.acronym
+										ACRONYM: req.body.acronym,
+										ally_code:req.body.ally_code
 										},function(err, result) {
   		if(err)
      		console.log(err);
@@ -69,10 +70,11 @@ aerolinea.prototype.insert=function(req,res) {
 	var connection = mysql.createConnection(c_info);
 	connection.connect();
 	connection.query('INSERT INTO airline SET ?',	{NAME: req.body.name,
-													 ACRONYM: req.body.acronym
+													 ACRONYM: req.body.acronym,
+													 ally_code: req.body.ally_code
 													},function(err, result) {
   		if(err){
-     		console.log('error');
+     		console.log(err);
 	    }else{
 	    	res.redirect('/aerolineas');
 	    }

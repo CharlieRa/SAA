@@ -12,10 +12,8 @@ var pieData = [
         {
           value : 100,
           color : "#69D2E7"
-        }
-      
-
-  $('#from').autocomplete({
+        }];
+       $('#form').autocomplete({
     serviceUrl: '/ciudades/buscar',
     onSelect: function (suggestion) {
         //alert('You selected: ' + suggestion.value + ', ' + suggestion.data);

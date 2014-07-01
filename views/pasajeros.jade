@@ -28,10 +28,10 @@ block entidad
 							td #{data[i].BIRTHDAY}
 							td #{data[i].C_CODE}
 							td(style='width:5px;')
-								a(href="/pasajeros/modificar/#{data[i].ID}")
+								a(href="/pasajeros/modificar/#{data[i].ID}",class="btn btn-warning")
 									span.glyphicon.glyphicon-edit
 							td(style='cursor: pointer; width:5px;')
-								a(onclick="confirmGetMessage(#{data[i].ID})")
+								a(onclick="confirmGetMessage(#{data[i].ID})",class="btn btn-danger")
 									span.glyphicon.glyphicon-trash		
 		ul.pagination
 				li

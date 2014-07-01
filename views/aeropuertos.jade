@@ -15,8 +15,7 @@ block entidad
 							th Coordinates
 							th City
 							th Edit
-							th Delete
-						
+							th Delete		
 					tbody
 						- for (var i = 0; i < data.length; i++)
 								tr
@@ -25,10 +24,10 @@ block entidad
 									td #{data[i].COORDINATES}
 									td #{data[i].OIN}
 									td(style='width:5px;')
-										a(href="/aeropuertos/modificar/#{data[i].CODE}")
+										a(href="/aeropuertos/modificar/#{data[i].CODE}",class="btn btn-warning")
 											span.glyphicon.glyphicon-edit
 									td(style='cursor: pointer; width:5px;')
-										a(onclick="confirmGetMessage('#{data[i].CODE}')")
+										a(onclick="confirmGetMessage('#{data[i].CODE}')",class="btn btn-danger")
 											span.glyphicon.glyphicon-trash
 				ul.pagination
 					li

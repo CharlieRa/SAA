@@ -22,10 +22,10 @@ block entidad
 								td #{data[i].NAME}
 								td #{data[i].MAIN_LANG}
 								td(style='width:5px;')
-									a(href="/paises/modificar/#{data[i].CODE}")
+									a(href="/paises/modificar/#{data[i].CODE}",class="btn btn-warning")
 										span.glyphicon.glyphicon-edit
 								td(style='cursor: pointer; width:5px;')
-									a(onclick="confirmGetMessage('#{data[i].CODE}')")
+									a(onclick="confirmGetMessage('#{data[i].CODE}')",class="btn btn-danger")
 										span.glyphicon.glyphicon-trash
 			ul.pagination
 					li

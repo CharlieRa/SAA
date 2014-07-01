@@ -13,6 +13,7 @@ block entidad
 							th ID
 							th Name
 							th Acronym
+							th Alliance Code
 							th Edit
 							th Delete
 					tbody
@@ -21,11 +22,12 @@ block entidad
 									td #{data[i].ID}
 									td #{data[i].NAME}
 									td #{data[i].ACRONYM}
+									td #{data[i].ally_code}
 									td(style='width:5px;')
-										a(href="/aerolineas/modificar/#{data[i].ID}")
+										a(href="/aerolineas/modificar/#{data[i].ID}",class="btn btn-warning")
 											span.glyphicon.glyphicon-edit
 									td(style='cursor: pointer; width:5px;')
-										a(onclick="confirmGetMessage(#{data[i].ID})")
+										a(onclick="confirmGetMessage(#{data[i].ID})",class="btn btn-danger")
 											span.glyphicon.glyphicon-trash
 			ul.pagination
 				li
@@ -34,11 +36,5 @@ block entidad
 					a(href='#') 1
 				li
 					a(href='#') 2
-				li
-					a(href='#') 3
-				li
-					a(href='#') 4
-				li
-					a(href='#') 5
 				li
 					a(href='#') »

@@ -25,17 +25,17 @@ head
 						li
 							a(href='/adminPanel') Home
 						li
-							a(href='/aerolineas') Airlines
+							a(href='/aerolineas') Airline
 						li
-							a(href='/aeropuertos') Airports
+							a(href='/aeropuertos') Airport
 						li
 							a(href='/aviones' ) Planes
 						li
-							a(href='/tipoAvion') Aircraft Models
+							a(href='/tipoAvion') Aircraft Model
 						li
-							a(href='/programaVuelos') Scheduled Flights
+							a(href='/programaVuelos') Scheduled Flight
 						li
-							a(href='/vuelos') Flights 
+							a(href='/vuelos') Flight
 						li
 							a(href='/pasajeros') Passenger 
 						li
@@ -45,12 +45,20 @@ head
 						li
 							a(href='/paises') Country 
 						li
-							a(href='/buscar') Search Flights
+							a(href='/buscar') Search Flight
+						li.dropdown
+							a.dropdown-toggle(href='#', data-toggle='dropdown') Alliance
+								span.caret
+							ul.dropdown-menu(role='menu')
+								li
+									a(href='/alliance') Manage Alliance
+								li
+									a(href='/') Alliance relation 
 						li
 							a(href='/estadisticas') Statistics
 					ul.nav.navbar-nav.navbar-right
 						li
-							a(href='/logout') salir
+							a(href='/logout') Logout
 		.container#containerMenu
 			.row
 				.col-lg-12
@@ -94,8 +102,13 @@ head
 						img.img-circle.img-responsive(src='../images/city.png')
 					h3 Citys
 				.col-lg-4.col-sm-6
-					a(href='/estadisiticas')
+					a(href='/estadisticas')
 						img.img-circle.img-responsive(src='../images/rsz_chart.jpg')
 					h3 Statistics
-		script(src='js/jquery-1.10.2.js')
-		script(src='js/bootstrap.js')
+				.col-lg-4.col-sm-6
+					a(href='/alliance')
+						img.img-circle.img-responsive(src='../images/rsz_1alliance-logo-med.jpg')
+					h3 Alliance
+script(type='text/javascript', src='/javascripts/jquery.js')
+script(type='text/javascript', src='/javascripts/bootstrap.min.js')
+script(type='text/javascript', src='/javascripts/functions.js')

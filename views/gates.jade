@@ -20,10 +20,10 @@ block entidad
 								td #{data[i].NAME}
 								td #{data[i].STATUS}
 								td(style='width:5px;')
-									a(href="/gates/modificar/#{data[i].NAME}")
+									a(href="/gates/modificar/#{data[i].NAME}",class="btn btn-warning")
 										span.glyphicon.glyphicon-edit
 								td(style='cursor: pointer; width:5px;')
-									a(onclick="confirmGetMessage('#{data[i].NAME}')")
+									a(onclick="confirmGetMessage('#{data[i].NAME}')",class="btn btn-danger")
 										span.glyphicon.glyphicon-trash
 		ul.pagination
 					li

@@ -30,6 +30,8 @@ var pais = require ('./controllers/paisController');
 var Pais = new pais();
 var buscarVuelos = require ('./controllers/buscarVuelosController');
 var BuscarVuelos = new buscarVuelos();
+var alliance = require ('./controllers/allianceController');
+var Alliance = new alliance();
 
 require ('./controllers/datos_glob');
 //==================================================================
@@ -190,10 +192,15 @@ app.get('/paises/modificar/:id', Pais.modificar);
 app.post('/paises/modificar', Pais.edit);
 app.get('/paises/borrar/:code', Pais.borrar);
 
+app.get('/alliance',Alliance.get);
+app.get('/alliance/crear', Alliance.crear);
+app.get('/alliance/borrar/:id', Alliance.borrar);
+app.get('/alliance/modificar/:id', Alliance.modificar);
+app.post('/alliance/modificar', Alliance.mod);
+app.post('/alliance',Alliance.insert);
 
 app.get('/buscar',BuscarVuelos.get);
 app.post('/buscar',BuscarVuelos.enviar);
-
 
 app.get('/signup', function (req, res){
   res.render('signup');

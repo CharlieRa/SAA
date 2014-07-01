@@ -1,9 +1,10 @@
 extends admin
 block entidad
 	script(type="text/javascript")
+	//--script var myPie = new Chart(document.getElementById("canvas").getContext("2d")).Pie(pieData);
+	script var ctx = document.getElementById("myChart").getContext("2d");
+	script var myNewChart = new Chart(ctx).PolarArea(data);
 	h1.page-header Statistics
 	.container-fluid
 		canvas#canvas(height='450', width='450')
-	script
-		var myPie = new Chart(document.getElementById("canvas").getContext("2d")).Pie(pieData)
 			

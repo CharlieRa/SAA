@@ -30,10 +30,10 @@ block entidad
 								td #{data[i].AL}
 								td #{data[i].T_MODEL}	
 								td(style='width:5px;') 
-									a(href="/aviones/modificar/#{data[i].ID}")
+									a(href="/aviones/modificar/#{data[i].ID}",class="btn btn-warning")
 										span.glyphicon.glyphicon-edit
 								td(style='cursor: pointer; width:5px;')
-									a(onclick="confirmGetMessage(#{data[i].ID})")
+									a(onclick="confirmGetMessage(#{data[i].ID})",class="btn btn-danger")
 										span.glyphicon.glyphicon-trash
 		ul.pagination
 			li

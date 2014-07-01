@@ -1,0 +1,25 @@
+extends admin
+
+block entidad
+	script(type="text/javascript").
+	h1.page-header Alliance
+	.botones
+		ul.nav.nav-tabs
+			li
+				a(href="/alliance") Home
+			li.active
+				a(href="/alliance/crear") New
+	.container-fluid
+		h3.sub-header New Alliance
+		form.form-horizontal(method='post', action='/alliance', id='formulario')
+			.form-group
+				label.col-sm-2.control-label Name
+				.col-sm-8
+					input.form-control(type='text', placeholder='Star Alliance', name='name', required, maxlength='15')
+			.form-group
+				label.col-sm-2.control-label Points/Dollar
+				.col-sm-8
+					input.form-control(type='number', placeholder='45.50', name='points', required,step='any' )
+			.form-group
+				.col-sm-offset-2.col-sm-10
+					button.btn.btn-primary.btn-lg(type='submit') Submit
