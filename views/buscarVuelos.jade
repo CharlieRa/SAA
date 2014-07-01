@@ -1,6 +1,8 @@
 extends users
 
 block entidad
+	script(type='text/javascript', src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js')
+	script(type="text/javascript").
 	h1.page-header#titulo Search Flights
 	.container-fluid(align='center')
 		.row
@@ -41,7 +43,16 @@ block entidad
 							.form-group
 								label.col-sm-5 Departure Date
 								.col-sm-11
-									input.form-control#fecha(type='date', placeholder='', name='departureDate', required)					
+									input.form-control#fecha(type='date', placeholder='', name='departureDate', required)
+								.col-sm-4
+									script(type='text/javascript').
+										$(function(){
+										$('*[name=departureDate]').appendDtpicker({
+										"closeOnSelected": true,
+										"dateOnly": true,
+										"autodateOnStart": false
+										});
+										});
 							.row(align='left')
 								label.col-md-5 Adults
 								.col-md-1
@@ -51,13 +62,13 @@ block entidad
 									select.form-control.selectFull(name='adults',required)
 										- for(var i=1; i< 11; i++){
 											option(value=i)= i
-											- }  
+											- }
 								.col-md-1
 								.col-md-5
 									select.form-control.selectFull(name='kids')
 										- for(var i=0; i< 11; i++){
 											option(value=i)= i
-											- }  
-							.form-group									
+											- }
+							.form-group
 								.col-md-11
 									button.btn.btn-primary.btn-block(type='submit') Find Flights
