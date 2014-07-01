@@ -34,14 +34,16 @@ block entidad
 									td
 										p #{data[i].ESTIMATED_ARRIVAL} hrs
 									td
-										p #{data[i].AIRPLANE_T_MODEL} hrs
+										p #{data[i].AIRPLANE_T_MODEL}
+									td
+										select.form-control(name='class')
+											- for(var j=0; j< opts[i].length; j++){
+											option(value=opts[i][j].ID) #{opts[i][j].NAME}, $#{opts[i][j].COST}
+											- }					
 							-}
 
 				.comprar
 					.panel.panel-default
 						.panel-body(align='center')
-							h2 US$ ?
-							p 
-
 							button.btn.btn-primary.btn-lg(type='submit') Buy
 

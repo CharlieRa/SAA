@@ -1,7 +1,7 @@
 c_info = {	host : 'localhost',
 		user     : 'root',
 		password : '',
-		database : 'aeropuerto'
+		database : 'aeropuertoV3'
 		};
 
 userdata = {	userid: '1234',

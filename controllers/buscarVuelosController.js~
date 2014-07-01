@@ -55,9 +55,9 @@ buscarVuelos.prototype.enviar= function(req, res) {
 		console.log(results.cty);
 		console.log(results.inf);
 		if(err)console.log(err);
-		
 		var l = results.inf.length;
 		var kms = new Array(l);
+		var options = new Array(l);
 		for(var i = 0;i < l; i++){
 			for(var j = 0;j < results.cty.length; j++){
 				for(var k = 0;k < results.cty.length; k++){
@@ -66,13 +66,15 @@ buscarVuelos.prototype.enviar= function(req, res) {
 					}
 				}
 			}
-			for(var h = 0;h < results.tcs.length; h++){}
-
+			options[i] = [];
+			for(var h = 0;h < results.tcs.length; h++){
+				if(results.inf[i].ally_code == results.tcs[h].ALLY_CODE){
+					options[i].push( { NAME: results.tcs[h].NAME , ID: results.tcs[h].ID, COST: (results.tcs[h].BASE_COST + results.tcs[h].COST_PER_KM*kms[i]) });
+					}
+			}
 		}
-
-
-		res.render('vuelosBuscados', { data: results.inf , citylist: results.cty})
-
+		console.log(options);
+		res.render('vuelosBuscados', { data: results.inf , citylist: results.cty , opts: options })
 	});
 	connection.end();
 };
