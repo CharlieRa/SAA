@@ -37,7 +37,7 @@ CREATE TABLE `airline` (
 
 LOCK TABLES `airline` WRITE;
 /*!40000 ALTER TABLE `airline` DISABLE KEYS */;
-INSERT INTO `airline` VALUES (1,'LanAirlines','LAN',0),(2,'ChanchoPlanes','CP',0),(3,'AirFrancee','AF',0),(4,'AirGuatemala','AG',0);
+INSERT INTO `airline` VALUES (1,'LanAirlines','LAN',2),(2,'ChanchoPlanes','CP',2),(3,'AirFrancee','AF',1),(4,'AirGuatemala','AG',1);
 /*!40000 ALTER TABLE `airline` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -70,7 +70,7 @@ CREATE TABLE `airplane` (
 
 LOCK TABLES `airplane` WRITE;
 /*!40000 ALTER TABLE `airplane` DISABLE KEYS */;
-INSERT INTO `airplane` VALUES (4,2012,85,'Amelia Earhart','Oliver Wright',1,'Boeing 747'),(6,2013,66,'Gato Felix','Bugs Bunny',1,'JumboJet'),(8,2012,88,'Rocky','Bullwinkle',1,'Boeing 747');
+INSERT INTO `airplane` VALUES (4,2012,85,'Amelia Earhart','Oliver Wright',4,'Boeing 747'),(6,2013,66,'Gato Felix','Bugs Bunny',1,'JumboJet'),(8,2012,88,'Rocky','Bullwinkle',1,'Boeing 747');
 /*!40000 ALTER TABLE `airplane` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -137,9 +137,9 @@ DROP TABLE IF EXISTS `alliance`;
 CREATE TABLE `alliance` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `NAME` varchar(15) NOT NULL,
-  `PTS_PER_DOLLAR` float(10,3) NOT NULL,
+  `PTS_PER_DOLLAR` float(10,2) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -148,6 +148,7 @@ CREATE TABLE `alliance` (
 
 LOCK TABLES `alliance` WRITE;
 /*!40000 ALTER TABLE `alliance` DISABLE KEYS */;
+INSERT INTO `alliance` VALUES (1,'FakeAlliance1',50.00),(2,'FakeAlliance2',60.00);
 /*!40000 ALTER TABLE `alliance` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -278,7 +279,7 @@ CREATE TABLE `flight` (
   CONSTRAINT `flight_ibfk_1` FOREIGN KEY (`PLANE_ID`) REFERENCES `airplane` (`ID`) ON UPDATE CASCADE,
   CONSTRAINT `flight_ibfk_2` FOREIGN KEY (`S_FLIGHT_ID`) REFERENCES `scheduled_flight` (`ID`) ON UPDATE CASCADE,
   CONSTRAINT `flight_ibfk_3` FOREIGN KEY (`GATE_NAME`) REFERENCES `gate` (`NAME`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -287,7 +288,7 @@ CREATE TABLE `flight` (
 
 LOCK TABLES `flight` WRITE;
 /*!40000 ALTER TABLE `flight` DISABLE KEYS */;
-INSERT INTO `flight` VALUES (2,'2014-05-20 01:30:00','2014-05-20 14:30:00',6,35,'A25',NULL);
+INSERT INTO `flight` VALUES (2,'2014-05-20 01:30:00','2014-05-20 14:30:00',4,35,'A25',NULL),(3,'2014-06-28 16:45:00','2014-06-28 18:15:00',6,38,'B34',NULL);
 /*!40000 ALTER TABLE `flight` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -359,7 +360,7 @@ CREATE TABLE `passenger` (
   PRIMARY KEY (`ID`),
   KEY `C_CODE` (`C_CODE`),
   CONSTRAINT `passenger_ibfk_1` FOREIGN KEY (`C_CODE`) REFERENCES `country` (`CODE`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -469,12 +470,14 @@ DROP TABLE IF EXISTS `trip_class`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `trip_class` (
-  `NAME` varchar(10) NOT NULL,
-  `POINT_MULTIPLIER` float(10,3) NOT NULL,
-  `BASE_COST` float(10,3) NOT NULL,
-  `COST_PER_KM` float(10,3) NOT NULL,
-  PRIMARY KEY (`NAME`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `NAME` varchar(12) NOT NULL,
+  `POINT_MULTIPLIER` float(10,2) NOT NULL,
+  `BASE_COST` float(10,2) NOT NULL,
+  `COST_PER_KM` float(10,2) NOT NULL,
+  `ALLY_CODE` int(11) NOT NULL,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -483,6 +486,7 @@ CREATE TABLE `trip_class` (
 
 LOCK TABLES `trip_class` WRITE;
 /*!40000 ALTER TABLE `trip_class` DISABLE KEYS */;
+INSERT INTO `trip_class` VALUES ('Business',1.80,185.00,1.74,1,1),('Economic',1.20,150.00,1.50,2,2),('First Class',1.80,225.00,1.90,2,3),('Tourist',1.00,120.00,1.40,1,4);
 /*!40000 ALTER TABLE `trip_class` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -495,4 +499,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-06-05 21:37:51
+-- Dump completed on 2014-07-01  0:31:33

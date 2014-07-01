@@ -35,7 +35,7 @@ buscarVuelos.prototype.enviar= function(req, res) {
 	connection.connect();
 	async.parallel({
 		inf: function(callback){
-			connection.query("select flight.ID AS fid, ESTIMATED_DEPARTURE, DATE_FORMAT(DATE(DEPARTURE_TIME), '%b %e, %Y') AS depdate, TIME_FORMAT(ADDTIME(ESTIMATED_DEPARTURE,ESTIMATED_DURATION), '%H:%i:%S') AS ESTIMATED_ARRIVAL, ORIGIN_CODE, DESTINY_CODE, AIRPLANE_T_MODEL from scheduled_flight join flight where S_FLIGHT_ID = scheduled_flight.ID and ORIGIN_CODE = '"+req.body.org+"' and DESTINY_CODE = '"+req.body.dest+"' and DEPARTURE_TIME like '"+req.body.departureDate+"%' ORDER  BY  DEPARTURE_TIME", function(err, result){
+			connection.query("select flight.ID AS fid, ESTIMATED_DEPARTURE, DATE_FORMAT(DATE(DEPARTURE_TIME), '%b %e, %Y') AS depdate, TIME_FORMAT(ADDTIME(ESTIMATED_DEPARTURE,ESTIMATED_DURATION), '%H:%i:%S') AS ESTIMATED_ARRIVAL, ORIGIN_CODE, DESTINY_CODE, AIRPLANE_T_MODEL, ally_code from scheduled_flight join flight join alliance join airline join airplane where alliance.ID = airline.ally_code and AIRLINE_ID = airline.ID and airplane.ID = PLANE_ID and S_FLIGHT_ID = scheduled_flight.ID and ORIGIN_CODE = '"+req.body.org+"' and DESTINY_CODE = '"+req.body.dest+"' and DEPARTURE_TIME like '"+req.body.departureDate+"%' ORDER  BY  DEPARTURE_TIME", function(err, result){
 				if(err)console.log(err);
 			callback(null, result);
 			})
@@ -44,10 +44,16 @@ buscarVuelos.prototype.enviar= function(req, res) {
 			connection.query('SELECT CODE, CITY_ID FROM airport ORDER BY CITY_ID', function(err, result) {
 				callback(null, result);
 			})
+		},
+		tcs: function(callback){
+			connection.query('SELECT * from trip_class ORDER BY COST_PER_KM', function(err, result) {
+				callback(null, result);
+			})
 		}
 	},
 	function(err, results) {
 		console.log(results.cty);
+		console.log(results.inf);
 		if(err)console.log(err);
 		
 		var l = results.inf.length;
@@ -60,6 +66,8 @@ buscarVuelos.prototype.enviar= function(req, res) {
 					}
 				}
 			}
+			for(var h = 0;h < results.tcs.length; h++){}
+
 		}
 
 
@@ -71,4 +79,3 @@ buscarVuelos.prototype.enviar= function(req, res) {
 
 module.exports = buscarVuelos;
 
-// - 	console.log("select flight.ID AS fid, ESTIMATED_DEPARTURE, ADDTIME(ESTIMATED_DEPARTURE,ESTIMATED_DURATION) AS ESTIMATED_ARRIVAL, ORIGIN_CODE, DESTINY_CODE, AIRPLANE_T_MODEL from scheduled_flight join flight where S_FLIGHT_ID = scheduled_flight.ID and ORIGIN_CODE = '"+req.body.org+"' and DESTINY_CODE = '"+req.body.dest+"' and DEPARTURE_TIME like '"+req.body.departureDate+"%'");
