@@ -34,6 +34,8 @@ var alliance = require ('./controllers/allianceController');
 var Alliance = new alliance();
 var signup = require ('./controllers/signupController');
 var Signup = new signup();
+var estadisticas = require ('./controllers/estadisticasController');
+var Estadisticas = new estadisticas();
 
 
 require ('./controllers/datos_glob');
@@ -207,9 +209,14 @@ app.get('/vuelosBuscados', function (req, res){
   res.render('vuelosBuscados');
 });
 
+app.get('/vuelos/estadisticas',function (req, res){ 
+  res.render('estadisticasVuelo');
+ });
+app.post('/vuelos/estadisticas',Estadisticas.vuelos);
 app.get('/estadisticas', function (req, res){
-  res.render('statistics');
+  res.render('estadisticasVuelo');
 });
+
 
 app.get('/portal', function (req, res){
   res.render('users');

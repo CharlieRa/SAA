@@ -1,10 +1,18 @@
 extends admin
+
 block entidad
-	script(type="text/javascript")
-	//--script var myPie = new Chart(document.getElementById("canvas").getContext("2d")).Pie(pieData);
-	script var ctx = document.getElementById("myChart").getContext("2d");
-	script var myNewChart = new Chart(ctx).PolarArea(data);
-	h1.page-header Statistics
-	.container-fluid
-		canvas#canvas(height='450', width='450')
-			
+		include layout2
+		.row
+			.col-sm-8
+				input#search.form-control(type='search', value='', placeholder='Search')
+		.container-fluid
+			h3.sub-header Flights
+			table.table.table-striped.table-bordered#table
+				thead
+					tr
+						th Flights on the day
+				tbody
+					- for (var i = 0; i < data.length; i++)
+							tr
+								td #{data[i].A}
+	

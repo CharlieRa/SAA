@@ -1,0 +1,35 @@
+script.
+		var path = window.location.pathname.split('/').pop()
+		if(path == 'aerolineas')
+			var headName = 'Airlines'
+		if(path == 'aeropuertos')
+			var headName = 'Airport'
+		if(path == 'aviones')
+			var headName = 'Airplane'
+		if(path == 'tipoAvion')
+			var headName = 'Aircraft Models'
+		if(path == 'programaVuelos')
+			var headName = 'Scheduled Flights'
+		if(path == 'vuelos')
+			var headName = 'Flights'
+		if(path == 'pasajeros')
+			var headName = 'Passenger'
+		if(path == 'gates')
+			var headName = 'Gates'
+		if(path == 'ciudades')
+			var headName = 'City'
+		if(path == 'paises')
+			var headName = 'Country'
+		if(path == 'alliance')
+			var headName = 'Alliance'
+		var path = path + '/crear'
+		window.onload = function() {
+		document.getElementById('titulo').innerHTML = headName
+		}
+h1.page-header#titulo
+.botones
+	ul.nav.nav-tabs
+		li(id='tabhome').active
+			a(href="/") Home
+		li(id='tabnew')
+			a(href='/vuelos/estadisticas') Flights on the day
