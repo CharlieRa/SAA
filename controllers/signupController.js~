@@ -1,11 +1,13 @@
 var mysql = require ('mysql');
 var async = require ('async');
+
 require ('./datos_glob');
 
 var signup = function () {};
 
 signup.prototype.get= function(req, res) {
 	var connection = mysql.createConnection(c_info);
+	var shasum = crypto.createHash('sha1');
 	connection.connect();
 	connection.query('SELECT CODE, NAME FROM country', function(err, result) {
  		res.render('signup', { data: result})
