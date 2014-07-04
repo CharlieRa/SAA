@@ -38,7 +38,7 @@ block entidad
 									td
 										select.form-control(name='class')
 											- for(var j=0; j< opts[i].length; j++){
-											option(value=opts[i][j].ID) #{opts[i][j].NAME}, $#{opts[i][j].COST}
+											option(value=opts[i][j]) #{opts[i][j].NAME}, $#{opts[i][j].COST}
 											- }					
 							-}
 

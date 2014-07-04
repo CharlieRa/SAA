@@ -32,6 +32,9 @@ var buscarVuelos = require ('./controllers/buscarVuelosController');
 var BuscarVuelos = new buscarVuelos();
 var alliance = require ('./controllers/allianceController');
 var Alliance = new alliance();
+var signup = require ('./controllers/signupController');
+var Signup = new signup();
+
 
 require ('./controllers/datos_glob');
 //==================================================================
@@ -81,11 +84,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
-
-
-
-
-
 
 app.set('view options', {
   layout: false
@@ -202,9 +200,8 @@ app.post('/alliance',Alliance.insert);
 app.get('/buscar',BuscarVuelos.get);
 app.post('/buscar',BuscarVuelos.enviar);
 
-app.get('/signup', function (req, res){
-  res.render('signup');
-});
+app.get('/signup', Signup.get);
+app.post('/signup', Signup.makeuser);
 
 app.get('/vuelosBuscados', function (req, res){
   res.render('vuelosBuscados');

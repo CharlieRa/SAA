@@ -30,6 +30,11 @@ var pais = require ('./controllers/paisController');
 var Pais = new pais();
 var buscarVuelos = require ('./controllers/buscarVuelosController');
 var BuscarVuelos = new buscarVuelos();
+var alliance = require ('./controllers/allianceController');
+var Alliance = new alliance();
+var signup = require ('./controllers/signupController');
+var Signup = new signup();
+
 
 require ('./controllers/datos_glob');
 //==================================================================
@@ -80,11 +85,6 @@ app.use(passport.session());
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-
-
-
-
 app.set('view options', {
   layout: false
 });
@@ -102,16 +102,16 @@ app.get('/', function (req, res){
 });
 
 app.get('/admin', auth, function (req, res){res.render('admin'); });
-
 //esto es solo por que por ahora el login es solo para admins..
 
 app.get('/login', function (req, res){res.render('login'); });
 
 //solo de prueba
 app.get('/users', function (req, res){res.render('users'); });
+app.get('/adminPanel', function (req, res){res.render('adminPanel'); });
 //--------------
 
-app.post('/login', passport.authenticate('local', { successRedirect: '/estadisticas', failureRedirect: '/login' }));
+app.post('/login', passport.authenticate('local', { successRedirect: '/adminPanel', failureRedirect: '/login' }));
 
 app.get('/logout', function(req, res){
   req.logOut();
@@ -190,14 +190,20 @@ app.get('/paises/modificar/:id', Pais.modificar);
 app.post('/paises/modificar', Pais.edit);
 app.get('/paises/borrar/:code', Pais.borrar);
 
+app.get('/alliance',Alliance.get);
+app.get('/alliance/crear', Alliance.crear);
+app.get('/alliance/borrar/:id', Alliance.borrar);
+app.get('/alliance/modificar/:id', Alliance.modificar);
+app.post('/alliance/modificar', Alliance.mod);
+app.post('/alliance',Alliance.insert);
 
 app.get('/buscar',BuscarVuelos.get);
 app.post('/buscar',BuscarVuelos.enviar);
 
-
 app.get('/signup', function (req, res){
   res.render('signup');
 });
+app.post('/signup', Signup.makeuser);
 
 app.get('/vuelosBuscados', function (req, res){
   res.render('vuelosBuscados');

@@ -45,5 +45,6 @@ block entidad
 				.comprar
 					.panel.panel-default
 						.panel-body(align='center')
+							p 
 							button.btn.btn-primary.btn-lg(type='submit') Buy
 
