@@ -360,7 +360,7 @@ CREATE TABLE `passenger` (
   PRIMARY KEY (`ID`),
   KEY `C_CODE` (`C_CODE`),
   CONSTRAINT `passenger_ibfk_1` FOREIGN KEY (`C_CODE`) REFERENCES `country` (`CODE`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -369,7 +369,7 @@ CREATE TABLE `passenger` (
 
 LOCK TABLES `passenger` WRITE;
 /*!40000 ALTER TABLE `passenger` DISABLE KEYS */;
-INSERT INTO `passenger` VALUES (3,'7.654.321-8','John Doe','M','1990-04-08','US'),(4,'1423566-k','Jorge Valdivia','M','1985-05-12','CL'),(5,'284592841-k','Mary Jane Watson','F','0000-00-00','US');
+INSERT INTO `passenger` VALUES (3,'7.654.321-8','John Doe','M','1990-04-08','US'),(4,'1423566-k','Jorge Valdivia','M','1985-05-12','CL'),(5,'284592841-k','Mary Jane Watson','F','0000-00-00','US'),(6,'98765432-1','juanin juanjarry','M','1990-05-09','CL'),(7,'43759173-6','juanina bodoque','F','1989-04-23','CL');
 /*!40000 ALTER TABLE `passenger` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -489,6 +489,29 @@ LOCK TABLES `trip_class` WRITE;
 INSERT INTO `trip_class` VALUES ('Business',1.80,185.00,1.74,1,1),('Economic',1.20,150.00,1.50,2,2),('First Class',1.80,225.00,1.90,2,3),('Tourist',1.00,120.00,1.40,1,4);
 /*!40000 ALTER TABLE `trip_class` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `PSNGR_ID` int(11) NOT NULL,
+  `PASSHASH` varchar(40) NOT NULL,
+  PRIMARY KEY (`PSNGR_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -499,4 +522,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-07-01  0:31:33
+-- Dump completed on 2014-07-04  3:38:05
