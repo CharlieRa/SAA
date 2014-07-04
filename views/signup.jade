@@ -24,7 +24,7 @@ html(lang="es")
 							.register(align='center')
 								.container-fluid
 									h3.sub-header Register
-									form.form-horizontal(method='post', action='/signup')
+									form.form-horizontal(method='post', action='/signup', id='signupform')
 										.form-group
 											label.col-sm-2.control-label First Name
 											.col-sm-8
@@ -61,18 +61,24 @@ html(lang="es")
 										.form-group
 											label.col-sm-2.control-label Password
 											.col-sm-8
-												input.form-control(type='password', name='pazz1', required, minlength=6, maxlength='15')
+												input.form-control(type='password', name='pazz1', required, minlength=6, maxlength='15', id='p1')
 										.form-group
 											label.col-sm-2.control-label Re-enter Password
 											.col-sm-8
-												input.form-control(type='password', name='pazz2', required, minlength=6, maxlength='15')
+												input.form-control(type='password', name='pazz2', required, minlength=6, maxlength='15', id='p2')
 										script(type='text/javascript').
-												if (10 == 10) {
-													alert(CryptoJS.SHA256('Message'));
+											function ValidaYhashea(){
+												if (document.getElementById("p1").value == document.getElementById("p2").value) {
+													document.getElementById("p2").value = CryptoJS.SHA256(document.getElementById("p2").value);	
+													document.getElementById("signupform").submit();
 												}
+												else{
+													alert("Password missmatch!");
+												}
+											}
 										.form-group
 											.col-sm-offset-2.col-sm-10
-												button.btn.btn-primary(type='submit', onclick='' ,align='center') Submit
+												button.btn.btn-primary(onclick='ValidaYhashea()' ,align='center') Submit
 							.mastfoot
 							.inner
 		script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')

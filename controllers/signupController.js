@@ -18,21 +18,23 @@ signup.prototype.get= function(req, res) {
 signup.prototype.makeuser=function(req,res) {
 	var connection = mysql.createConnection(c_info);
 	var uname = "" + req.body.fname + " " + req.body.lname;
-	connection.connect();
-	connection.query('INSERT INTO passenger SET ?',	{NAME: uname,
-							 PIN: req.body.pin,
-							 SEX: req.body.sex,
-							 BIRTHDAY: req.body.birthday,
-							 C_CODE: req.body.c_code
-							},function(err, result) {
-		if(err){
-     			console.log(err);
-		}else{
-			res.redirect('/');
-		}
-	});  
-
-	connection.end();
+	if(req.body.pazz1 == req.body.pazz2){
+		connection.connect();
+		connection.query('INSERT INTO passenger SET ?',	{NAME: uname,
+								 PIN: req.body.pin,
+								 SEX: req.body.sex,
+								 BIRTHDAY: req.body.birthday,
+								 C_CODE: req.body.c_code
+								},function(err, result) {
+			if(err){
+	     			console.log(err);
+			}else{
+				res.redirect('/');
+			}
+		});  
+	
+		connection.end();
+	}
 };
 
 module.exports = signup;
