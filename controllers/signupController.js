@@ -20,19 +20,33 @@ signup.prototype.makeuser=function(req,res) {
 	var uname = "" + req.body.fname + " " + req.body.lname;
 	if(req.body.pazz1 == req.body.pazz2){
 		connection.connect();
-		connection.query('INSERT INTO passenger SET ?',	{NAME: uname,
+
+		async.parallel({
+	    passenger: function(callback){
+		connection.query('INSERT INTO passenger SET ?',	
+								{NAME: uname,
 								 PIN: req.body.pin,
 								 SEX: req.body.sex,
 								 BIRTHDAY: req.body.birthday,
 								 C_CODE: req.body.c_code
-								},function(err, result) {
-			if(err){
-	     			console.log(err);
-			}else{
-				res.redirect('/');
-			}
-		});  
-	
+								}, function(err, result) {
+				callback(null, result);
+		})
+	    },
+	    user: function(callback){
+	    	connection.query('INSERT INTO users SET ?',	
+								{PSNGR_ID: req.body.pin,
+								 PASSHASH: req.body.pazz1
+								}, function(err, result) {
+				callback(null, result);
+			})
+	    }
+	},
+	function(err, results) {
+	    if(err){console.log(err)}
+	    else{res.redirect('/');}
+	});
+		  
 		connection.end();
 	}
 };
