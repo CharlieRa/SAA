@@ -36,6 +36,7 @@ signup.prototype.makeuser=function(req,res) {
 	    user: function(callback){
 	    	connection.query('INSERT INTO users SET ?',	
 								{PSNGR_ID: req.body.pin,
+								 C_CODE: req.body.c_code,
 								 PASSHASH: req.body.pazz1
 								}, function(err, result) {
 				callback(null, result);
