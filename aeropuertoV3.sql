@@ -360,7 +360,7 @@ CREATE TABLE `passenger` (
   PRIMARY KEY (`ID`),
   KEY `C_CODE` (`C_CODE`),
   CONSTRAINT `passenger_ibfk_1` FOREIGN KEY (`C_CODE`) REFERENCES `country` (`CODE`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -369,7 +369,7 @@ CREATE TABLE `passenger` (
 
 LOCK TABLES `passenger` WRITE;
 /*!40000 ALTER TABLE `passenger` DISABLE KEYS */;
-INSERT INTO `passenger` VALUES (3,'7.654.321-8','John Doe','M','1990-04-08','US'),(4,'1423566-k','Jorge Valdivia','M','1985-05-12','CL'),(5,'284592841-k','Mary Jane Watson','F','0000-00-00','US'),(6,'98765432-1','juanin juanjarry','M','1990-05-09','CL'),(7,'43759173-6','juanina bodoque','F','1989-04-23','CL');
+INSERT INTO `passenger` VALUES (3,'7.654.321-8','John Doe','M','1990-04-08','US'),(4,'1423566-k','Jorge Valdivia','M','1985-05-12','CL'),(5,'284592841-k','Mary Jane Watson','F','0000-00-00','US'),(6,'98765432-1','juanin juanjarry','M','1990-05-09','CL'),(7,'43759173-6','juanina bodoque','F','1989-04-23','CL'),(33,'57482921-4','Maria Sharapova','F','1990-05-23','CL');
 /*!40000 ALTER TABLE `passenger` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -500,6 +500,7 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `PSNGR_ID` int(11) NOT NULL,
   `PASSHASH` varchar(40) NOT NULL,
+  `C_CODE` varchar(3) NOT NULL,
   PRIMARY KEY (`PSNGR_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -522,4 +523,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-07-04  3:38:05
+-- Dump completed on 2014-07-05 16:26:35
